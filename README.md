@@ -1,7 +1,7 @@
 # project6
 In this project, we will complete the 
 * login page
-* creat a accoubt page
+* create an accoubt page
 * home page 
 
 
