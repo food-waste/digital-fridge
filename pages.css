@@ -2,6 +2,7 @@
 
 body {
   margin: 0;
+  font-family: "Roboto", sans-serif;
 }
 
 nav {
@@ -161,4 +162,17 @@ nav h1:hover {
   width: 80%;
   margin: auto;
   margin-top: 30px;
+  overflow: scroll;
+}
+
+table {
+  text-align: left;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 2px solid #555;
+  text-align: left;
+  padding: 8px;
 }
