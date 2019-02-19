@@ -121,6 +121,7 @@ nav h1:hover {
   height: 50px;
   float: left;
   margin-right: 10px;
+  font-weight: 300;
 }
 
 .search-kitchen button {
