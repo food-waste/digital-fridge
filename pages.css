@@ -135,6 +135,10 @@ nav h1:hover {
   cursor: pointer;
 }
 
+.search-go:hover,.search-go:active,.search-go:focus {
+  background: #43A047;
+}
+
 .add-food {
   float: right;
   background-color: #555;
@@ -145,6 +149,10 @@ nav h1:hover {
   height: 50px;
   margin-right: 10%;
   cursor: pointer;
+}
+
+.add-food:hover,.add-food:active,.add-food:focus {
+  background: #333;
 }
 
 .food-table {
