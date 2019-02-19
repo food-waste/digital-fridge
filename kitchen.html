@@ -1,13 +1,28 @@
-<!DOCTYPE html>
-<html>
-<header>
-    <title>kitchen_main</title>
-    <link rel="stylesheet" type="text/css" href="kitchen.css"/>
-</header>
-
+<head>
+  <title>Digital Fridge</title>
+  <link rel="stylesheet" href="pages.css">
+</head>
 <body>
-    <div class="head_part">
-        <h2 class="head_part">Food Waste Project</h2>
+  <nav>
+    <a href="kitchen.html"><h1>Andrew's Kitchen</h1></a>
+    <ul class="navbar">
+      <li>Your Food</li>
+      <li>Calendar</li>
+      <li>Statistics</li>
+      <li>Account</li>
+      <li class="icon">&#9776;
+        <ul class="dropdown">
+          <li>Your Food</li>
+          <li>Calendar</li>
+          <li>Statistics</li>
+          <li>Account</li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div class="page">
+    <div class="search-kitchen">
+      <input type="text" placeholder="Search your kitchen..."/>
+      <button>&#10145;</button>
     </div>
-</body>
-</html>
+  </div>
