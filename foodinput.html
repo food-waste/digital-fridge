@@ -6,22 +6,36 @@
 <body>
     <div class="page">
         <div class="form">
-            <p class="FoodInput-title">Food Input</p>
+            <p class="foodinput-title">Food Input</p>
             <table>
                 <tr>
-                    <td>
-                        <a href="confirmation.html"> <img class="FoodInput-scan-pic" src="images/scan.jpg"> </a>
+                    <td rowspan="3">
+                        <a href="confirmation.html"> <img class="foodinput-scan-pic" src="images/scan.jpg"> </a>
+                        <p class="foodinput-scan-pic">scan</p>
                     </td>
                     <td>
+                        <form class="foodinput-form">name: <input type="text" placeholder="name"/></form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <form class="foodinput-form">
-                            <input type="text" placeholder="name"/>
+                            purchase date: <input type="date" />
                         </form>
                     </td>
                 </tr>
-                
-                
+                <tr>
+                    <td>
+                        <form class="foodinput-form">
+                            expiry date: <input type="date"/>
+                        </form>
+                    </td>
+                </tr>
+
             </table>
-            
+            <div>
+                <a href="kitchen.html"> <img class="foodinput-return" src="images/back.jpg"> </a>
+            </div>
         </div>
         
     </div>

@@ -1,13 +1,14 @@
-.FoodInput-title{
+.foodinput-title{
     font-size: 40px;
-    /*margin-left: 20px;
-    margin-top: 30px;*/
+    margin-left: 0px;
+    margin-top: 0px;
 }
 
-.FoodInput-scan-pic{
-    width: 30px;
-    height: 30px;
-
+.foodinput-scan-pic{
+    width: 40px;
+    height: 40px;
+    margin-left: 40px;
+    text-align: center;
 }
 
 .page {
@@ -22,13 +23,19 @@
     background: #FFFFFF;
     max-width: 500px;
     margin: 0 auto;
-    padding: 45px;
+    padding: 20px;
     /*text-align: center;*/
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   }
 
-  .foodinput-form{
-    
+.foodinput-form{
+    margin-left:50px; 
+    text-align: right;
+  }
+
+.foodinput-return{
+    width: 25px;
+    height: 25px;
   }
 
 body {
