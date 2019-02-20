@@ -46,18 +46,20 @@ $(function(){
   });
 });
 
+$(document).ready(function(){
+  init()
 function init(){
 
-  var status = localStorage.getItem("status");
+  status = localStorage.getItem("status");
   if(status == "T"){
-    var pDate = localStorage.getItem("purchasedate");
-    var mytable = document.getElementById("tableId");
+     pDate = localStorage.getItem("purchasedate");
+     mytable = document.getElementById("tableId");
     
     //mtable.getElementsByTagName("tr").length
-    var newRow = mytable.insertRow(0); 
-    var cellA = newRow.insertCell(0);
-    var cellB = newRow.insertCell(1);
-    var cellC = newRow.insertCell(2);
+    newRow = mytable.insertRow(0);
+    cellA = newRow.insertCell(0);
+    cellB = newRow.insertCell(1);
+    cellC = newRow.insertCell(2);
 
     cellA.innerHTML = "name";
     cellB.innerHTML = pDate;
@@ -65,6 +67,7 @@ function init(){
   }
   
 }
+});
 
 function readdate() {
   var purchasedate = document.getElementById("foodinputpurchasedate").value;
@@ -94,5 +97,3 @@ function readdate() {
      //return false;
   }
 }
-
-init();
