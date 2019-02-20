@@ -45,3 +45,54 @@ $(function(){
     }
   });
 });
+
+function init(){
+
+  var status = localStorage.getItem("status");
+  if(status == "T"){
+    var pDate = localStorage.getItem("purchasedate");
+    var mytable = document.getElementById("tableId");
+    
+    //mtable.getElementsByTagName("tr").length
+    var newRow = mytable.insertRow(0); 
+    var cellA = newRow.insertCell(0);
+    var cellB = newRow.insertCell(1);
+    var cellC = newRow.insertCell(2);
+
+    cellA.innerHTML = "name";
+    cellB.innerHTML = pDate;
+    cellC.innerHTML = "expireDate";
+  }
+  
+}
+
+function readdate() {
+  var purchasedate = document.getElementById("foodinputpurchasedate").value;
+  var expirydate = document.getElementById("foodinputexpirydate").value;
+  var name = document.getElementById("foodinputname").value;
+  //var purchasedate = document.querySelector('input[id="date"]');
+  
+  localStorage.setItem("status", "T");
+  localStorage.setItem("purchasedate",purchasedate) ;//svae to localStorage
+  
+  if(purchasedate == "")
+  {
+     alert("Please input purchase date");
+  }
+  else if(expirydate == "")
+  {
+     alert("Please input expiry date");
+  }
+  else if(name =="")
+  {
+     alert("please input food name");
+  }
+  else
+  {
+     window.location.assign("kitchen.html")
+     //window.event.returnValue=false;
+     //return false;
+  }
+}
+
+init();
