@@ -45,5 +45,3 @@ $(function(){
     }
   });
 });
-
-console.log(localStorage.getItem('first_name'));
