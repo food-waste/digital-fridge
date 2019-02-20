@@ -1,6 +1,9 @@
 $(function(){
-  
-  $('nav h1').html(localStorage.getItem('first_name') + '\'s Kitchen');
+  if (localStorage.getItem('login') == 'false') {
+    $('nav h1').html(localStorage.getItem('first_name') + '\'s Kitchen');
+  } else {
+    $('nav h1').html('Your Kitchen');
+  }
 });
 
 $(function(){
@@ -16,6 +19,7 @@ $(function(){
     } if ($('#login_password').val() == "") {
       $('.nopwd').show();
     } else {
+      localStorage.setItem('login', 'true');
       window.location.href = 'kitchen.html';
       return false;
     }
@@ -34,6 +38,7 @@ $(function(){
       $('.noemail').show();
     } else {
       var name = $('#first_name').val();
+      localStorage.setItem('login', 'false');
       localStorage.setItem('first_name', name);
       window.location.href = 'kitchen.html';
       return false;

@@ -16,16 +16,17 @@
                     </td>
                     <td>
                         <form class="foodinput-form">
-                            name: <input id = "name"type="text" placeholder="name"/><br><br>
-                            purchase date: <input id="purchase" type="date" /><br><br>
-                            expiry date: <input id="expiry" type="date"/><br><br>
+                            name: <input id="foodinputname" type="text" placeholder="name"/><br><br>
+                            purchase date: <input id="foodinputpurchasedate" type="date" /><br><br>
+                            expiry date: <input id="foodinputexpirydate" type="date"/><br><br>
                         </form>
                     </td>
                 </tr>
             </table>
             <div>
-                <button id="back-button"> back</button>
-                <a href="kitchen.html"> <button id="finish-button" onclick="manualInput()"> finish</button> </a>
+                <a href="kitchen.html"><button id="back-button"> back</button></a>
+                <button id="finish-button" onclick="readdate()"> finish</button>
+                
             </div>
         </div>
         
