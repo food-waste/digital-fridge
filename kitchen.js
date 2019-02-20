@@ -1,19 +1,6 @@
 $(document).ready(function(){
 
-   $('.message a').click(function(){
-      $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-   });
 
-   
-});
-$(document).ready(function(){
-$("#login_username").keyup(function(){
-   if($("#login_username").val() == ""){
-      $(".nouser").show(); 
-   }else{
-      $(".nouser").hide();
-   }
- });
 });
 
 $(document).ready(function(){
@@ -41,4 +28,9 @@ function manualInput(){
    cellA.innerHTML = "name";
    cellB.innerHTML = "purchaseDate";
    cellC.innerHTML = "expireDate";
+}
+function appendTable(){
+   var txt1="<table><tr><td>Test</td><td>Test</td><td>Test</td></tr></table>";
+
+   $("body").append(txt1);
 }
