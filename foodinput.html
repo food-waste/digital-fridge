@@ -2,6 +2,7 @@
 <head>
     <title>Food Input</title>
     <link rel="stylesheet" type="text/css" href="foodinput.css"/>
+    <script src="kitchen.js"></script>
 </head>
 <body>
     <div class="page">
@@ -15,16 +16,16 @@
                     </td>
                     <td>
                         <form class="foodinput-form">
-                            name: <input type="text" placeholder="name"/><br><br>
-                            purchase date: <input type="date" /><br><br>
-                            expiry date: <input type="date"/><br><br>
+                            name: <input id = "name"type="text" placeholder="name"/><br><br>
+                            purchase date: <input id="purchase" type="date" /><br><br>
+                            expiry date: <input id="expiry" type="date"/><br><br>
                         </form>
                     </td>
                 </tr>
             </table>
             <div>
                 <button id="back-button"> back</button>
-                <button id="finish-button"> finish</button>
+                <a href="kitchen.html"> <button id="finish-button" onclick="manualInput()"> finish</button> </a>
             </div>
         </div>
         
