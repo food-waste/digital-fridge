@@ -19,6 +19,7 @@ function readdate() {
    var name = document.getElementById("foodinputname").value;
    //var purchasedate = document.querySelector('input[id="date"]');
    
+   localStorage.setItem("purchasedate",purchasedate) ;//svae to localStorage
    
    if(purchasedate == "")
    {
