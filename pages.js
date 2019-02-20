@@ -1,11 +1,6 @@
-var first_name = "";
-
 $(function(){
-  if (first_name != "") {
-    $('nav h1').html(first_name + '\'s Kitchen');
-  } else {
-    $('nav h1').html('Your Kitchen');
-  }
+  
+  $('nav h1').html(localStorage.getItem('first_name') + '\'s Kitchen');
 });
 
 $(function(){
@@ -38,9 +33,12 @@ $(function(){
     } if ($('#create_email').val() == "") {
       $('.noemail').show();
     } else {
-      first_name = $('#first_name').val();
+      var name = $('#first_name').val();
+      localStorage.setItem('first_name', name);
       window.location.href = 'kitchen.html';
       return false;
     }
   });
 });
+
+console.log(localStorage.getItem('first_name'));
