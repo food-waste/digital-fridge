@@ -46,15 +46,15 @@ $(function(){
   });
 });
 
-function init(){
 
+$( document ).ready(function() {
   var status = localStorage.getItem("status");
+  var mytable = document.getElementById("tableId");
   if(status == "T"){
     var pDate = localStorage.getItem("purchasedate");
     var mytable = document.getElementById("tableId");
     
-    //mtable.getElementsByTagName("tr").length
-    var newRow = mytable.insertRow(0); 
+    var newRow = mytable.insertRow(mytable.getElementsByTagName("tr").length); 
     var cellA = newRow.insertCell(0);
     var cellB = newRow.insertCell(1);
     var cellC = newRow.insertCell(2);
@@ -64,7 +64,8 @@ function init(){
     cellC.innerHTML = "expireDate";
   }
   
-}
+});
+
 
 function readdate() {
   var purchasedate = document.getElementById("foodinputpurchasedate").value;
@@ -93,6 +94,26 @@ function readdate() {
      //window.event.returnValue=false;
      //return false;
   }
+}
+
+function manualInput(){
+  // var name = document.getElementById("name").value;
+  // var purchaseDate = document.getElementById("purchase").value;
+  // var expireDate = document.getElementById("expiry").value;
+  
+  var mytable = document.getElementById("tableId");
+  
+  //mytable.getElementsByTagName("tr").length
+  var newRow = mytable.insertRow(0);
+  
+  var cellA = newRow.insertCell(0);
+  var cellB = newRow.insertCell(1);
+  var cellC = newRow.insertCell(2);
+  
+  cellA.innerHTML = "name";
+  cellB.innerHTML = "purchaseDate";
+  cellC.innerHTML = "expireDate";
+  
 }
 
 init();
