@@ -1,12 +1,20 @@
-var first_name;
+var first_name = "";
 
-$(document).ready(function(){
+$(function(){
+  if (first_name != "") {
+    $('nav h1').html(first_name + '\'s Kitchen');
+  } else {
+    $('nav h1').html('Your Kitchen');
+  }
+});
+
+$(function(){
    $('.message a').click(function(){
       $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
    });
 });
 
-$(document).ready(function(){
+$(function(){
   $('#login_button').click(function(){
     if($('#login_username').val() == ""){
       $('.nouser').show();
@@ -19,7 +27,7 @@ $(document).ready(function(){
   });
 });
 
-$(document).ready(function(){
+$(function(){
   $('#create_button').click(function(){
     if($('#first_name').val() == ""){
       $('.noname').show();
