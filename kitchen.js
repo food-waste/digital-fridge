@@ -23,11 +23,11 @@ function readdate() {
    
    if(purchasedate == "")
    {
-      alert("Please input purchasedate");
+      alert("Please input purchase date");
    }
    else if(expirydate == "")
    {
-      alert("Please input expirydate");
+      alert("Please input expiry date");
    }
    else if(name =="")
    {
