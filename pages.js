@@ -46,23 +46,41 @@ $(function(){
   });
 });
 
+
+var initFood = "beef;yogurt;chicken;lettuce;eggplant;cereal;bread;milk;strawberry;pizza;";
+var initPurDate = "2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;";
+var initExpDate = "2019-03-19;2019-02-28;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-02-24;";
 $(document).ready(function(){
-  init()
+  init();
 function init(){
-  status = localStorage.getItem("status");
-  if(status == "T"){
-    mytable = document.getElementById("tableId");
-    
-    newRow = mytable.insertRow(mytable.getElementsByTagName("tr").length);
-    cellA = newRow.insertCell(0);
-    cellB = newRow.insertCell(1);
-    cellC = newRow.insertCell(2);
-
-    cellA.innerHTML = localStorage.getItem("name");
-    cellB.innerHTML = localStorage.getItem("expirydate");
-
-    localStorage.setItem("status", "F");
+  //status = localStorage.getItem("status");
+  //if(status == "T"){
+  if( !sessionStorage.started){                 
+    sessionStorage.started = 1;
+    localStorage.setItem("name", initFood);
+    localStorage.setItem("expirydate",initExpDate);
+    localStorage.setItem("purchasedate",initPurDate);
   }
+    
+    mytable = document.getElementById("tableId");
+        //insert a row at very end
+    var namelist = localStorage.getItem("name").split(';');
+    var datelist = localStorage.getItem("expirydate").split(';');
+      
+    var i;
+    for(i = 0; i < namelist.length - 1; i++){
+      newRow = mytable.insertRow(mytable.getElementsByTagName("tr").length); 
+      cellA = newRow.insertCell(0);
+      cellB = newRow.insertCell(1);
+      cellC = newRow.insertCell(2);
+
+      cellA.innerHTML = namelist[i];
+      cellB.innerHTML = datelist[i];
+      cellC.innerHTML = "Delete";
+    }
+    localStorage.setItem("status", "F");
+  
+  //}
   
 }
 });
@@ -73,9 +91,9 @@ function readdate() {
   var name = document.getElementById("foodinputname").value;
   
   localStorage.setItem("status", "T");
-  localStorage.setItem("purchasedate",purchasedate);//svae to localStorage
-  localStorage.setItem("expirydate", expirydate);
-  localStorage.setItem("name",name);
+  localStorage.setItem("purchasedate",localStorage.getItem("purchasedate")  + purchasedate + ";");//svae to localStorage
+  localStorage.setItem("expirydate", localStorage.getItem("expirydate")  + expirydate + ";");
+  localStorage.setItem("name",localStorage.getItem("name") + name + ";");
   
   if(purchasedate == "")
   {
