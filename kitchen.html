@@ -1,6 +1,7 @@
 <head>
   <title>Digital Fridge</title>
   <link rel="stylesheet" href="pages.css">
+  <script src="kitchen.js"></script>
 </head>
 <body>
   <nav>
@@ -24,10 +25,12 @@
     <div class="search-kitchen">
       <input type="text" placeholder="Search your kitchen..."/>
       <button class="search-go">&#10145;</button>
-      <button class="add-food">&#43;</button>
+      <a href = "foodinput.html">
+        <button class="add-food">&#43;</button>
+      </a>
     </div>
     <div class="food-table">
-      <table>
+      <table id = "tableId">
         <tr>
           <th>Food</th>
           <th>Expiration Date</th>
