@@ -25,3 +25,28 @@ $("#login_password").keyup("input propertychange",function(){
    }
 });
 });
+
+function readdate(){
+   var purchasedate = document.getElementById("foodinputpurchasedate").value;
+   var expirydate = document.getElementById("foodinputexpirydate").value;
+   var name = document.getElementById("foodinputname").value;
+   //var purchasedate = document.querySelector('input[id="date"]');
+   if(purchasedate == "")
+   {
+      alert("Please input purchasedate");
+   }
+   else if(expirydate == "")
+   {
+      alert("Please input expirydate");
+   }
+   else if(name =="")
+   {
+      alert("please input food name");
+   }
+   else
+   {
+      onclick = window.location("kitchen.html")
+      return false;
+   }
+   
+}
