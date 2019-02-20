@@ -55,8 +55,8 @@ $(document).ready(function(){
 function init(){
   //status = localStorage.getItem("status");
   //if(status == "T"){
-  if( !sessionStorage.started){                 
-    sessionStorage.started = 1;
+  if( !sessionStorage.started){         // our list restores back to default everytime we close chrome (not refresh)           
+    sessionStorage.started = 1;           //I think that's probably easier for our testing stage.
     localStorage.setItem("name", initFood);
     localStorage.setItem("expirydate",initExpDate);
     localStorage.setItem("purchasedate",initPurDate);
@@ -90,7 +90,6 @@ function readdate() {
   var expirydate = document.getElementById("foodinputexpirydate").value;
   var name = document.getElementById("foodinputname").value;
   
-  localStorage.setItem("status", "T");
   localStorage.setItem("purchasedate",localStorage.getItem("purchasedate")  + purchasedate + ";");//svae to localStorage
   localStorage.setItem("expirydate", localStorage.getItem("expirydate")  + expirydate + ";");
   localStorage.setItem("name",localStorage.getItem("name") + name + ";");
