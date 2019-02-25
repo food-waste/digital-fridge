@@ -27,9 +27,7 @@
     <div class="search-kitchen">
       <input type="text" placeholder="Search your kitchen..."/>
       <button class="search-go">&#10145;</button>
-      <a href = "foodinput.html">
-        <button class="add-food">&#43;</button>
-      </a>
+      <button class="add-food">&#43;</button>
       <!-- <button class ="add-food">clear</button> -->
     </div>
     <div class="food-table">
@@ -41,5 +39,29 @@
         </tr>
       </table>
     </div>
-
   </div>
+  <div class="modal">
+      <div class="form" class="modal-content">
+          <p class="foodinput-title">Food Input</p>
+          <table>
+              <tr>
+                  <td>
+                      <a href="confirmation.html"> <img class="foodinput-scan-pic" src="images/scan.jpg"> </a>
+                      <p class="foodinput-scan-pic">scan</p>
+                  </td>
+                  <td>
+                      <form class="foodinput-form">
+                          name: <input id="foodinputname" type="text" placeholder="name"/><br><br>
+                          purchase date: <input id="foodinputpurchasedate" type="date" /><br><br>
+                          expiry date: <input id="foodinputexpirydate" type="date"/><br><br>
+                      </form>
+                  </td>
+              </tr>
+          </table>
+          <div>
+              <button id="back-button"> back</button>
+              <button id="finish-button" onclick="readdate()"> finish</button>
+          </div>
+      </div>
+  </div>
+</body>

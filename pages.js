@@ -55,21 +55,21 @@ $(document).ready(function(){
 function init(){
   //status = localStorage.getItem("status");
   //if(status == "T"){
-  if( !sessionStorage.started){         // our list restores back to default everytime we close chrome (not refresh)           
+  if( !sessionStorage.started){         // our list restores back to default everytime we close chrome (not refresh)
     sessionStorage.started = 1;           //I think that's probably easier for our testing stage.
     localStorage.setItem("name", initFood);
     localStorage.setItem("expirydate",initExpDate);
     localStorage.setItem("purchasedate",initPurDate);
   }
-    
+
     mytable = document.getElementById("tableId");
         //insert a row at very end
     var namelist = localStorage.getItem("name").split(';');
     var datelist = localStorage.getItem("expirydate").split(';');
-      
+
     var i;
     for(i = 0; i < namelist.length - 1; i++){
-      newRow = mytable.insertRow(mytable.getElementsByTagName("tr").length); 
+      newRow = mytable.insertRow(mytable.getElementsByTagName("tr").length);
       cellA = newRow.insertCell(0);
       cellB = newRow.insertCell(1);
       cellC = newRow.insertCell(2);
@@ -79,9 +79,9 @@ function init(){
       cellC.innerHTML = "Delete";
     }
     localStorage.setItem("status", "F");
-  
+
   //}
-  
+
 }
 });
 
@@ -89,11 +89,11 @@ function readdate() {
   var purchasedate = document.getElementById("foodinputpurchasedate").value;
   var expirydate = document.getElementById("foodinputexpirydate").value;
   var name = document.getElementById("foodinputname").value;
-  
+
   localStorage.setItem("purchasedate",localStorage.getItem("purchasedate")  + purchasedate + ";");//svae to localStorage
   localStorage.setItem("expirydate", localStorage.getItem("expirydate")  + expirydate + ";");
   localStorage.setItem("name",localStorage.getItem("name") + name + ";");
-  
+
   if(purchasedate == "")
   {
      alert("Please input purchase date");
@@ -102,14 +102,25 @@ function readdate() {
   {
      alert("Please input expiry date");
   }
-  else if(name =="")
+  else if(name == "")
   {
      alert("please input food name");
   }
   else
   {
-     window.location.assign("kitchen.html")
+     $('.modal').hide();
+     window.location.assign('kitchen.html');
      //window.event.returnValue=false;
      //return false;
   }
 }
+
+$(function(){
+  $('.add-food').click(function(){
+    $('.modal').show();
+})});
+
+$(function(){
+  $('#back-button').click(function(){
+    $('.modal').hide();
+})});
