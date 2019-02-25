@@ -125,16 +125,25 @@ $(function(){
     $('.modal').hide();
 })});
 
-
 function input_confirmation() {
 // pop-up as Confirmation Page
   if (confirm("-----Confirm the Input?----- ")) {
       alert("Successfully Added")
-
       readdate()
   }
-  else {
-      
+  else {   
   }
 
+}
+
+function searchItem(){
+  // get the searchingInformation first
+  target = document.getElementById("Target").value
+  database = initFood
+  var index = database.search(target);
+  if (index == -1) {
+    alert("Don't find this item!")
+  }else{
+    
+  }
 }
