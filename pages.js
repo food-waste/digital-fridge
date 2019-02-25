@@ -124,3 +124,17 @@ $(function(){
   $('#back-button').click(function(){
     $('.modal').hide();
 })});
+
+
+function input_confirmation() {
+// pop-up as Confirmation Page
+  if (confirm("-----Confirm the Input?----- ")) {
+      alert("Successfully Added")
+
+      readdate()
+  }
+  else {
+      
+  }
+
+}
