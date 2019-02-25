@@ -1,0 +1,32 @@
+<head>
+  <link rel="stylesheet" href="login.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="pages.js"></script>
+</head>
+<body>
+  <h1 class="welcome">Welcome!</h1>
+  <div class="login-page">
+    <div class="form">
+      <form class="register-form">
+        <input type="text" placeholder="first name" id="first_name"/>
+        <p class="fz noname">* you must enter a name</p>
+        <input type="text" placeholder="username" id="create_username"/>
+        <p class="fz nouserc">* you must enter a username</p>
+        <input type="password" placeholder="password" id="create_password"/>
+        <p class="fz nopwdc">* you must enter a password</p>
+        <input type="text" placeholder="email address" id="create_email"/>
+        <p class="fz noemail">* you must enter an email</p>
+        <button id="create_button">create</button>
+        <p class="message">Already registered? <a href="#">Sign In</a></p>
+      </form>
+      <form class="login-form">
+        <input type="text" placeholder="username" id ="login_username" />
+        <p class="fz nouser">* you must enter a username</p>
+        <input type="password" placeholder="password" id="login_password"/>
+        <p class="fz nopwd">* you must enter a password</p>
+        <button id="login_button">login</button>
+        <p class="message">Not registered? <a href="#">Create an account</a></p>
+      </form>
+    </div>
+  </div>
+</body>
