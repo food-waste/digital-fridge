@@ -127,7 +127,15 @@ function drawTable(display, newAdded = "False"){
 
     cellA.innerHTML = namelist[i];
     cellB.innerHTML = datelist[i];
-    cellC.innerHTML = "Delete";
+    cellC.innerHTML = <button>Delete</button>;
+  }
+}
+
+function clearTable(){
+  mytable = document.getElementById("tableId");
+  var i;
+  for(i = mytable.rows.length - 1; i > 0 ; i--){
+    mytable.deleteRow(i);
   }
 }
 
@@ -214,6 +222,7 @@ function searchItem(){
     // return [dplyfood,dplyExpDate];
     dplyfood.push("")
     dplyExpDate.push("")
+    clearTable();
     drawTable([dplyfood,dplyExpDate]);
   }
 }
