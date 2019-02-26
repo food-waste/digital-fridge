@@ -127,7 +127,7 @@ function drawTable(display, newAdded = "False"){
 
     cellA.innerHTML = namelist[i];
     cellB.innerHTML = datelist[i];
-    cellC.innerHTML = <button>Delete</button>;
+    cellC.innerHTML = <button>"Delete"</button>;
   }
 }
 
