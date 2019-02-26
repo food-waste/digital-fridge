@@ -50,8 +50,6 @@ $(function(){
 var initFood = "beef;yogurt;chicken;lettuce;eggplant;cereal;bread;milk;strawberry;pizza;";
 var initPurDate = "2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;";
 var initExpDate = "2019-03-19;2019-02-28;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-02-24;";
-
-
 $(document).ready(function(){
   init();
 function init(){
@@ -62,39 +60,81 @@ function init(){
     localStorage.setItem("name", initFood);
     localStorage.setItem("expirydate",initExpDate);
     localStorage.setItem("purchasedate",initPurDate);
+
+    localStorage.setItem("newName", "");
+    localStorage.setItem("newPurchDate", "");
+    localStorage.setItem("newExpDate", "");
   }
 
-    mytable = document.getElementById("tableId");
-        //insert a row at very end
-    var namelist = localStorage.getItem("name").split(';');
-    var datelist = localStorage.getItem("expirydate").split(';');
+  
+  drawTable(getNew(), "True")
+  drawTable(getPre())
 
-    var i;
-    for(i = 0; i < namelist.length - 1; i++){
-      newRow = mytable.insertRow(mytable.getElementsByTagName("tr").length);
-      cellA = newRow.insertCell(0);
-      cellB = newRow.insertCell(1);
-      cellC = newRow.insertCell(2);
+  merge_table()
 
-      cellA.innerHTML = namelist[i];
-      cellB.innerHTML = datelist[i];
-      cellC.innerHTML = "Delete";
-    }
-    localStorage.setItem("status", "F");
+  // mytable = document.getElementById("tableId");
+  // //insert a row at very end
+  // var namelist = localStorage.getItem("name").split(';');
+  // var datelist = localStorage.getItem("expirydate").split(';');
+
+  // var i;
+  // for(i = 0; i < namelist.length - 1; i++){
+  //   newRow = mytable.insertRow(mytable.getElementsByTagName("tr").length);
+  //   cellA = newRow.insertCell(0);
+  //   cellB = newRow.insertCell(1);
+  //   cellC = newRow.insertCell(2);
+
+  //   cellA.innerHTML = namelist[i];
+  //   cellB.innerHTML = datelist[i];
+  //   cellC.innerHTML = "Delete";
+  // }
+    // localStorage.setItem("status", "F");
 
   //}
 
 }
 });
 
+function getNew(){
+  return [localStorage.getItem("newName").split(';'), localStorage.getItem("newPurchDate").split(';')];
+}
+
+function getPre(){
+  return [localStorage.getItem("name").split(';'), localStorage.getItem("purchasedate").split(';')];
+}
+
+function merge_table(){
+  localStorage.setItem("name",localStorage.getItem("newName") + localStorage.getItem("name") );
+  localStorage.setItem("purchasedate", localStorage.getItem("newPurchDate") + localStorage.getItem("purchasedate"));
+  localStorage.setItem("expirydate", localStorage.getItem("newExpDate") + localStorage.getItem("expirydate"));
+  localStorage.setItem("newName", "");
+  localStorage.setItem("newPurchDate", "");
+  localStorage.setItem("newExpDate", "");
+}
+
+function drawTable(display, newAdded = "False"){
+  mytable = document.getElementById("tableId");
+  //insert a row at very end
+  var namelist = display[0];
+  var datelist = display[1];
+
+  var i;
+  for(i = 0; i < namelist.length - 1; i++){
+    newRow = mytable.insertRow(mytable.getElementsByTagName("tr").length);
+    cellA = newRow.insertCell(0);
+    cellB = newRow.insertCell(1);
+    cellC = newRow.insertCell(2);
+
+    cellA.innerHTML = namelist[i];
+    cellB.innerHTML = datelist[i];
+    cellC.innerHTML = "Delete";
+  }
+}
+
 function readdate() {
   var purchasedate = document.getElementById("foodinputpurchasedate").value;
   var expirydate = document.getElementById("foodinputexpirydate").value;
   var name = document.getElementById("foodinputname").value;
-
-  localStorage.setItem("purchasedate",localStorage.getItem("purchasedate")  + purchasedate + ";");//svae to localStorage
-  localStorage.setItem("expirydate", localStorage.getItem("expirydate")  + expirydate + ";");
-  localStorage.setItem("name",localStorage.getItem("name") + name + ";");
 
   if(purchasedate == "")
   {
@@ -115,6 +155,15 @@ function readdate() {
      //window.event.returnValue=false;
      //return false;
   }
+
+  localStorage.setItem("newPurchDate", purchasedate + ";")
+  localStorage.setItem("newExpDate",expirydate + ";")
+  localStorage.setItem("newName", name + ";")
+
+  // localStorage.setItem("purchasedate",purchasedate + ";" + localStorage.getItem("purchasedate") );//svae to localStorage
+  // localStorage.setItem("expirydate", expirydate + ";" + localStorage.getItem("expirydate")  );
+  // localStorage.setItem("name", name + ";" + localStorage.getItem("name") );
+
 }
 
 $(function(){
@@ -128,40 +177,41 @@ $(function(){
 })});
 
 function input_confirmation() {
-// pop-up as Confirmation Page
-  if (confirm("-----Confirm the Input?----- ")) {
-      alert("Successfully Added")
-      readdate()
+  // pop-up as Confirmation Page
+    if (confirm("-----Confirm the Input?----- ")) {
+        alert("Successfully Added")
+        readdate()
+    }
+    else {   
+    }
+  
   }
-  else {   
+  // This function will return two array, the first one is the searching result food's name
+  // the other one is its expiry date
+  function searchItem(){
+    // get the searchingInformation first
+    target = document.getElementById("Target").value;
+    database = localStorage.getItem("name");
+    var index = database.search(target);
+    if (index == -1) {
+      alert("Don't find this item!");
+    }else{
+      var namelist = localStorage.getItem("name").split(';');
+      var datelist = localStorage.getItem("expirydate").split(';');
+  
+      dplyExpDate = [];
+      dplyPurDate = [];
+      dplyfood = [];
+      for (let i = 0; i < namelist.length; i++) {
+        subString = namelist[i];
+        if(subString.search(target) != -1){
+          dplyfood.push(subString);
+          dplyExpDate.push(datelist[i]);
+        }
+        //var array_test = dplyfood.join();
+        //var array_test2 = dplyExpDate.join();   
+    }
+    //return [dplyfood,dplyExpDate];
+    drawTable([dplyfood,dplyExpDate]);
   }
-
-}
-// This function will return two array, the first one is the searching result food's name
-// the other one is its expiry date
-function searchItem(){
-  // get the searchingInformation first
-  target = document.getElementById("Target").value;
-  database = initFood;
-  var index = database.search(target);
-  if (index == -1) {
-    alert("Don't find this item!");
-  }else{
-    var namelist = localStorage.getItem("name").split(';');
-    var datelist = localStorage.getItem("expirydate").split(';');
-
-    dplyExpDate = [];
-    dplyPurDate = [];
-    dplyfood = [];
-    for (let i = 0; i < namelist.length; i++) {
-      subString = namelist[i];
-      if(subString.search(target) != -1){
-        dplyfood.push(subString);
-        dplyExpDate.push(datelist[i]);
-      }
-      //var array_test = dplyfood.join();
-      //var array_test2 = dplyExpDate.join();   
   }
-  return [dplyfood,dplyExpDate];
-}
-}
