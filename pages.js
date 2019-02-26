@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+
 var page = localStorage.getItem('page');
 
 $(function(){
@@ -243,7 +244,7 @@ function init(){
     localStorage.setItem("newExpDate", "");
   }
 
-  
+
   drawTable(getNew(), "True")
   drawTable(getPre())
 
@@ -367,9 +368,9 @@ function input_confirmation() {
         alert("Successfully Added")
         readdate()
     }
-    else {   
+    else {
     }
-  
+
   }
 // This function will return two array, the first one is the searching result food's name
 // the other one is its expiry date
@@ -394,7 +395,7 @@ function searchItem(){
         dplyExpDate.push(datelist[i]);
       }
       //var array_test = dplyfood.join();
-      //var array_test2 = dplyExpDate.join();   
+      //var array_test2 = dplyExpDate.join();
     }
     // return [dplyfood,dplyExpDate];
     dplyfood.push("")
