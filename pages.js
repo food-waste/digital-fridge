@@ -173,7 +173,7 @@ function searchItem(){
 
   }
 }
-=======
+
 $(function(){
   if (localStorage.getItem('login') == 'false') {
     $('nav h1').html(localStorage.getItem('first_name') + '\'s Kitchen');
@@ -402,4 +402,3 @@ function searchItem(){
     drawTable([dplyfood,dplyExpDate]);
   }
 }
->>>>>>> 4c74de18186546fcdded668cb5eceaef9690a46e
