@@ -176,6 +176,16 @@ $(function(){
     $('.modal').hide();
 })});
 
+function input_confirmation() {
+  // pop-up as Confirmation Page
+    if (confirm("-----Confirm the Input?----- ")) {
+        alert("Successfully Added")
+        readdate()
+    }
+    else {   
+    }
+  
+  }
 // This function will return two array, the first one is the searching result food's name
 // the other one is its expiry date
 function searchItem(){
@@ -202,6 +212,8 @@ function searchItem(){
       //var array_test2 = dplyExpDate.join();   
     }
     // return [dplyfood,dplyExpDate];
+    dplyfood.push("")
+    dplyExpDate.push("")
     drawTable([dplyfood,dplyExpDate]);
   }
 }
