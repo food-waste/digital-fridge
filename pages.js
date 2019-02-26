@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 var page = localStorage.getItem('page');
 
 $(function(){
