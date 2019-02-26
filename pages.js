@@ -50,6 +50,8 @@ $(function(){
 var initFood = "beef;yogurt;chicken;lettuce;eggplant;cereal;bread;milk;strawberry;pizza;";
 var initPurDate = "2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;";
 var initExpDate = "2019-03-19;2019-02-28;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-02-24;";
+
+
 $(document).ready(function(){
   init();
 function init(){
@@ -135,15 +137,31 @@ function input_confirmation() {
   }
 
 }
-
+// This function will return two array, the first one is the searching result food's name
+// the other one is its expiry date
 function searchItem(){
   // get the searchingInformation first
-  target = document.getElementById("Target").value
-  database = initFood
+  target = document.getElementById("Target").value;
+  database = initFood;
   var index = database.search(target);
   if (index == -1) {
-    alert("Don't find this item!")
+    alert("Don't find this item!");
   }else{
-    
+    var namelist = localStorage.getItem("name").split(';');
+    var datelist = localStorage.getItem("expirydate").split(';');
+
+    dplyExpDate = [];
+    dplyPurDate = [];
+    dplyfood = [];
+    for (let i = 0; i < namelist.length; i++) {
+      subString = namelist[i];
+      if(subString.search(target) != -1){
+        dplyfood.push(subString);
+        dplyExpDate.push(datelist[i]);
+      }
+      //var array_test = dplyfood.join();
+      //var array_test2 = dplyExpDate.join();   
   }
+  return [dplyfood,dplyExpDate];
+}
 }
