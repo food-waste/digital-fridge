@@ -1,3 +1,27 @@
+var page = localStorage.getItem('page');
+
+$(function(){
+  $(page).css('background-color', '#65a741');
+  $('.dropdown ' + page).css('background-color', '#585');
+});
+
+$(function() {
+  $('.your-food').click(function() {
+    localStorage.setItem('page', '.your-food');
+    window.location.href = 'kitchen.html';
+  });
+  $('.calendar').click(function() {
+    localStorage.setItem('page', '.calendar');
+    window.location.href = 'calendar.html';
+  });
+  $('.stats').click(function() {
+    localStorage.setItem('page', '.stats');
+  });
+  $('.account').click(function() {
+    localStorage.setItem('page', '.account');
+  });
+});
+
 $(function(){
   if (localStorage.getItem('login') == 'false') {
     $('nav h1').html(localStorage.getItem('first_name') + '\'s Kitchen');
@@ -20,6 +44,7 @@ $(function(){
       $('.nopwd').show();
     } else {
       localStorage.setItem('login', 'true');
+      localStorage.setItem('page', '.your-food');
       window.location.href = 'kitchen.html';
       return false;
     }
@@ -40,6 +65,7 @@ $(function(){
       var name = $('#first_name').val();
       localStorage.setItem('login', 'false');
       localStorage.setItem('first_name', name);
+      localStorage.setItem('page', '.your-food');
       window.location.href = 'kitchen.html';
       return false;
     }
@@ -131,7 +157,7 @@ function input_confirmation() {
       alert("Successfully Added")
       readdate()
   }
-  else {   
+  else {
   }
 
 }
@@ -144,6 +170,6 @@ function searchItem(){
   if (index == -1) {
     alert("Don't find this item!")
   }else{
-    
+
   }
 }

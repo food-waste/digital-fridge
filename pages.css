@@ -165,19 +165,19 @@ nav h1:hover {
   overflow: scroll;
 }
 
-table {
+.food-table table {
   text-align: left;
   width: 100%;
   border-collapse: collapse;
 }
 
-td, th {
+.food-table td, th {
   border: 2px solid #555;
   text-align: left;
   padding: 8px;
 }
 
-td {
+.food-table td {
   font-weight: 300;
 }
 
@@ -265,4 +265,78 @@ td {
 
 .modal tr, .modal td {
   border: 0;
+}
+
+.card-header {
+  text-align: center;
+  font-size: 40px;
+  padding: 20px;
+  margin: auto;
+}
+
+.head-row {
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  font-size: 40px;
+}
+
+.head-row button {
+  background-color: #4CAF50;
+  width: 8%;
+  border: 0;
+  color: #FFF;
+  font-size: 30px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.head-row button:hover,.head-row button:active,.head-row button:focus {
+  background: #43A047;
+}
+
+#previous {
+  -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    -ms-filter: fliph; /*IE*/
+    filter: fliph; /*IE*/
+}
+
+#cal-days {
+  background-color: #999;
+  color: white;
+  width: 81%;
+  text-transform: uppercase;
+  text-align: center;
+  margin: auto;
+  height: 80px;
+  font-size: 24px;
+}
+
+#cal-days th {
+  width: 14%;
+  text-align: center;
+}
+
+#calendar {
+  border-collapse: collapse;
+  margin: auto;
+  width: 80%;
+}
+
+#calendar-body {
+  color: #444;
+  width: 80%;
+  text-align: left;
+  margin: auto;
+  border-collapse: collapse;
+}
+
+#calendar-body td {
+  border: 2px solid #444;
+  width: 14%;
+  height: 80px;
+  vertical-align: top;
 }
