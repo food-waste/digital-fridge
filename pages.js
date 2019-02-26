@@ -127,9 +127,35 @@ function drawTable(display, newAdded = "False"){
 
     cellA.innerHTML = namelist[i];
     cellB.innerHTML = datelist[i];
-    cellC.innerHTML = "<button>Delete</button>";
+    cellC.innerHTML = "<button onclick = \"deleteFunc(this)\">Delete</button>";
   }
 }
+
+function deleteFunc(btn){
+    var row = btn.parentNode.parentNode;
+    rowI = row.rowIndex - 1;
+    row.parentNode.removeChild(row);
+
+    var namelist = localStorage.getItem("name").split(';');
+    var datelist = localStorage.getItem("expirydate").split(';');
+    
+    namestr = arr2str(namelist);
+    datestr = arr2str(datelist);
+    localStorage.setItem("name", namestr);
+    localStorage.setItem("expirydate", datestr);
+    
+}
+
+function arr2str(list){
+  var result = "";
+  for (let index = 0; index < list.length; index++) {
+    if(index != rowI){
+      result += (list[index] + ";");
+    }
+  }
+  return result;
+}
+
 
 function clearTable(){
   mytable = document.getElementById("tableId");
