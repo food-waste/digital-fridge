@@ -275,3 +275,31 @@ function searchItem(){
     drawTable([dplyfood,dplyExpDate]);
   }
 }
+
+function clearSearch(){
+  // get the searchingInformation first
+  target = document.getElementById("Target").value;
+  database = localStorage.getItem("name");
+  
+
+
+  var namelist = localStorage.getItem("name").split(';');
+  var datelist = localStorage.getItem("expirydate").split(';');
+
+    dplyExpDate = [];
+    dplyPurDate = [];
+    dplyfood = [];
+    for (let i = 0; i < namelist.length; i++) {
+      subString = namelist[i];
+
+        dplyfood.push(subString);
+        dplyExpDate.push(datelist[i]);
+      //var array_test = dplyfood.join();
+      //var array_test2 = dplyExpDate.join();
+    }
+    // return [dplyfood,dplyExpDate];
+    dplyfood.push("")
+    dplyExpDate.push("")
+    clearTable();
+    drawTable([dplyfood,dplyExpDate]);
+  }
