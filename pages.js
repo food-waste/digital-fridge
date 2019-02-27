@@ -27,7 +27,7 @@ $(function(){
 
 $(function(){
   $(page).css('background-color', '#65a741');
-})
+});
 
 $(function(){
   $('#login_button').click(function(){
@@ -35,7 +35,8 @@ $(function(){
       $('.nouser').show();
     } if ($('#login_password').val() == "") {
       $('.nopwd').show();
-    } else {
+    } if ($('#login_username').val() != "" &&
+          $('#login_password').val() != ""){
       localStorage.setItem('page', '.your-food');
       localStorage.setItem('login', 'true');
       window.location.href = 'kitchen.html';
@@ -46,7 +47,7 @@ $(function(){
 
 $(function(){
   $('#create_button').click(function(){
-    if($('#first_name').val() == ""){
+    if ($('#first_name').val() == ""){
       $('.noname').show();
     } if ($('#create_username').val() == "") {
       $('.nouserc').show();
@@ -54,7 +55,10 @@ $(function(){
       $('.nopwdc').show();
     } if ($('#create_email').val() == "") {
       $('.noemail').show();
-    } else {
+    } if ($('#first_name').val() != "" &&
+          $('#create_username').val() != "" &&
+          $('#create_password').val() != "" &&
+          $('#create_email').val() != ""){
       var name = $('#first_name').val();
       localStorage.setItem('page', '.your-food');
       localStorage.setItem('login', 'false');
@@ -146,7 +150,7 @@ function drawTable(display, newAdded = "False"){
 
     cellA.innerHTML = namelist[i];
     cellB.innerHTML = datelist[i];
-    cellC.innerHTML = "<button onclick = \"deleteFunc(this)\">Delete</button>";
+    cellC.innerHTML = "<span id=\"delete_trash\" onclick = \"deleteFunc(this)\"><img height=\"15\" width=\"15\" src=\"images/trash.png\" /></span>";
   }
 }
 

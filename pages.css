@@ -165,6 +165,16 @@ nav h1:hover {
   overflow: scroll;
 }
 
+#delete_trash {
+  cursor: pointer;
+  padding: 5px 7px;
+  border-radius: 15px;
+}
+
+#delete_trash:hover {
+  background-color: #4CAF50;
+}
+
 table {
   text-align: left;
   width: 100%;
