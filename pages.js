@@ -281,7 +281,7 @@ function clearSearch(){
   // get the searchingInformation first
   target = document.getElementById("Target").value;
   database = localStorage.getItem("name");
-  
+
 
 
   var namelist = localStorage.getItem("name").split(';');
@@ -303,4 +303,5 @@ function clearSearch(){
     dplyExpDate.push("")
     clearTable();
     drawTable([dplyfood,dplyExpDate]);
+    $('.search-clear').hide();
   }
