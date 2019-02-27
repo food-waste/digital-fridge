@@ -140,6 +140,15 @@ nav h1:hover {
   background: #43A047;
 }
 
+.search-clear {
+  position: absolute;
+  left: 55%;
+  top: 138px;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+}
+
 .add-food {
   float: right;
   background-color: #555;
@@ -163,6 +172,16 @@ nav h1:hover {
   margin: auto;
   margin-top: 30px;
   overflow: scroll;
+}
+
+#delete_trash {
+  cursor: pointer;
+  padding: 5px 7px;
+  border-radius: 15px;
+}
+
+#delete_trash:hover {
+  background-color: #4CAF50;
 }
 
 table {
@@ -265,4 +284,61 @@ td {
 
 .modal tr, .modal td {
   border: 0;
+}
+
+.card {
+  width: 80%;
+  margin: auto;
+}
+
+.head-row {
+  padding: 20px;
+  text-align: center;
+  margin: auto;
+  font-size: 40px;
+}
+
+.btn-outline-primary {
+  background-color: #4CAF50;
+  width: 80px;
+  border: 0;
+  color: #FFF;
+  font-size: 30px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.btn-outline-primary:hover {
+  background: #43A047;
+}
+
+#previous {
+  -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    -ms-filter: fliph;
+    filter: fliph;
+    margin-right: 30px;
+}
+
+#next {
+  margin-left: 30px;
+}
+
+#cal-days {
+  height: 80px;
+  background-color: #999;
+  color: white;
+  text-transform: uppercase;
+  font-size: 30px;
+}
+
+#cal-days th {
+  text-align: center;
+}
+
+.card tbody td {
+  height: 80px;
+  vertical-align: top;
 }

@@ -1,3 +1,5 @@
+var page = localStorage.getItem('page');
+
 $(function(){
   if (localStorage.getItem('login') == 'false') {
     $('nav h1').html(localStorage.getItem('first_name') + '\'s Kitchen');
@@ -13,12 +15,29 @@ $(function(){
 });
 
 $(function(){
+  $('.your-food').click(function(){
+    localStorage.setItem('page', '.your-food');
+    window.location.href = 'kitchen.html';
+  });
+  $('.calendar').click(function(){
+    localStorage.setItem('page', '.calendar');
+    window.location.href = 'calendar.html';
+  });
+});
+
+$(function(){
+  $(page).css('background-color', '#65a741');
+});
+
+$(function(){
   $('#login_button').click(function(){
     if($('#login_username').val() == ""){
       $('.nouser').show();
     } if ($('#login_password').val() == "") {
       $('.nopwd').show();
-    } else {
+    } if ($('#login_username').val() != "" &&
+          $('#login_password').val() != ""){
+      localStorage.setItem('page', '.your-food');
       localStorage.setItem('login', 'true');
       window.location.href = 'kitchen.html';
       return false;
@@ -28,7 +47,7 @@ $(function(){
 
 $(function(){
   $('#create_button').click(function(){
-    if($('#first_name').val() == ""){
+    if ($('#first_name').val() == ""){
       $('.noname').show();
     } if ($('#create_username').val() == "") {
       $('.nouserc').show();
@@ -36,8 +55,12 @@ $(function(){
       $('.nopwdc').show();
     } if ($('#create_email').val() == "") {
       $('.noemail').show();
-    } else {
+    } if ($('#first_name').val() != "" &&
+          $('#create_username').val() != "" &&
+          $('#create_password').val() != "" &&
+          $('#create_email').val() != ""){
       var name = $('#first_name').val();
+      localStorage.setItem('page', '.your-food');
       localStorage.setItem('login', 'false');
       localStorage.setItem('first_name', name);
       window.location.href = 'kitchen.html';
@@ -66,7 +89,7 @@ function init(){
     localStorage.setItem("newExpDate", "");
   }
 
-  
+
   drawTable(getNew(), "True")
   drawTable(getPre())
 
@@ -127,7 +150,7 @@ function drawTable(display, newAdded = "False"){
 
     cellA.innerHTML = namelist[i];
     cellB.innerHTML = datelist[i];
-    cellC.innerHTML = "<button onclick = \"deleteFunc(this)\">Delete</button>";
+    cellC.innerHTML = "<span id=\"delete_trash\" onclick = \"deleteFunc(this)\"><img height=\"15\" width=\"15\" src=\"images/trash.png\" /></span>";
   }
 }
 
@@ -138,12 +161,12 @@ function deleteFunc(btn){
 
     var namelist = localStorage.getItem("name").split(';');
     var datelist = localStorage.getItem("expirydate").split(';');
-    
+
     namestr = arr2str(namelist);
     datestr = arr2str(datelist);
     localStorage.setItem("name", namestr);
     localStorage.setItem("expirydate", datestr);
-    
+
 }
 
 function arr2str(list){
@@ -216,9 +239,9 @@ function input_confirmation() {
         alert("Successfully Added")
         readdate()
     }
-    else {   
+    else {
     }
-  
+
   }
 // This function will return two array, the first one is the searching result food's name
 // the other one is its expiry date
@@ -246,12 +269,43 @@ function searchItem(){
 
 
       //var array_test = dplyfood.join();
-      //var array_test2 = dplyExpDate.join();   
+      //var array_test2 = dplyExpDate.join();
     }
     // return [dplyfood,dplyExpDate];
     dplyfood.push("")
     dplyExpDate.push("")
     clearTable();
     drawTable([dplyfood,dplyExpDate]);
+    $('.search-clear').show();
   }
 }
+
+function clearSearch(){
+  // get the searchingInformation first
+  target = document.getElementById("Target").value;
+  database = localStorage.getItem("name");
+
+
+
+  var namelist = localStorage.getItem("name").split(';');
+  var datelist = localStorage.getItem("expirydate").split(';');
+
+    dplyExpDate = [];
+    dplyPurDate = [];
+    dplyfood = [];
+    for (let i = 0; i < namelist.length; i++) {
+      subString = namelist[i];
+
+        dplyfood.push(subString);
+        dplyExpDate.push(datelist[i]);
+      //var array_test = dplyfood.join();
+      //var array_test2 = dplyExpDate.join();
+    }
+    // return [dplyfood,dplyExpDate];
+    dplyfood.push("")
+    dplyExpDate.push("")
+    clearTable();
+    drawTable([dplyfood,dplyExpDate]);
+    $('.search-clear').hide();
+    $('#Target').val('');
+  }
