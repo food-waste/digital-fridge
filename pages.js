@@ -304,4 +304,5 @@ function clearSearch(){
     clearTable();
     drawTable([dplyfood,dplyExpDate]);
     $('.search-clear').hide();
+    $('#Target').val('');
   }
