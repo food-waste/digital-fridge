@@ -242,6 +242,9 @@ function searchItem(){
         dplyfood.push(subString);
         dplyExpDate.push(datelist[i]);
       }
+      // debug for the space
+
+
       //var array_test = dplyfood.join();
       //var array_test2 = dplyExpDate.join();   
     }
