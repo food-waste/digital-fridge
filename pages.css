@@ -214,11 +214,26 @@ td {
   margin-top: 0px;
 }
 
+.foodinput-scan-wrapper{
+  width: 60px;
+  height: 60px;
+  margin-left: 30px;
+  /* margin-top: px; */
+  text-align: center;
+}
+
+#scanButton{
+  /* background-image: url(images/scan.jpg); */
+  padding: 0px;
+  background-color: inherit;
+  margin-left: 0px;
+  height: inherit;
+  width: inherit;
+}
+
 .foodinput-scan-pic{
   width: 40px;
   height: 40px;
-  margin-left: 40px;
-  text-align: center;
 }
 
 .form {
@@ -286,6 +301,50 @@ td {
   border: 0;
 }
 
+.confirm-table {
+  border: 4px solid #555;
+  height: 200px;
+  width: 80%;
+  margin: auto;
+  margin-top: 15px;
+  overflow: scroll;
+}
+
+#confirm-text{
+  font-size: 40px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.confirm-button{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 20%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.confirm-table td, th{
+  border: 2px solid #555;
+  text-align: left;
+  padding: 8px;
+}
+#confirm-finish-button{
+  margin-left: 30px;
+}
+
+#confirm-back-button{
+  margin-left: 120px;
+}
 .card {
   width: 80%;
   margin: auto;

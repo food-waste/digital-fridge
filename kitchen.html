@@ -41,14 +41,20 @@
       </table>
     </div>
   </div>
-  <div class="modal">
+  <div class="modal" id="inputPage">
       <div class="form" class="modal-content">
           <p class="foodinput-title">Food Input</p>
           <table>
               <tr>
                   <td>
-                      <a href="confirmation.html"> <img class="foodinput-scan-pic" src="images/scan.jpg"> </a>
-                      <p class="foodinput-scan-pic">scan</p>
+                    <div class="foodinput-scan-wrapper">
+                        <button id="scanButton" >
+                            <img class="foodinput-scan-pic" src="images/scan.jpg"> 
+                        </button>
+                        <p>scan</p>
+                    </div>
+                      
+                      
                   </td>
                   <td>
                       <form class="foodinput-form">
@@ -66,4 +72,22 @@
           </div>
       </div>
   </div>
+  <div class="modal" id="confirmPage">
+      <p id="confirm-text">Please Confirm</p>
+      <div class="confirm-table">
+        <table id="confirm-table-Id">
+          <tr>
+            <th>Food</th>
+            <th>Expiration Date</th>
+            <th>Actions</th>
+          </tr>
+        </table>
+          
+      </div>
+      <div>
+          <button class="confirm-button" id="confirm-back-button"> back</button>
+          <!--<button id="finish-button" onclick="readdate()"> finish</button>-->
+          <button class="confirm-button" id="confirm-finish-button" > finish</button>
+      </div>
+    </div>
 </body>
