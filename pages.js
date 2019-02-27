@@ -273,5 +273,6 @@ function searchItem(){
     dplyExpDate.push("")
     clearTable();
     drawTable([dplyfood,dplyExpDate]);
+    $('.search-clear').show();
   }
 }

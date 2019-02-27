@@ -140,6 +140,15 @@ nav h1:hover {
   background: #43A047;
 }
 
+.search-clear {
+  position: absolute;
+  left: 55%;
+  top: 138px;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+}
+
 .add-food {
   float: right;
   background-color: #555;
