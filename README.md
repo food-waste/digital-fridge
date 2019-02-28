@@ -1,8 +1,2 @@
-# project6
-In this project, we will complete the 
-* login page
-* create an accoubt page
-* home page 
-
-
-for the task 1 scenario.
+# project7
+In this project, we will improve the feedback, create a popup, create the frameworks for the calendar page, and add the search and delete functions for our food list.
