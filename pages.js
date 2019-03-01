@@ -1,9 +1,26 @@
+var page = localStorage.getItem('page');
+
 $(function(){
   if (localStorage.getItem('login') == 'false') {
     $('nav h1').html(localStorage.getItem('first_name') + '\'s Kitchen');
   } else {
     $('nav h1').html('Your Kitchen');
   }
+});
+
+$(function(){
+  $('.your-food').click(function(){
+    localStorage.setItem('page', '.your-food');
+    window.location.href = 'kitchen.html';
+  });
+  $('.calendar').click(function(){
+    localStorage.setItem('page', '.calendar');
+    window.location.href = 'calendar.html';
+  });
+});
+
+$(function(){
+  $(page).css('background-color', '#65a741');
 });
 
 $(function(){
@@ -112,7 +129,8 @@ function drawTable(display, newAdded = "False", tableId = "tableId"){
     cellA.innerHTML = namelist[i];
     cellB.innerHTML = datelist[i];
     if(tableId == "tableId"){       //the delete function for confirmation page doesn't work yet.
-      cellC.innerHTML = "<button onclick = \"deleteFunc(this)\">Delete</button>";
+      //cellC.innerHTML = "<button onclick = \"deleteFunc(this)\">Delete</button>";
+      cellC.innerHTML = "<span id=\"delete_trash\" onclick = \"deleteFunc(this)\"><img height=\"15\" width=\"15\" src=\"images/trash.png\" /></span>";
     }else{
       cellC.innerHTML = "Delete";
     }
@@ -286,5 +304,36 @@ function searchItem(){
     dplyExpDate.push("")
     clearTable();
     drawTable([dplyfood,dplyExpDate]);
+    $('.search-clear').show();
   }
+}
+
+function clearSearch(){
+  // get the searchingInformation first
+  target = document.getElementById("Target").value;
+  database = localStorage.getItem("name");
+
+
+
+  var namelist = localStorage.getItem("name").split(';');
+  var datelist = localStorage.getItem("expirydate").split(';');
+
+    dplyExpDate = [];
+    dplyPurDate = [];
+    dplyfood = [];
+    for (let i = 0; i < namelist.length; i++) {
+      subString = namelist[i];
+
+        dplyfood.push(subString);
+        dplyExpDate.push(datelist[i]);
+      //var array_test = dplyfood.join();
+      //var array_test2 = dplyExpDate.join();
+    }
+    // return [dplyfood,dplyExpDate];
+    dplyfood.push("")
+    dplyExpDate.push("")
+    clearTable();
+    drawTable([dplyfood,dplyExpDate]);
+    $('.search-clear').hide();
+    $('#Target').val('');
 }
