@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>Food Input</title>
+    <link rel="stylesheet" type="text/css" href="foodinput.css"/>
+    <script src="pages.js"></script>
+</head>
+<body>
+    <div class="modal">
+        <div class="form">
+            <p class="foodinput-title">Food Input</p>
+            <table>
+                <tr>
+                    <td>
+                        <a href="confirmation.html"> <img class="foodinput-scan-pic" src="images/scan.jpg"> </a>
+                        <p class="foodinput-scan-pic">scan</p>
+                    </td>
+                    <td>
+                        <form class="foodinput-form">
+                            name: <input id="foodinputname" type="text" placeholder="name"/><br><br>
+                            purchase date: <input id="foodinputpurchasedate" type="date" /><br><br>
+                            expiry date: <input id="foodinputexpirydate" type="date"/><br><br>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <a href="kitchen.html"><button id="back-button"> back</button></a>
+                <!-- <button id="finish-button" onclick="readdate()"> finish</button>-->
+                <<button id="finish-button" onclick="input_confirmation()"> finish</button>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

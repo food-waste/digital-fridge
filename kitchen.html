@@ -1,0 +1,93 @@
+<head>
+  <title>Digital Fridge</title>
+  <link rel="stylesheet" href="pages.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="pages.js"></script>
+  <!-- <script> var purchasedate = localStorage.getItem("purchasedate")</script> -->
+</head>
+<body>
+  <nav>
+    <a href="kitchen.html"><h1>Andrew's Kitchen</h1></a>
+    <ul class="navbar">
+      <li class="your-food">Your Food</li>
+      <li class="calendar">Calendar</li>
+      <li class="stats">Statistics</li>
+      <li class="account">Account</li>
+      <li class="icon">&#9776;
+        <ul class="dropdown">
+          <li>Your Food</li>
+          <li>Calendar</li>
+          <li>Statistics</li>
+          <li>Account</li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div class="page">
+    <div class="search-kitchen">
+      <input type="text" placeholder="Search your kitchen..." id="Target"/>
+      <span class="search-clear" onclick="clearSearch()">&#10005;</span>
+      <button class="search-go" onclick="searchItem()"><img height="30" width="30" src="images/search.png" /></button>
+      <button class="add-food">&#43;</button>
+      <!-- <button class ="add-food">clear</button> -->
+    </div>
+    <div class="food-table">
+      <table id = "tableId">
+        <tr>
+          <th>Food</th>
+          <th>Expiration Date</th>
+          <th>Actions</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="modal" id="inputPage">
+      <div class="form" class="modal-content">
+          <p class="foodinput-title">Food Input</p>
+          <table>
+              <tr>
+                  <td>
+                    <div class="foodinput-scan-wrapper">
+                        <button id="scanButton" >
+                            <img class="foodinput-scan-pic" src="images/scan.jpg"> 
+                        </button>
+                        <p>scan</p>
+                    </div>
+                      
+                      
+                  </td>
+                  <td>
+                      <form class="foodinput-form">
+                          name: <input id="foodinputname" type="text" placeholder="name"/><br><br>
+                          purchase date: <input id="foodinputpurchasedate" type="date" /><br><br>
+                          expiry date: <input id="foodinputexpirydate" type="date"/><br><br>
+                      </form>
+                  </td>
+              </tr>
+          </table>
+          <div>
+              <button id="back-button"> back</button>
+              <!--<button id="finish-button" onclick="readdate()"> finish</button>-->
+              <button id="finish-button" onclick="input_confirmation()"> finish</button>
+          </div>
+      </div>
+  </div>
+  <div class="modal" id="confirmPage">
+      <p id="confirm-text">Please Confirm</p>
+      <div class="confirm-table">
+        <table id="confirm-table-Id">
+          <tr>
+            <th>Food</th>
+            <th>Expiration Date</th>
+            <th>Actions</th>
+          </tr>
+        </table>
+          
+      </div>
+      <div>
+          <button class="confirm-button" id="confirm-back-button"> back</button>
+          <!--<button id="finish-button" onclick="readdate()"> finish</button>-->
+          <button class="confirm-button" id="confirm-finish-button" > finish</button>
+      </div>
+    </div>
+</body>
