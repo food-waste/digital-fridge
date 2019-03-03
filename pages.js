@@ -145,6 +145,7 @@ function deleteFunc(btn){
     var namelist = localStorage.getItem("name").split(';');
     var datelist = localStorage.getItem("expirydate").split(';');
     
+    
     namestr = arr2str(namelist);
     datestr = arr2str(datelist);
     localStorage.setItem("name", namestr);
