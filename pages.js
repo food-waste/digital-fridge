@@ -93,11 +93,11 @@ function init(){
 }
 
 function getNew(){
-  return [localStorage.getItem("newName").split(';'), localStorage.getItem("newPurchDate").split(';')];
+  return [localStorage.getItem("newName").split(';'), localStorage.getItem("newExpDate").split(';')];
 }
 
 function getPre(){
-  return [localStorage.getItem("name").split(';'), localStorage.getItem("purchasedate").split(';')];
+  return [localStorage.getItem("name").split(';'), localStorage.getItem("expirydate").split(';')];
 }
 
 function merge_table(){
@@ -145,7 +145,7 @@ function deleteFunc(btn){
     var namelist = localStorage.getItem("name").split(';');
     var datelist = localStorage.getItem("expirydate").split(';');
     
-    
+
     namestr = arr2str(namelist);
     datestr = arr2str(datelist);
     localStorage.setItem("name", namestr);
@@ -155,8 +155,8 @@ function deleteFunc(btn){
 
 function arr2str(list){
   var result = "";
-  for (let index = 0; index < list.length; index++) {
-    if(index != rowI){
+  for (let index = 0; index < list.length ; index++) { 
+    if(index != rowI && list[index] != ""){
       result += (list[index] + ";");
     }
   }
