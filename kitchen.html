@@ -25,17 +25,17 @@
   </nav>
   <div class="page">
     <div class="search-kitchen">
-      <input type="text" placeholder="Search your kitchen..." id="Target"/>
+      <input onkeyup="RT_Search()"   type="text" placeholder="Search your kitchen..." id="Target"/>
       <span class="search-clear" onclick="clearSearch()">&#10005;</span>
       <button class="search-go" onclick="searchItem()"><img height="30" width="30" src="images/search.png" /></button>
       <button class="add-food">&#43;</button>
       <!-- <button class ="add-food">clear</button> -->
     </div>
     <div class="food-table">
-      <table id = "tableId">
+      <table id = "tableId"> 
         <tr>
-          <th>Food</th>
-          <th>Expiration Date</th>
+          <th class="sorter" id="food-sort" onclick="sortTable(0)">Food   &nabla;</th>  <!-- add nabla icon in the bar-->
+          <th class="sorter" id="date-sort" onclick="sortTable(1)">Expiration Date &nabla;</th>  <!-- add nabla icon in the bar-->
           <th>Actions</th>
         </tr>
       </table>
@@ -44,7 +44,7 @@
   <div class="modal" id="inputPage">
       <div class="form" class="modal-content">
           <p class="foodinput-title">Food Input</p>
-          <table>
+          <table >  
               <tr>
                   <td>
                     <div class="foodinput-scan-wrapper">

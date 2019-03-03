@@ -65,13 +65,43 @@ function showCalendar(month, year) {
             }
 
             else {
+								var food_count = 0;
+								var calPopUp = document.createElement("div");
+								calPopUp.classList.add("cal-modal");
                 let cell = document.createElement("td");
-                let cellText = document.createTextNode(date);
+								cell.classList.add("date_" + date);
+                let cellText = document.createElement("p");
+								let txt = document.createTextNode(date);
+								cellText.appendChild(txt);
                 if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
-                    cell.classList.add("bg-info");
+                    cell.classList.add("cal-today");
                 } // color today's date
-                cell.appendChild(cellText);
-                row.appendChild(cell);
+								cell.appendChild(cellText);
+								var exp_arr = localStorage.getItem("expirydate").split(";");
+								var food_arr = localStorage.getItem("name").split(";");
+								for (var d = 0; d < exp_arr.length - 1; d++) {
+									if (date === parseInt(exp_arr[d].substring(8, 10), 10) && year === parseInt(exp_arr[d].substring(0, 4), 10) && month + 1 === parseInt(exp_arr[d].substring(5, 7), 10)) {
+										food_count++;
+										cell.classList.add("cal-red");
+										let food_item = document.createElement("li");
+										let popup_item = document.createElement("p");
+										let fd = document.createTextNode(food_arr[d]);
+										let pui = document.createTextNode(food_arr[d]);
+										food_item.appendChild(fd);
+										popup_item.appendChild(pui);
+										food_item.classList.add("food_item");
+										cell.appendChild(food_item);
+										calPopUp.appendChild(popup_item);
+	                }
+								}
+								if (food_count > 0) {
+									let foodCount = document.createElement("p");
+									let ct = document.createTextNode(food_count);
+									foodCount.appendChild(ct);
+									cell.appendChild(foodCount);
+									cell.appendChild(calPopUp);
+								}
+								row.appendChild(cell);
                 date++;
             }
 
@@ -82,3 +112,9 @@ function showCalendar(month, year) {
     }
 
 }
+
+$(function() {
+	$('#calendar-body td').click(function() {
+		$('.cal-modal').show();
+	})
+})
