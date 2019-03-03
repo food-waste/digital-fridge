@@ -179,6 +179,12 @@ function readdate() {
   var expirydate = document.getElementById("foodinputexpirydate").value;
   var name = document.getElementById("foodinputname").value;
 
+  database = localStorage.getItem("name");
+  var index = database.search(name);
+  if (index != -1) {
+    confirm("Same item already in kitchen!");
+    return;
+  }
   if(purchasedate == "")
   {
      alert("Please input purchase date");
