@@ -139,6 +139,7 @@ function drawTable(display, newAdded = "False", tableId = "tableId"){
 
 function deleteFunc(btn){
     var row = btn.parentNode.parentNode;
+    var nameToDelete = row.firstElementChild.innerText;
     rowI = row.rowIndex - 1;
     row.parentNode.removeChild(row);
 
@@ -151,6 +152,29 @@ function deleteFunc(btn){
     localStorage.setItem("name", namestr);
     localStorage.setItem("expirydate", datestr);
     
+}
+
+function deleteInDataBase(nameToDelete){
+  var namelist = localStorage.getItem("name").split(';');
+  var expirelist = localStorage.getItem("expirydate").split(';');
+  var purchlist = localStorage.getItem("purchasedate").split(';');
+
+  procesedNameStr = ""
+  procesedExpDStr = ""
+  procesedPurDStr = ""
+
+  var i;
+  for(i = 0; i <namelist.length; i++){
+    if(namelist[i] != nameToDelete){
+      procesedNameStr += namelist[i] + ';';
+      procesedExpDStr += expirelist[i] + ';';
+      procesedPurDStr += purchlist[i] + ';';
+    }
+  }
+
+  localStorage.setItem("name", procesedNameStr);
+  localStorage.setItem("expirydate", procesedExpDStr);
+  localStorage.setItem("purchasedate", procesedPurDStr);  
 }
 
 function arr2str(list){
@@ -319,22 +343,22 @@ function clearSearch(){
   var namelist = localStorage.getItem("name").split(';');
   var datelist = localStorage.getItem("expirydate").split(';');
 
-    dplyExpDate = [];
-    dplyPurDate = [];
-    dplyfood = [];
-    for (let i = 0; i < namelist.length; i++) {
-      subString = namelist[i];
+    // dplyExpDate = [];
+    // dplyPurDate = [];
+    // dplyfood = [];
+    // for (let i = 0; i < namelist.length; i++) {
+    //   subString = namelist[i];
 
-        dplyfood.push(subString);
-        dplyExpDate.push(datelist[i]);
-      //var array_test = dplyfood.join();
-      //var array_test2 = dplyExpDate.join();
-    }
-    // return [dplyfood,dplyExpDate];
-    dplyfood.push("")
-    dplyExpDate.push("")
+    //     dplyfood.push(subString);
+    //     dplyExpDate.push(datelist[i]);
+    //   //var array_test = dplyfood.join();
+    //   //var array_test2 = dplyExpDate.join();
+    // }
+    // // return [dplyfood,dplyExpDate];
+    // dplyfood.push("")
+    // dplyExpDate.push("")
     clearTable();
-    drawTable([dplyfood,dplyExpDate]);
+    drawTable([namelist,datelist]);
     $('.search-clear').hide();
     $('#Target').val('');
 }
