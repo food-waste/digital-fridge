@@ -174,13 +174,13 @@ nav h1:hover {
   overflow: scroll;
 }
 
-#sort-click {
+.sorter {
   cursor: pointer;
 }
 
-#sort-click:hover {
-  background-color: #777;
-  color: white;
+.sorter:hover {
+  background-color: #666 !important;
+  color: white !important;
 }
 
 #delete_trash {
