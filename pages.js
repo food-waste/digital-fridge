@@ -139,29 +139,56 @@ function drawTable(display, newAdded = "False", tableId = "tableId"){
 
 function deleteFunc(btn){
     var row = btn.parentNode.parentNode;
+    var nameToDelete = row.firstElementChild.innerText;
     rowI = row.rowIndex - 1;
     row.parentNode.removeChild(row);
 
-    var namelist = localStorage.getItem("name").split(';');
-    var datelist = localStorage.getItem("expirydate").split(';');
+    deleteInDataBase(nameToDelete);
+    // var namelist = localStorage.getItem("name").split(';');
+    // var datelist = localStorage.getItem("expirydate").split(';');
     
 
-    namestr = arr2str(namelist);
-    datestr = arr2str(datelist);
-    localStorage.setItem("name", namestr);
-    localStorage.setItem("expirydate", datestr);
+    // namestr = arr2str(namelist);
+    // datestr = arr2str(datelist);
+    // localStorage.setItem("name", namestr);
+    // localStorage.setItem("expirydate", datestr);
     
 }
+/*
+delete the entry by foodname in database
+*/
+function deleteInDataBase(nameToDelete){
+  var namelist = localStorage.getItem("name").split(';');
+  var expirelist = localStorage.getItem("expirydate").split(';');
+  var purchlist = localStorage.getItem("purchasedate").split(';');
 
-function arr2str(list){
-  var result = "";
-  for (let index = 0; index < list.length ; index++) { 
-    if(index != rowI && list[index] != ""){
-      result += (list[index] + ";");
+  procesedNameStr = ""
+  procesedExpDStr = ""
+  procesedPurDStr = ""
+
+  var i;
+  for(i = 0; i <namelist.length - 1; i++){
+    if(namelist[i] != nameToDelete){
+      procesedNameStr += namelist[i] + ';';
+      procesedExpDStr += expirelist[i] + ';';
+      procesedPurDStr += purchlist[i] + ';';
     }
   }
-  return result;
+
+  localStorage.setItem("name", procesedNameStr);
+  localStorage.setItem("expirydate", procesedExpDStr);
+  localStorage.setItem("purchasedate", procesedPurDStr);  
 }
+
+// function arr2str(list){
+//   var result = "";
+//   for (let index = 0; index < list.length ; index++) { 
+//     if(index != rowI && list[index] != ""){
+//       result += (list[index] + ";");
+//     }
+//   }
+//   return result;
+// }
 
 //default to clear the table in main kitchen.html
 //can be used to clear other tables by passing the id of table 
@@ -325,22 +352,22 @@ function clearSearch(){
   var namelist = localStorage.getItem("name").split(';');
   var datelist = localStorage.getItem("expirydate").split(';');
 
-    dplyExpDate = [];
-    dplyPurDate = [];
-    dplyfood = [];
-    for (let i = 0; i < namelist.length; i++) {
-      subString = namelist[i];
+    // dplyExpDate = [];
+    // dplyPurDate = [];
+    // dplyfood = [];
+    // for (let i = 0; i < namelist.length; i++) {
+    //   subString = namelist[i];
 
-        dplyfood.push(subString);
-        dplyExpDate.push(datelist[i]);
-      //var array_test = dplyfood.join();
-      //var array_test2 = dplyExpDate.join();
-    }
-    // return [dplyfood,dplyExpDate];
-    dplyfood.push("")
-    dplyExpDate.push("")
+    //     dplyfood.push(subString);
+    //     dplyExpDate.push(datelist[i]);
+    //   //var array_test = dplyfood.join();
+    //   //var array_test2 = dplyExpDate.join();
+    // }
+    // // return [dplyfood,dplyExpDate];
+    // dplyfood.push("")
+    // dplyExpDate.push("")
     clearTable();
-    drawTable([dplyfood,dplyExpDate]);
+    drawTable([namelist,datelist]);
     $('.search-clear').hide();
     $('#Target').val('');
 }
