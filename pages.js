@@ -143,17 +143,20 @@ function deleteFunc(btn){
     rowI = row.rowIndex - 1;
     row.parentNode.removeChild(row);
 
-    var namelist = localStorage.getItem("name").split(';');
-    var datelist = localStorage.getItem("expirydate").split(';');
+    deleteInDataBase(nameToDelete);
+    // var namelist = localStorage.getItem("name").split(';');
+    // var datelist = localStorage.getItem("expirydate").split(';');
     
 
-    namestr = arr2str(namelist);
-    datestr = arr2str(datelist);
-    localStorage.setItem("name", namestr);
-    localStorage.setItem("expirydate", datestr);
+    // namestr = arr2str(namelist);
+    // datestr = arr2str(datelist);
+    // localStorage.setItem("name", namestr);
+    // localStorage.setItem("expirydate", datestr);
     
 }
-
+/*
+delete the entry by foodname in database
+*/
 function deleteInDataBase(nameToDelete){
   var namelist = localStorage.getItem("name").split(';');
   var expirelist = localStorage.getItem("expirydate").split(';');
@@ -164,7 +167,7 @@ function deleteInDataBase(nameToDelete){
   procesedPurDStr = ""
 
   var i;
-  for(i = 0; i <namelist.length; i++){
+  for(i = 0; i <namelist.length - 1; i++){
     if(namelist[i] != nameToDelete){
       procesedNameStr += namelist[i] + ';';
       procesedExpDStr += expirelist[i] + ';';
@@ -177,15 +180,15 @@ function deleteInDataBase(nameToDelete){
   localStorage.setItem("purchasedate", procesedPurDStr);  
 }
 
-function arr2str(list){
-  var result = "";
-  for (let index = 0; index < list.length ; index++) { 
-    if(index != rowI && list[index] != ""){
-      result += (list[index] + ";");
-    }
-  }
-  return result;
-}
+// function arr2str(list){
+//   var result = "";
+//   for (let index = 0; index < list.length ; index++) { 
+//     if(index != rowI && list[index] != ""){
+//       result += (list[index] + ";");
+//     }
+//   }
+//   return result;
+// }
 
 //default to clear the table in main kitchen.html
 //can be used to clear other tables by passing the id of table 
