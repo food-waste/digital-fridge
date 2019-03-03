@@ -72,6 +72,28 @@
           </div>
       </div>
   </div>
+  <!--add edit page here-->
+  <div class="modal" id="editPage">
+    <div class="form" class="modal-content">
+        <p class="foodinput-title">Food Edit</p>
+        <table>
+            <tr>
+                <td>
+                    <form class="foodedit-form">
+                        name: <input id="foodeditname" type="text" placeholder="name"/><br><br>
+                        purchase date: <input id="foodeditpurchasedate" type="date" /><br><br>
+                        expiry date: <input id="foodeditexpirydate" type="date"/><br><br>
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <div>
+            <button id="back-button-edit" onclick="edit_back()"> back</button>
+            <!--<button id="finish-button" onclick="readdate()"> finish</button>-->
+            <button id="finish-button-edit" onclick="edit_confirmation()"> finish</button>
+        </div>
+    </div>
+</div>
   <div class="modal" id="confirmPage">
       <p id="confirm-text">Please Confirm</p>
       <div class="confirm-table">

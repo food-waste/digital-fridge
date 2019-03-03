@@ -184,6 +184,15 @@ nav h1:hover {
   background-color: #4CAF50;
 }
 
+.edit {
+  cursor: pointer;
+  padding: 5px 7px;
+  border-radius: 15px;
+}
+#edit:hover{
+  background-color: #4CAF50;
+}
+
 table {
   text-align: left;
   width: 100%;
@@ -204,7 +213,15 @@ td {
   margin-left: 30px;
 }
 
+#finish-button-edit{
+  margin-left: 30px;
+}
+
 #back-button{
+  margin-left: 120px;
+}
+
+#back-button-edit{
   margin-left: 120px;
 }
 
