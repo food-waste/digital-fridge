@@ -422,12 +422,31 @@ function sortTable(n) {
     } else {
       /*If no switching has been done AND the direction is "asc",
       set the direction to "desc" and run the while loop again.*/
-      if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
-        switching = true;
-      }
+      //if (switchcount == 0 && dir == "asc") {
+      // dir = "desc";
+      //  switching = true;
+      //}
     }
   }
+
+  // ************* change the background color of the category
+  var food_sort = document.getElementById("food-sort");
+  var date_sort = document.getElementById("date-sort");
+  if(n==0){
+  // change the food's name background
+    food_sort.style.backgroundColor = "#888";
+    food_sort.style.color = "white";
+    date_sort.style.backgroundColor = "white";
+    date_sort.style.color = "black";
+
+  }
+  else if(n==1){
+    food_sort.style.backgroundColor = "white";
+    food_sort.style.color = "black";
+    date_sort.style.backgroundColor = "#888";
+    date_sort.style.color = "white";
+  }
+
 }
 
 // ********************************************
