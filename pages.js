@@ -120,7 +120,7 @@ function drawTable(display, newAdded = "False", tableId = "tableId"){
     newRow = mytable.insertRow(mytable.getElementsByTagName("tr").length);
     cellA = newRow.insertCell(0);
     cellB = newRow.insertCell(1);
-    cellC = newRow.insertCell(2);
+    cellC = newRow.insertCell(2); 
     if(newAdded != "False"){
       cellA.style.backgroundColor = "FFFF66";
       cellB.style.backgroundColor = "FFFF66";
@@ -130,7 +130,9 @@ function drawTable(display, newAdded = "False", tableId = "tableId"){
     cellB.innerHTML = datelist[i];
     if(tableId == "tableId"){       //the delete function for confirmation page doesn't work yet.
       //cellC.innerHTML = "<button onclick = \"deleteFunc(this)\">Delete</button>";
-      cellC.innerHTML = "<span id=\"delete_trash\" onclick = \"deleteFunc(this)\"><img height=\"15\" width=\"15\" src=\"images/trash.png\" /></span>";
+      cellC.innerHTML = "<span id=\"delete_trash\" onclick = \"deleteFunc(this)\"><img height=\"15\" width=\"15\" src=\"images/trash.png\" /></span>"
+      + "<span class=\"edit\" onclick = \"editFunc(this)\"><img height=\"15\" width=\"15\" src=\"images/edit.png\" /></span>";
+      //tingying: add new button----eidt.
     }else{
       cellC.innerHTML = "Delete";
     }
@@ -153,6 +155,98 @@ function deleteFunc(btn){
     // localStorage.setItem("name", namestr);
     // localStorage.setItem("expirydate", datestr);
     
+}
+//local store
+function editFunc(btn){
+  style="display: none;"
+  document.getElementById("editPage").style.display="block";//show
+  var row = btn.parentNode.parentNode;
+  var name = row.children[0].innerHTML;
+  var expiry;
+  var purchase;
+
+  var namelist = localStorage.getItem("name").split(';');
+  var expirydatelist = localStorage.getItem("expirydate").split(';');
+  var purchasedatelist = localStorage.getItem("purchasedate").split(';');
+
+  for (let i = 0; i < namelist.length; i++){
+    if(namelist[i] == name){
+      expiry = expirydatelist[i];
+      purchase = purchasedatelist[i];
+    }
+  }
+
+  document.getElementById("foodeditname").value = name;
+  document.getElementById("foodeditpurchasedate").value = purchase;
+  document.getElementById("foodeditexpirydate").value = expiry;
+
+  //insert what to delete to the database
+  localStorage.setItem("whattoedit", row.children[0].innerHTML);
+}
+
+function edit_back(){
+  document.getElementById("editPage").style.display="none";//hide
+}
+
+//tingying: edit food item function
+function edit_confirmation(){
+  
+  var purchasedate = document.getElementById("foodeditpurchasedate").value;
+  var expirydate = document.getElementById("foodeditexpirydate").value;
+  var name = document.getElementById("foodeditname").value;
+
+  var namelist = localStorage.getItem("name").split(';');
+  var expirydatelist = localStorage.getItem("expirydate").split(';');
+  var purchasedatelist = localStorage.getItem("purchasedate").split(';');
+
+  var oldname = localStorage.getItem("whattoedit");
+  for (let i = 0; i < namelist.length; i++){
+    //same name as other food
+    if(namelist[i] == name && name != oldname){
+      alert("Name is same as something else!");
+      return;
+    }
+  }
+  
+  if(purchasedate == "")
+  {
+     alert("Please input purchase date");
+  }
+  else if(expirydate == "")
+  {
+     alert("Please input expiry date");
+  }
+  else if(name == "")
+  {
+     alert("please input food name");
+  }
+  else
+  {
+     document.getElementById("editPage").style.display="none";//hide
+     window.location.assign('kitchen.html');
+  }
+  var newPurchDate = "";
+  var newExpDate = "";
+  var newName = "";
+  for(let i=0; i<namelist.length; i++){
+    //find the old name and change it to new
+    if(namelist[i] == oldname){
+      namelist[i] = name;
+      expirydatelist[i] = expirydate;
+      purchasedatelist[i] = purchasedate;
+    }
+    newPurchDate = newPurchDate.concat(purchasedatelist[i], ";");
+    newExpDate = newExpDate.concat(expirydatelist[i], ";");
+    newName = newName.concat(namelist[i], ";");
+  }
+  localStorage.setItem("name",newName);
+  localStorage.setItem("expirydate", newExpDate);
+  localStorage.setItem("purchasedate", newPurchDate)
+  /*
+  localStorage.setItem("newPurchDate", purchasedate + ";")
+  localStorage.setItem("newExpDate",expirydate + ";")
+  localStorage.setItem("newName", name + ";")
+  */
 }
 /*
 delete the entry by foodname in database
@@ -246,12 +340,23 @@ $(function(){
   $('.add-food').click(function(){
     $('#inputPage').show();
 })});
-
+/*
+//tingying: when click edit, edit page shows.
+$(function(){
+  $('.edit').click(function(){
+    $('#editPage').show();
+})});
+*/
 $(function(){
   $('#back-button').click(function(){
     $('#inputPage').hide();
 })});
-
+/*
+$(function(){
+  $('#back-button-edit').click(function(){
+    $('#editPage').hide();
+})});
+*/
 var scanFoods = "orange;banana;apple;";
 var scanPurchDate = "2019-02-27;2019-02-27;2019-02-27;";
 var scanExpDate = "2019-03-04;2019-03-04;2019-03-04;";
