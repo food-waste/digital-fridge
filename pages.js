@@ -279,10 +279,39 @@ $(function(){
 
 $(function(){
   $('#confirm-finish-button').click(function(){
-    $('#confirmPage').hide();
+    
+    database = localStorage.getItem("name");
+    scanNamelist = localStorage.getItem("newName").split(';');
+    var repeatName = "";
+    var lastRepeat = "";
+    var repeatCnt = 0;
+    for(var i = 0; i < scanNamelist.length - 1; i++){
+      if(database.search(scanNamelist[i]) != -1){
+        if(repeatCnt != 0){
+          repeatName += ", "
+        }
+        repeatName += scanNamelist[i];
+        lastRepeat = scanNamelist[i];
+        repeatCnt++;
+      }
+    }
+
+    if (repeatCnt != 0) {
+      if(repeatCnt == 1){   //mulitple items repeated
+        alert(repeatName + " is already in kitchen");
+      }else{
+        var lastRepeatIndex = repeatName.search(lastRepeat); 
+        repeatName = repeatName.substring(0,lastRepeatIndex) + "and " + repeatName.substring(lastRepeatIndex);
+        alert(repeatName + " are already in kitchen");
+      }
+      return;
+    }
+
     if(confirm("-----Confirm the Input?----- ")){
       // alert("Successfully Added");
     }
+
+    $('#confirmPage').hide();
     clearTable(tableId = "confirm-table-Id");
     clearTable();
     init();
