@@ -200,7 +200,7 @@ function edit_confirmation(){
   var purchasedatelist = localStorage.getItem("purchasedate").split(';');
 
   var oldname = localStorage.getItem("whattoedit");
-  for (let i = 0; i < namelist.length; i++){
+  for (let i = 0; i < namelist.length-1; i++){
     //same name as other food
     if(namelist[i] == name && name != oldname){
       alert("Name is same as something else!");
@@ -228,7 +228,7 @@ function edit_confirmation(){
   var newPurchDate = "";
   var newExpDate = "";
   var newName = "";
-  for(let i=0; i<namelist.length; i++){
+  for(let i=0; i<namelist.length-1; i++){
     //find the old name and change it to new
     if(namelist[i] == oldname){
       namelist[i] = name;
