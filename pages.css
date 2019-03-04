@@ -198,7 +198,7 @@ nav h1:hover {
   padding: 5px 7px;
   border-radius: 15px;
 }
-#edit:hover{
+.edit:hover{
   background-color: #4CAF50;
 }
 
@@ -273,6 +273,12 @@ td {
 
 .foodinput-form {
   margin-left:50px;
+  text-align: right;
+  font-weight: 300;
+}
+
+.foodedit-form {
+  margin-right:115px;
   text-align: right;
   font-weight: 300;
 }
