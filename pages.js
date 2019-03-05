@@ -43,10 +43,15 @@ $(function(){
     // var uNameInput = document.getElementById()
     if($('#login_username').val() == ""){
       $('.nouser').show();
+    }else{
+      $('.nouser').hide();
     }
     if ($('#login_password').val() == "") {
       $('.nopwd').show();
+    }else{
+      $('.nopwd').hide();
     }
+
     if($('#login_password').val() != "" && $('#login_username').val() != ""){
 
       
@@ -95,26 +100,40 @@ $(function(){
   $('#create_button').click(function(){
     if($('#first_name').val() == ""){
       $('.noname').show();
-    } if ($('#create_username').val() == "") {
+    }else{
+      $('.noname').hide();
+    }
+    if ($('#create_username').val() == "") {
       $('.nouserc').show();
-    } if ($('#create_password').val() == "") {
+    }else{
+      $('.nouserc').hide();
+    }
+    if ($('#create_password').val() == "") {
       $('.nopwdc').show();
-    } if ($('#create_email').val() == "") {
+    }else{
+      $('.nopwdc').hide();
+    }
+    if ($('#create_email').val() == "") {
       $('.noemail').show();
-    } else {
+    }
+    else{
+      $('.noemail').hide();
+    }
+    if($('#first_name').val() != "" && $('#create_username').val() != "" && $('#create_password').val() != "" && $('#create_email').val() != "") {
       var name = $('#first_name').val();
       localStorage.setItem('login', 'false');
       localStorage.setItem('first_name', name);
       window.location.href = 'kitchen.html';
       return false;
     }
+    return false;
   });
 });
 
 
-var initFood = "beef;yogurt;chicken;lettuce;eggplant;cereal;bread;milk;strawberry;pizza;";
-var initPurDate = "2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;";
-var initExpDate = "2019-03-19;2019-02-28;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-02-24;";
+var initFood = "Ground Beef (1 lb);Greek Yogurt;Chicken Breasts;Romaine Lettuce;Eggplant;Cinnamon Toast Crunch;Multigrain Bread;2% Milk;Strawberries;Eggs;American Cheese;Tomatoes;Butter;Guacamole;Watermelon;Smoked Salmon;";
+var initPurDate = "2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;";
+var initExpDate = "2019-03-22;2019-02-28;2019-04-01;2019-03-19;2019-03-22;2019-07-07;2019-04-18;2019-03-19;2019-04-12;2019-03-22;2019-04-25;2019-03-28;2019-03-16;2019-02-28;2019-03-17;2019-03-22;";
 $(document).ready(function(){
   if(window.location.pathname.search("/kitchen.html") != -1){
     init();
@@ -138,7 +157,7 @@ function init(){
     localStorage.setItem("newExpDate", "");
   }
 
-  
+
   drawTable(getNew(), newAdded="True");
   drawTable(getPre());
 
@@ -173,7 +192,7 @@ function drawTable(display, newAdded = "False", tableId = "tableId"){
     newRow = mytable.insertRow(mytable.getElementsByTagName("tr").length);
     cellA = newRow.insertCell(0);
     cellB = newRow.insertCell(1);
-    cellC = newRow.insertCell(2); 
+    cellC = newRow.insertCell(2);
 
     if(newAdded != "False"){
       // cellA.style.backgroundColor = "FFFF66";
@@ -218,13 +237,13 @@ function deleteFunc(btn){
     deleteInDataBase(nameToDelete);
     // var namelist = localStorage.getItem("name").split(';');
     // var datelist = localStorage.getItem("expirydate").split(';');
-    
+
 
     // namestr = arr2str(namelist);
     // datestr = arr2str(datelist);
     // localStorage.setItem("name", namestr);
     // localStorage.setItem("expirydate", datestr);
-    
+
 }
 //local store
 function editFunc(btn){
@@ -260,7 +279,7 @@ function edit_back(){
 
 //tingying: edit food item function
 function edit_confirmation(){
-  
+
   var purchasedate = document.getElementById("foodeditpurchasedate").value;
   var expirydate = document.getElementById("foodeditexpirydate").value;
   var name = document.getElementById("foodeditname").value;
@@ -277,7 +296,7 @@ function edit_confirmation(){
       return;
     }
   }
-  
+
   if(purchasedate == "")
   {
      alert("Please input purchase date");
@@ -341,12 +360,12 @@ function deleteInDataBase(nameToDelete){
 
   localStorage.setItem("name", procesedNameStr);
   localStorage.setItem("expirydate", procesedExpDStr);
-  localStorage.setItem("purchasedate", procesedPurDStr);  
+  localStorage.setItem("purchasedate", procesedPurDStr);
 }
 
 // function arr2str(list){
 //   var result = "";
-//   for (let index = 0; index < list.length ; index++) { 
+//   for (let index = 0; index < list.length ; index++) {
 //     if(index != rowI && list[index] != ""){
 //       result += (list[index] + ";");
 //     }
@@ -355,7 +374,7 @@ function deleteInDataBase(nameToDelete){
 // }
 
 //default to clear the table in main kitchen.html
-//can be used to clear other tables by passing the id of table 
+//can be used to clear other tables by passing the id of table
 //eg. clearTable(tableId = "confirm-table-Id");
 function clearTable(tableId = "tableId"){
   mytable = document.getElementById(tableId);
@@ -454,7 +473,7 @@ $(function(){
 
 $(function(){
   $('#confirm-finish-button').click(function(){
-    
+
     database = localStorage.getItem("name");
     scanNamelist = localStorage.getItem("newName").split(';');
     var repeatName = "";
@@ -475,7 +494,7 @@ $(function(){
       if(repeatCnt == 1){   //mulitple items repeated
         alert(repeatName + " is already in kitchen");
       }else{
-        var lastRepeatIndex = repeatName.search(lastRepeat); 
+        var lastRepeatIndex = repeatName.search(lastRepeat);
         repeatName = repeatName.substring(0,lastRepeatIndex) + "and " + repeatName.substring(lastRepeatIndex);
         alert(repeatName + " are already in kitchen");
       }
@@ -498,11 +517,11 @@ function input_confirmation() {
     if (confirm("-----Confirm the Input?----- ")) {
         // alert("Successfully Added");
         readdate();
-        
+
     }
-    else {   
+    else {
     }
-  
+
   }
 // This function will return two array, the first one is the searching result food's name
 // the other one is its expiry date
@@ -535,7 +554,7 @@ function searchItem(){
 
 
       //var array_test = dplyfood.join();
-      //var array_test2 = dplyExpDate.join();   
+      //var array_test2 = dplyExpDate.join();
     }
     // return [dplyfood,dplyExpDate];
     dplyfood.push("")
@@ -591,7 +610,7 @@ function sortTable(n) {
   table = document.getElementById("tableId");
   switching = true;
   //Set the sorting direction to ascending:
-  dir = "asc"; 
+  dir = "asc";
   /*Make a loop that will continue until
   no switching has been done:*/
   while (switching) {
@@ -629,7 +648,7 @@ function sortTable(n) {
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
       //Each time a switch is done, increase this count by 1:
-      switchcount ++;      
+      switchcount ++;
     } else {
       /*If no switching has been done AND the direction is "asc",
       set the direction to "desc" and run the while loop again.*/
@@ -670,7 +689,7 @@ function RT_Search() {
   filter = input.value.toUpperCase();
   table = document.getElementById("tableId");
   tr = table.getElementsByTagName("tr");
-  
+
 
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
@@ -681,7 +700,7 @@ function RT_Search() {
       } else {
         tr[i].style.display = "none";
       }
-    }       
+    }
   }
   if(filter != ""){
   $('.search-clear').show();

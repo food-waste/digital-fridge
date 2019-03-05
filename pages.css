@@ -179,7 +179,7 @@ nav h1:hover {
   font-size: 16px;
   background-color: white;
   background-image: url('https://www.w3schools.com/css/searchicon.png');
-  background-position: 10px 10px; 
+  background-position: 10px 10px;
   background-repeat: no-repeat;
   padding: 12px 20px 12px 40px;
   -webkit-transition: width 0.4s ease-in-out;
@@ -247,7 +247,7 @@ nav h1:hover {
   width: 80%;
   margin: auto;
   margin-top: 30px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .sorter {
@@ -516,17 +516,6 @@ td {
   color: white;
 }
 
-.cal-green {
-  background-color: #37b254;
-  color: white;
-  cursor: pointer;
-}
-
-.cal-green:hover {
-  background-color: #bbb;
-  color: black;
-}
-
 .cal-yellow {
   background-color: #ede857;
   cursor: pointer;
@@ -534,6 +523,17 @@ td {
 
 .cal-yellow:hover {
   background-color: #bbb;
+}
+
+.cal-orange {
+  background-color: #f9a939;
+  color: white;
+  cursor: pointer;
+}
+
+.cal-orange:hover {
+  background-color: #bbb;
+  color: black;
 }
 
 .cal-red {
@@ -563,24 +563,36 @@ td {
   z-index: 1;
   top: 200px;
   left: 50%;
-  margin-left: -145px;
-  width: 250px;
+  margin-left: -270px;
+  width: 500px;
   border: 20px solid #76b852;
   background-color: white;
   color: black;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
+.date_title {
+  text-align: center;
+}
+
 .cal-modal p {
   margin-left: 25px;
 }
 
-.close_button {
+.popup_date {
+  position: relative;
+  margin-top: -35px;
   float: right;
   margin-right: 25px;
+}
+
+.close_button {
+  float: right;
+  right: 30px;
   cursor: pointer;
   font-size: 20px;
   margin-top: 15px;
+  position: absolute;
 }
 
 .close_button:hover {
