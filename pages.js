@@ -9,11 +9,12 @@ function login_init(){
 }
 
 $(function(){
-  if (localStorage.getItem('login') == 'false') {
-    $('nav h1').html(localStorage.getItem('first_name') + '\'s Kitchen');
-  } else {
-    $('nav h1').html('Your Kitchen');
-  }
+  $('nav h1').html(localStorage.getItem('first_name') + '\'s Kitchen');
+  // if (localStorage.getItem('login') == 'false') {
+  //   $('nav h1').html(localStorage.getItem('first_name') + '\'s Kitchen');
+  // } else {
+  //   $('nav h1').html('Your Kitchen');
+  // }
 });
 
 $(function(){
@@ -39,23 +40,30 @@ $(function(){
 
 $(function(){
   $('#login_button').click(function(){
-    var uNameInput = document.getElementById()
+    // var uNameInput = document.getElementById()
     if($('#login_username').val() == ""){
       $('.nouser').show();
-    }else if ($('#login_password').val() == "") {
+    }
+    if ($('#login_password').val() == "") {
       $('.nopwd').show();
-    } else {
+    }
+    if($('#login_password').val() != "" && $('#login_username').val() != ""){
+
+      
       var r = isValidInput($('#login_username').val(), $('#login_password').val());
       if(r == 1){
         localStorage.setItem('login', 'true');
         window.location.href = 'kitchen.html';
       }else if(r == -1){
+        // $('.nouser').innerHTML = "invalid username";
         $('.nouser').show();
       }else if(r == -2){
         $('.nopwd').show();
       }
-      
-      
+      // var r = isValidInput($('#login_username').val(), 
+      // localStorage.setItem('login', 'true');
+      // window.location.href = 'kitchen.html';
+      // return false;
     }
     return false;
   });
@@ -68,9 +76,11 @@ function isValidInput(uNameInput, pwdInput){
   var i;
   for(i= 0; i < usernamelist.length; i++){
     if(uNameInput == usernamelist[i]){
-      infolist = localStorage.getItem("usernamelist[i]").split(';');
+      infolist = localStorage.getItem(usernamelist[i]).split(';');
       if(infolist[1] == pwdInput){
-        localStorage.setItem('first_name', infolist[1]);
+        localStorage.setItem('first_name', infolist[0]);
+        localStorage.setItem('email',infolist[2] );
+        localStorage.setItem('username',uNameInput);
         return 1
       }else{
         return -2;
@@ -679,4 +689,17 @@ function RT_Search() {
   else{
     $('.search-clear').hide();
   }
+}
+
+
+
+//************************************* */
+// For Account Page Open and Close
+//********************************* */
+function openNav() {
+  document.getElementById("Account_Page").style.width = "25%";
+}
+
+function closeNav() {
+  document.getElementById("Account_Page").style.width = "0%";
 }
