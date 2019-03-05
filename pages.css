@@ -78,6 +78,65 @@ nav h1:hover {
   display: block;
 }
 
+/* For Account Page */
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color:  #252525;
+  opacity: 0.9;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 15%;
+  width: 100%;
+  text-align: left;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 18px;
+  color: rgb(170, 170, 170);
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: rgb(255, 255, 255);
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 30px;
+}
+
+
+
+.UserProfileImage{
+  width: 100px;
+  height: 100px;
+  border-radius: 200px;
+  text-align: center;
+  margin-block-end: 5px;
+  margin-left: 10px;
+  
+
+}
+
+  /* Account Page End */
+  /* **** END ****** */
+
+
 .dropdown li {
   font-family: "Roboto", sans-serif;
   display: none;

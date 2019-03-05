@@ -641,3 +641,16 @@ function RT_Search() {
     $('.search-clear').hide();
   }
 }
+
+
+
+//************************************* */
+// For Account Page Open and Close
+//********************************* */
+function openNav() {
+  document.getElementById("Account_Page").style.width = "25%";
+}
+
+function closeNav() {
+  document.getElementById("Account_Page").style.width = "0%";
+}
