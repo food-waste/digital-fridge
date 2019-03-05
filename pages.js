@@ -1,6 +1,13 @@
 var page = localStorage.getItem('page');
 // localStorage.setItem("")
 
+function login_init(){
+  localStorage.setItem("usernames", "330fcl;330ac");
+  localStorage.setItem("330fcl", "chunlin;123456;chunlinFeng@u.northwestern.edu");
+  localStorage.setItem("330ac", "Andrew;123456;andrew@u.northwestern.edu");
+  // console.log("hell world");
+}
+
 $(function(){
   if (localStorage.getItem('login') == 'false') {
     $('nav h1').html(localStorage.getItem('first_name') + '\'s Kitchen');
@@ -32,17 +39,47 @@ $(function(){
 
 $(function(){
   $('#login_button').click(function(){
+    var uNameInput = document.getElementById()
     if($('#login_username').val() == ""){
       $('.nouser').show();
-    } if ($('#login_password').val() == "") {
+    }else if ($('#login_password').val() == "") {
       $('.nopwd').show();
     } else {
-      localStorage.setItem('login', 'true');
-      window.location.href = 'kitchen.html';
-      return false;
+      var r = isValidInput($('#login_username').val(), $('#login_password').val());
+      if(r == 1){
+        localStorage.setItem('login', 'true');
+        window.location.href = 'kitchen.html';
+      }else if(r == -1){
+        $('.nouser').show();
+      }else if(r == -2){
+        $('.nopwd').show();
+      }
+      
+      
     }
+    return false;
   });
 });
+
+
+//return -1 if username not exist, -2 if password not correnct
+function isValidInput(uNameInput, pwdInput){
+  usernamelist = localStorage.getItem("usernames").split(';');
+  var i;
+  for(i= 0; i < usernamelist.length; i++){
+    if(uNameInput == usernamelist[i]){
+      infolist = localStorage.getItem("usernamelist[i]").split(';');
+      if(infolist[1] == pwdInput){
+        localStorage.setItem('first_name', infolist[1]);
+        return 1
+      }else{
+        return -2;
+      }
+    }
+  }
+  return -1;
+
+}
 
 $(function(){
   $('#create_button').click(function(){
@@ -69,7 +106,12 @@ var initFood = "beef;yogurt;chicken;lettuce;eggplant;cereal;bread;milk;strawberr
 var initPurDate = "2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;";
 var initExpDate = "2019-03-19;2019-02-28;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-03-19;2019-02-24;";
 $(document).ready(function(){
-  init();
+  if(window.location.pathname.search("/kitchen.html") != -1){
+    init();
+  }else if(window.location.pathname.search("/login.html") != -1){
+    // console.log("login page here");
+    login_init();
+  }
 });
 
 function init(){
