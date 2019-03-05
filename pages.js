@@ -645,7 +645,7 @@ function RT_Search() {
 // For Account Page Open and Close
 //********************************* */
 function openNav() {
-  document.getElementById("Account_Page").style.width = "30%";
+  document.getElementById("Account_Page").style.width = "25%";
 }
 
 function closeNav() {
