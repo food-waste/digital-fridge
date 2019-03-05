@@ -479,6 +479,8 @@ td {
 }
 
 .cal-modal {
+  padding-top: 10px;
+  padding-bottom: 10px;
   cursor: auto;
   display: none;
   position: absolute;
@@ -502,6 +504,7 @@ td {
   margin-right: 25px;
   cursor: pointer;
   font-size: 20px;
+  margin-top: 15px;
 }
 
 .close_button:hover {
