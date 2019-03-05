@@ -122,7 +122,9 @@ $(function(){
     if($('#first_name').val() != "" && $('#create_username').val() != "" && $('#create_password').val() != "" && $('#create_email').val() != "") {
       var name = $('#first_name').val();
       localStorage.setItem('login', 'false');
-      localStorage.setItem('first_name', name);
+      localStorage.setItem('first_name', $('#first_name').val());
+      localStorage.setItem('email',$('#create_email').val());
+      localStorage.setItem('username',$('#create_username').val() );
       window.location.href = 'kitchen.html';
       return false;
     }
@@ -717,6 +719,9 @@ function RT_Search() {
 //********************************* */
 function openNav() {
   document.getElementById("Account_Page").style.width = "25%";
+  document.getElementById("account-name").innerHTML = "Name: " + localStorage.getItem("first_name");
+  document.getElementById("account-username").innerHTML = "Username: " + localStorage.getItem("username");
+  document.getElementById("account-email").innerHTML = "Email: " + localStorage.getItem("email");
 }
 
 function closeNav() {
