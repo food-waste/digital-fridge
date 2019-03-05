@@ -34,10 +34,15 @@ $(function(){
   $('#login_button').click(function(){
     if($('#login_username').val() == ""){
       $('.nouser').show();
+    }else{
+      $('.nouser').hide();
     }
     if ($('#login_password').val() == "") {
       $('.nopwd').show();
+    }else{
+      $('.nopwd').hide();
     }
+
     if($('#login_password').val() != "" && $('#login_username').val() != ""){
       localStorage.setItem('login', 'true');
       window.location.href = 'kitchen.html';
@@ -51,19 +56,33 @@ $(function(){
   $('#create_button').click(function(){
     if($('#first_name').val() == ""){
       $('.noname').show();
-    } if ($('#create_username').val() == "") {
+    }else{
+      $('.noname').hide();
+    }
+    if ($('#create_username').val() == "") {
       $('.nouserc').show();
-    } if ($('#create_password').val() == "") {
+    }else{
+      $('.nouserc').hide();
+    }
+    if ($('#create_password').val() == "") {
       $('.nopwdc').show();
-    } if ($('#create_email').val() == "") {
+    }else{
+      $('.nopwdc').hide();
+    }
+    if ($('#create_email').val() == "") {
       $('.noemail').show();
-    } else {
+    }
+    else{
+      $('.noemail').hide();
+    }
+    if($('#first_name').val() != "" && $('#create_username').val() != "" && $('#create_password').val() != "" && $('#create_email').val() != "") {
       var name = $('#first_name').val();
       localStorage.setItem('login', 'false');
       localStorage.setItem('first_name', name);
       window.location.href = 'kitchen.html';
       return false;
     }
+    return false;
   });
 });
 
