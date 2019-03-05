@@ -34,13 +34,16 @@ $(function(){
   $('#login_button').click(function(){
     if($('#login_username').val() == ""){
       $('.nouser').show();
-    } if ($('#login_password').val() == "") {
+    }
+    if ($('#login_password').val() == "") {
       $('.nopwd').show();
-    } else {
+    }
+    if($('#login_password').val() != "" && $('#login_username').val() != ""){
       localStorage.setItem('login', 'true');
       window.location.href = 'kitchen.html';
       return false;
     }
+    return false;
   });
 });
 
