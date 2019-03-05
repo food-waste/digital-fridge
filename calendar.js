@@ -16,13 +16,21 @@ $(function() {
 function next() {
     currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
     currentMonth = (currentMonth + 1) % 12;
+		$('.cal-modal').hide();
+		$('#modals').html('');
     showCalendar(currentMonth, currentYear);
+		dateClick();
+		closeX();
 }
 
 function previous() {
     currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
     currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
+		$('.cal-modal').hide();
+		$('#modals').html('');
     showCalendar(currentMonth, currentYear);
+		dateClick();
+		closeX();
 }
 
 function jump() {
@@ -72,6 +80,7 @@ function showCalendar(month, year) {
 								close.classList.add("close_button");
 								calPopUp.appendChild(close);
 								calPopUp.classList.add("cal-modal");
+								calPopUp.classList.add("modal_" + date);
                 let cell = document.createElement("td");
 								cell.classList.add("date_" + date);
                 let cellText = document.createElement("p");
@@ -105,7 +114,7 @@ function showCalendar(month, year) {
 									foodCount.appendChild(ct);
 									foodCount.classList.add('food_count');
 									cell.appendChild(foodCount);
-									cell.appendChild(calPopUp);
+									$('#modals').append(calPopUp);
 								}
 								row.appendChild(cell);
                 date++;
@@ -120,103 +129,108 @@ function showCalendar(month, year) {
 }
 
 $(function() {
-	$('#calendar-body .date_1').click(function() {
-		$('.date_1 .cal-modal').show();
-	});
-	$('#calendar-body .date_2').click(function() {
-		$('.date_2 .cal-modal').show();
-	});
-	$('#calendar-body .date_3').click(function() {
-		$('.date_3 .cal-modal').show();
-	});
-	$('#calendar-body .date_4').click(function() {
-		$('.date_4 .cal-modal').show();
-	});
-	$('#calendar-body .date_5').click(function() {
-		$('.date_5 .cal-modal').show();
-	});
-	$('#calendar-body .date_6').click(function() {
-		$('.date_6 .cal-modal').show();
-	});
-	$('#calendar-body .date_7').click(function() {
-		$('.date_7 .cal-modal').show();
-	});
-	$('#calendar-body .date_8').click(function() {
-		$('.date_8 .cal-modal').show();
-	});
-	$('#calendar-body .date_9').click(function() {
-		$('.date_9 .cal-modal').show();
-	});
-	$('#calendar-body .date_10').click(function() {
-		$('.date_10 .cal-modal').show();
-	});
-	$('#calendar-body .date_11').click(function() {
-		$('.date_11 .cal-modal').show();
-	});
-	$('#calendar-body .date_12').click(function() {
-		$('.date_12 .cal-modal').show();
-	});
-	$('#calendar-body .date_13').click(function() {
-		$('.date_13 .cal-modal').show();
-	});
-	$('#calendar-body .date_14').click(function() {
-		$('.date_14 .cal-modal').show();
-	});
-	$('#calendar-body .date_15').click(function() {
-		$('.date_15 .cal-modal').show();
-	});
-	$('#calendar-body .date_16').click(function() {
-		$('.date_16 .cal-modal').show();
-	});
-	$('#calendar-body .date_17').click(function() {
-		$('.date_17 .cal-modal').show();
-	});
-	$('#calendar-body .date_18').click(function() {
-		$('.date_18 .cal-modal').show();
-	});
-	$('#calendar-body .date_19').click(function() {
-		$('.date_19 .cal-modal').show();
-	});
-	$('#calendar-body .date_20').click(function() {
-		$('.date_20 .cal-modal').show();
-	});
-	$('#calendar-body .date_21').click(function() {
-		$('.date_21 .cal-modal').show();
-	});
-	$('#calendar-body .date_22').click(function() {
-		$('.date_22 .cal-modal').show();
-	});
-	$('#calendar-body .date_23').click(function() {
-		$('.date_23 .cal-modal').show();
-	});
-	$('#calendar-body .date_24').click(function() {
-		$('.date_24 .cal-modal').show();
-	});
-	$('#calendar-body .date_25').click(function() {
-		$('.date_25 .cal-modal').show();
-	});
-	$('#calendar-body .date_26').click(function() {
-		$('.date_26 .cal-modal').show();
-	});
-	$('#calendar-body .date_27').click(function() {
-		$('.date_27 .cal-modal').show();
-	});
-	$('#calendar-body .date_28').click(function() {
-		$('.date_28 .cal-modal').show();
-	});
-	$('#calendar-body .date_29').click(function() {
-		$('.date_29 .cal-modal').show();
-	});
-	$('#calendar-body .date_30').click(function() {
-		$('.date_30 .cal-modal').show();
-	});
-	$('#calendar-body .date_31').click(function() {
-		$('.date_31 .cal-modal').show();
-	});
+	dateClick();
+	closeX();
 });
 
-$(function() {
+function dateClick() {
+	$('.date_1').click(function() {
+		$('.modal_1').show();
+	});
+	$('.date_2').click(function() {
+		$('.modal_2').show();
+	});
+	$('.date_3').click(function() {
+		$('.modal_3').show();
+	});
+	$('.date_4').click(function() {
+		$('.modal_4').show();
+	});
+	$('.date_5').click(function() {
+		$('.modal_5').show();
+	});
+	$('.date_6').click(function() {
+		$('.modal_6').show();
+	});
+	$('.date_7').click(function() {
+		$('.modal_7').show();
+	});
+	$('.date_8').click(function() {
+		$('.modal_8').show();
+	});
+	$('.date_9').click(function() {
+		$('.modal_9').show();
+	});
+	$('.date_10').click(function() {
+		$('.modal_10').show();
+	});
+	$('.date_11').click(function() {
+		$('.modal_11').show();
+	});
+	$('.date_12').click(function() {
+		$('.modal_12').show();
+	});
+	$('.date_13').click(function() {
+		$('.modal_13').show();
+	});
+	$('.date_14').click(function() {
+		$('.modal_14').show();
+	});
+	$('.date_15').click(function() {
+		$('.modal_15').show();
+	});
+	$('.date_16').click(function() {
+		$('.modal_16').show();
+	});
+	$('.date_17').click(function() {
+		$('.modal_17').show();
+	});
+	$('.date_18').click(function() {
+		$('.modal_18').show();
+	});
+	$('.date_19').click(function() {
+		$('.modal_19').show();
+	});
+	$('.date_20').click(function() {
+		$('.modal_20').show();
+	});
+	$('.date_21').click(function() {
+		$('.modal_21').show();
+	});
+	$('.date_22').click(function() {
+		$('.modal_22').show();
+	});
+	$('.date_23').click(function() {
+		$('.modal_23').show();
+	});
+	$('.date_24').click(function() {
+		$('.modal_24').show();
+	});
+	$('.date_25').click(function() {
+		$('.modal_25').show();
+	});
+	$('.date_26').click(function() {
+		$('.modal_26').show();
+	});
+	$('.date_27').click(function() {
+		$('.modal_27').show();
+	});
+	$('.date_28').click(function() {
+		$('.modal_28').show();
+	});
+	$('.date_29').click(function() {
+		$('.modal_29').show();
+	});
+	$('.date_30').click(function() {
+		$('.modal_30').show();
+	});
+	$('.date_31').click(function() {
+		$('.modal_31').show();
+	});
+}
+
+function closeX () {
 	$('.close_button').click(function() {
 		$('.cal-modal').hide();
 	});
-});
+}
