@@ -478,13 +478,13 @@ function searchItem(){
 
 function clearSearch(){
   // get the searchingInformation first
-  target = document.getElementById("Target").value;
-  database = localStorage.getItem("name");
+  //target = document.getElementById("Target").value;
+  //database = localStorage.getItem("name");
 
 
 
-  var namelist = localStorage.getItem("name").split(';');
-  var datelist = localStorage.getItem("expirydate").split(';');
+  //var namelist = localStorage.getItem("name").split(';');
+  //var datelist = localStorage.getItem("expirydate").split(';');
 
     // dplyExpDate = [];
     // dplyPurDate = [];
@@ -500,10 +500,17 @@ function clearSearch(){
     // // return [dplyfood,dplyExpDate];
     // dplyfood.push("")
     // dplyExpDate.push("")
-    clearTable();
-    drawTable([namelist,datelist]);
+
+    //clearTable();
+    //drawTable([namelist,datelist]);
     $('.search-clear').hide();
     $('#Target').val('');
+
+var target = document.getElementById("Target");
+target.value = "";
+RT_Search()
+
+
 }
 
 // ********************************************
@@ -589,9 +596,12 @@ function sortTable(n) {
 function RT_Search() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("Target");
+
   filter = input.value.toUpperCase();
   table = document.getElementById("tableId");
   tr = table.getElementsByTagName("tr");
+  
+
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
     if (td) {
@@ -602,5 +612,11 @@ function RT_Search() {
         tr[i].style.display = "none";
       }
     }       
+  }
+  if(filter != ""){
+  $('.search-clear').show();
+  }
+  else{
+    $('.search-clear').hide();
   }
 }
