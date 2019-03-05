@@ -67,6 +67,10 @@ function showCalendar(month, year) {
             else {
 								var food_count = 0;
 								var calPopUp = document.createElement("div");
+								var close = document.createElement("p");
+								close.innerHTML = "&#10005;";
+								close.classList.add("close_button");
+								calPopUp.appendChild(close);
 								calPopUp.classList.add("cal-modal");
                 let cell = document.createElement("td");
 								cell.classList.add("date_" + date);
@@ -82,22 +86,24 @@ function showCalendar(month, year) {
 								for (var d = 0; d < exp_arr.length - 1; d++) {
 									if (date === parseInt(exp_arr[d].substring(8, 10), 10) && year === parseInt(exp_arr[d].substring(0, 4), 10) && month + 1 === parseInt(exp_arr[d].substring(5, 7), 10)) {
 										food_count++;
-										cell.classList.add("cal-red");
-										let food_item = document.createElement("li");
 										let popup_item = document.createElement("p");
-										let fd = document.createTextNode(food_arr[d]);
 										let pui = document.createTextNode(food_arr[d]);
-										food_item.appendChild(fd);
 										popup_item.appendChild(pui);
-										food_item.classList.add("food_item");
-										cell.appendChild(food_item);
 										calPopUp.appendChild(popup_item);
 	                }
 								}
 								if (food_count > 0) {
+									if (food_count == 1) {
+										cell.classList.add('cal-green');
+									} else if (food_count <= 3) {
+										cell.classList.add('cal-yellow');
+									} else {
+										cell.classList.add('cal-red');
+									}
 									let foodCount = document.createElement("p");
 									let ct = document.createTextNode(food_count);
 									foodCount.appendChild(ct);
+									foodCount.classList.add('food_count');
 									cell.appendChild(foodCount);
 									cell.appendChild(calPopUp);
 								}
@@ -114,7 +120,103 @@ function showCalendar(month, year) {
 }
 
 $(function() {
-	$('#calendar-body td').click(function() {
-		$('.cal-modal').show();
-	})
-})
+	$('#calendar-body .date_1').click(function() {
+		$('.date_1 .cal-modal').show();
+	});
+	$('#calendar-body .date_2').click(function() {
+		$('.date_2 .cal-modal').show();
+	});
+	$('#calendar-body .date_3').click(function() {
+		$('.date_3 .cal-modal').show();
+	});
+	$('#calendar-body .date_4').click(function() {
+		$('.date_4 .cal-modal').show();
+	});
+	$('#calendar-body .date_5').click(function() {
+		$('.date_5 .cal-modal').show();
+	});
+	$('#calendar-body .date_6').click(function() {
+		$('.date_6 .cal-modal').show();
+	});
+	$('#calendar-body .date_7').click(function() {
+		$('.date_7 .cal-modal').show();
+	});
+	$('#calendar-body .date_8').click(function() {
+		$('.date_8 .cal-modal').show();
+	});
+	$('#calendar-body .date_9').click(function() {
+		$('.date_9 .cal-modal').show();
+	});
+	$('#calendar-body .date_10').click(function() {
+		$('.date_10 .cal-modal').show();
+	});
+	$('#calendar-body .date_11').click(function() {
+		$('.date_11 .cal-modal').show();
+	});
+	$('#calendar-body .date_12').click(function() {
+		$('.date_12 .cal-modal').show();
+	});
+	$('#calendar-body .date_13').click(function() {
+		$('.date_13 .cal-modal').show();
+	});
+	$('#calendar-body .date_14').click(function() {
+		$('.date_14 .cal-modal').show();
+	});
+	$('#calendar-body .date_15').click(function() {
+		$('.date_15 .cal-modal').show();
+	});
+	$('#calendar-body .date_16').click(function() {
+		$('.date_16 .cal-modal').show();
+	});
+	$('#calendar-body .date_17').click(function() {
+		$('.date_17 .cal-modal').show();
+	});
+	$('#calendar-body .date_18').click(function() {
+		$('.date_18 .cal-modal').show();
+	});
+	$('#calendar-body .date_19').click(function() {
+		$('.date_19 .cal-modal').show();
+	});
+	$('#calendar-body .date_20').click(function() {
+		$('.date_20 .cal-modal').show();
+	});
+	$('#calendar-body .date_21').click(function() {
+		$('.date_21 .cal-modal').show();
+	});
+	$('#calendar-body .date_22').click(function() {
+		$('.date_22 .cal-modal').show();
+	});
+	$('#calendar-body .date_23').click(function() {
+		$('.date_23 .cal-modal').show();
+	});
+	$('#calendar-body .date_24').click(function() {
+		$('.date_24 .cal-modal').show();
+	});
+	$('#calendar-body .date_25').click(function() {
+		$('.date_25 .cal-modal').show();
+	});
+	$('#calendar-body .date_26').click(function() {
+		$('.date_26 .cal-modal').show();
+	});
+	$('#calendar-body .date_27').click(function() {
+		$('.date_27 .cal-modal').show();
+	});
+	$('#calendar-body .date_28').click(function() {
+		$('.date_28 .cal-modal').show();
+	});
+	$('#calendar-body .date_29').click(function() {
+		$('.date_29 .cal-modal').show();
+	});
+	$('#calendar-body .date_30').click(function() {
+		$('.date_30 .cal-modal').show();
+	});
+	$('#calendar-body .date_31').click(function() {
+		$('.date_31 .cal-modal').show();
+	});
+});
+
+$(function() {
+	$('.close_button').click(function() {
+		$('.cal-modal').hide();
+	});
+});

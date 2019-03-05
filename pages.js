@@ -1,4 +1,5 @@
 var page = localStorage.getItem('page');
+// localStorage.setItem("")
 
 $(function(){
   if (localStorage.getItem('login') == 'false') {
@@ -86,7 +87,7 @@ function init(){
   }
 
   
-  drawTable(getNew(), "True");
+  drawTable(getNew(), newAdded="True");
   drawTable(getPre());
 
   merge_table();
@@ -121,13 +122,17 @@ function drawTable(display, newAdded = "False", tableId = "tableId"){
     cellA = newRow.insertCell(0);
     cellB = newRow.insertCell(1);
     cellC = newRow.insertCell(2); 
+
     if(newAdded != "False"){
-      cellA.style.backgroundColor = "FFFF66";
-      cellB.style.backgroundColor = "FFFF66";
-      cellC.style.backgroundColor = "FFFF66";
+      // cellA.style.backgroundColor = "FFFF66";
+      // cellB.style.backgroundColor = "FFFF66";
+      // cellC.style.backgroundColor = "FFFF66";
+      newRow.style.backgroundColor = "FFFF66";
     }
+
     cellA.innerHTML = namelist[i];
     cellB.innerHTML = datelist[i];
+    expHighlight(datelist[i],newRow);
     if(tableId == "tableId"){       //the delete function for confirmation page doesn't work yet.
       //cellC.innerHTML = "<button onclick = \"deleteFunc(this)\">Delete</button>";
       cellC.innerHTML = "<span id=\"delete_trash\" onclick = \"deleteFunc(this)\"><img height=\"15\" width=\"15\" src=\"images/trash.png\" /></span>"
@@ -136,9 +141,22 @@ function drawTable(display, newAdded = "False", tableId = "tableId"){
     }else{
       cellC.innerHTML = "Delete";
     }
+
   }
 }
 
+
+function expHighlight(expDatestr, curRow){
+  var expSplitted = expDatestr.split('-');
+  var expDate = new Date(parseInt(expSplitted[0]), parseInt(expSplitted[1]) - 1,parseInt(expSplitted[2]));
+  var today = new Date();
+  difference = (expDate - today)/(1000*60*60*24);  //difference comes in milliseconds one day has 24*60*60*1000 ms
+  if(difference < 0){             //highlight if food goes expire
+    curRow.style.backgroundColor = "red";
+    curRow.style.color = "white";
+  }
+
+}
 function deleteFunc(btn){
     var row = btn.parentNode.parentNode;
     var nameToDelete = row.firstElementChild.innerText;
