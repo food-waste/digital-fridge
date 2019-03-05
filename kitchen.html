@@ -33,10 +33,10 @@
 
       <li class="icon">&#9776;
         <ul class="dropdown">
-          <li>Your Food</li>
-          <li>Calendar</li>
-          <li>Statistics</li>
-          <li>Account</li>
+          <li class="your-food">Your Food</li>
+          <li class="calendar">Calendar</li>
+          <li class="stats">Statistics</li>
+          <li class="account">Account</li>
         </ul>
       </li>
     </ul>
@@ -52,7 +52,7 @@
       <!-- <button class ="add-food">clear</button> -->
     </div>
     <div class="food-table">
-      <table id = "tableId"> 
+      <table id = "tableId">
         <tr>
           <th class="sorter" id="food-sort" onclick="sortTable(0)">Food   &nabla;</th>  <!-- add nabla icon in the bar-->
           <th class="sorter" id="date-sort" onclick="sortTable(1)">Expiration Date &nabla;</th>  <!-- add nabla icon in the bar-->
@@ -64,17 +64,17 @@
   <div class="modal" id="inputPage">
       <div class="form" class="modal-content">
           <p class="foodinput-title">Food Input</p>
-          <table >  
+          <table >
               <tr>
                   <td>
                     <div class="foodinput-scan-wrapper">
                         <button id="scanButton" >
-                            <img class="foodinput-scan-pic" src="images/scan.jpg"> 
+                            <img class="foodinput-scan-pic" src="images/scan.jpg">
                         </button>
                         <p>scan</p>
                     </div>
-                      
-                      
+
+
                   </td>
                   <td>
                       <form class="foodinput-form">
@@ -124,7 +124,7 @@
             <th>Actions</th>
           </tr>
         </table>
-          
+
       </div>
       <div>
           <button class="confirm-button" id="confirm-back-button"> cancel</button>
