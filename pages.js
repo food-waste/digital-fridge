@@ -215,11 +215,11 @@ function drawTable(display, newAdded = "False", tableId = "tableId"){
     expHighlight(datelist[i],newRow);
     if(tableId == "tableId"){       //the delete function for confirmation page doesn't work yet.
       //cellC.innerHTML = "<button onclick = \"deleteFunc(this)\">Delete</button>";
-      cellC.innerHTML = "<span id=\"delete_trash\" onclick = \"deleteFunc(this)\"><img height=\"15\" width=\"15\" src=\"images/trash.png\" /></span>"
-      + "<span class=\"edit\" onclick = \"editFunc(this)\"><img height=\"15\" width=\"15\" src=\"images/edit.png\" /></span>";
+      cellC.innerHTML = "<span id=\"delete_trash\" onclick = \"deleteFunc(this)\"><img height=\"15\" width=\"15\" src=\"images/trash.png\" /></span>" + "<span class=\"edit\" onclick = \"editFunc(this)\"><img height=\"15\" width=\"15\" src=\"images/edit.png\" /></span>";
       //tingying: add new button----eidt.
     }else{
-      cellC.innerHTML = "Delete";
+      cellC.innerHTML = "<span id=\"delete_trash\" onclick = \"deleteFunc(this,'scan')\"><img height=\"15\" width=\"15\" src=\"images/trash.png\" /></span>" + "<span class=\"edit\" onclick = \"editFunc(this)\"><img height=\"15\" width=\"15\" src=\"images/edit.png\" /></span>";
+      // cellC.innerHTML = "<span id=\"delete_trash\" onclick = \"deleteFunc(this, src=\"scan\")\"><img height=\"15\" width=\"15\" src=\"images/trash.png\" /></span>" + "<span class=\"edit\" onclick = \"editFunc(this)\"><img height=\"15\" width=\"15\" src=\"images/edit.png\" /></span>";
     }
 
   }
@@ -237,13 +237,13 @@ function expHighlight(expDatestr, curRow){
   }
 
 }
-function deleteFunc(btn){
+function deleteFunc(btn, src="main"){
     var row = btn.parentNode.parentNode;
     var nameToDelete = row.firstElementChild.innerText;
     rowI = row.rowIndex - 1;
     row.parentNode.removeChild(row);
 
-    deleteInDataBase(nameToDelete);
+    deleteInDataBase(nameToDelete, src);
     // var namelist = localStorage.getItem("name").split(';');
     // var datelist = localStorage.getItem("expirydate").split(';');
 
@@ -253,6 +253,42 @@ function deleteFunc(btn){
     // localStorage.setItem("name", namestr);
     // localStorage.setItem("expirydate", datestr);
 
+}
+/*
+delete the entry by foodname in database
+*/
+function deleteInDataBase(nameToDelete, src="main"){
+  if(src == "main"){
+    var name_str = "name";
+    var expDate_str = "expirydate";
+    var purchasedate_str = "purchasedate";
+  }else{
+    var name_str = "newName";
+    var expDate_str = "newPurchDate";
+    var purchasedate_str = "newExpDate";
+  }
+
+
+  var namelist = localStorage.getItem(name_str).split(';');
+  var expirelist = localStorage.getItem(expDate_str).split(';');
+  var purchlist = localStorage.getItem(purchasedate_str).split(';');
+
+  procesedNameStr = ""
+  procesedExpDStr = ""
+  procesedPurDStr = ""
+
+  var i;
+  for(i = 0; i <namelist.length - 1; i++){
+    if(namelist[i] != nameToDelete){
+      procesedNameStr += namelist[i] + ';';
+      procesedExpDStr += expirelist[i] + ';';
+      procesedPurDStr += purchlist[i] + ';';
+    }
+  }
+
+  localStorage.setItem(name_str, procesedNameStr);
+  localStorage.setItem(expDate_str, procesedExpDStr);
+  localStorage.setItem(purchasedate_str, procesedPurDStr);
 }
 //local store
 function editFunc(btn){
@@ -346,31 +382,8 @@ function edit_confirmation(){
   localStorage.setItem("newName", name + ";")
   */
 }
-/*
-delete the entry by foodname in database
-*/
-function deleteInDataBase(nameToDelete){
-  var namelist = localStorage.getItem("name").split(';');
-  var expirelist = localStorage.getItem("expirydate").split(';');
-  var purchlist = localStorage.getItem("purchasedate").split(';');
 
-  procesedNameStr = ""
-  procesedExpDStr = ""
-  procesedPurDStr = ""
 
-  var i;
-  for(i = 0; i <namelist.length - 1; i++){
-    if(namelist[i] != nameToDelete){
-      procesedNameStr += namelist[i] + ';';
-      procesedExpDStr += expirelist[i] + ';';
-      procesedPurDStr += purchlist[i] + ';';
-    }
-  }
-
-  localStorage.setItem("name", procesedNameStr);
-  localStorage.setItem("expirydate", procesedExpDStr);
-  localStorage.setItem("purchasedate", procesedPurDStr);
-}
 
 // function arr2str(list){
 //   var result = "";
