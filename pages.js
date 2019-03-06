@@ -57,6 +57,7 @@ $(function(){
     if($('#login_password').val() != "" && $('#login_username').val() != ""){
       var r = isValidInput($('#login_username').val(), $('#login_password').val());
       if(r == 1){
+        localStorage.setItem('page', '.your-food');
         localStorage.setItem('login', 'true');
         window.location.href = 'kitchen.html';
       }else if(r == -1){
@@ -64,7 +65,7 @@ $(function(){
       }else if(r == -2){
         $('.invalidPwd').show();
       }
-      // var r = isValidInput($('#login_username').val(), 
+      // var r = isValidInput($('#login_username').val(),
       // localStorage.setItem('login', 'true');
       // window.location.href = 'kitchen.html';
       // return false;
@@ -132,6 +133,7 @@ $(function(){
 
       localStorage.setItem('usernames', localStorage.getItem('usernames') + ';' + username_str);
       localStorage.setItem(username_str, first_name_str + ';' + password_str +';' + email_str);
+      localStorage.setItem('page', '.your-food');
       window.location.href = 'kitchen.html';
       return false;
     }
@@ -468,9 +470,9 @@ $(function(){
     $('#editPage').hide();
 })});
 */
-var scanFoods = "orange;banana;apple;";
-var scanPurchDate = "2019-02-27;2019-02-27;2019-02-27;";
-var scanExpDate = "2019-03-04;2019-03-04;2019-03-04;";
+var scanFoods = "Soy Milk;Orange Juice;Sliced Turkey;";
+var scanPurchDate = "2019-03-15;2019-03-15;2019-03-15;";
+var scanExpDate = "2019-04-12;2019-04-25;2019-05-02;";
 $(function(){
   $('#scanButton').click(function(){
     // alert("hidden");
