@@ -1,12 +1,20 @@
 var page = localStorage.getItem('page');
 // localStorage.setItem("")
 
+function login_init(){
+  localStorage.setItem("usernames", "330fcl;330ac");
+  localStorage.setItem("330fcl", "chunlin;123456;chunlinFeng@u.northwestern.edu");
+  localStorage.setItem("330ac", "Andrew;123456;andrew@u.northwestern.edu");
+  // console.log("hell world");
+}
+
 $(function(){
-  if (localStorage.getItem('login') == 'false') {
-    $('nav h1').html(localStorage.getItem('first_name') + '\'s Kitchen');
-  } else {
-    $('nav h1').html('Your Kitchen');
-  }
+  $('nav h1').html(localStorage.getItem('first_name') + '\'s Kitchen');
+  // if (localStorage.getItem('login') == 'false') {
+  //   $('nav h1').html(localStorage.getItem('first_name') + '\'s Kitchen');
+  // } else {
+  //   $('nav h1').html('Your Kitchen');
+  // }
 });
 
 $(function(){
@@ -32,38 +40,95 @@ $(function(){
 
 $(function(){
   $('#login_button').click(function(){
+    // var uNameInput = document.getElementById()
     if($('#login_username').val() == ""){
       $('.nouser').show();
+    }else{
+      $('.nouser').hide();
     }
     if ($('#login_password').val() == "") {
       $('.nopwd').show();
+    }else{
+      $('.nopwd').hide();
     }
+
     if($('#login_password').val() != "" && $('#login_username').val() != ""){
-      localStorage.setItem('login', 'true');
-      window.location.href = 'kitchen.html';
-      return false;
+
+      
+      var r = isValidInput($('#login_username').val(), $('#login_password').val());
+      if(r == 1){
+        localStorage.setItem('login', 'true');
+        window.location.href = 'kitchen.html';
+      }else if(r == -1){
+        // $('.nouser').innerHTML = "invalid username";
+        $('.nouser').show();
+      }else if(r == -2){
+        $('.nopwd').show();
+      }
+      // var r = isValidInput($('#login_username').val(), 
+      // localStorage.setItem('login', 'true');
+      // window.location.href = 'kitchen.html';
+      // return false;
     }
     return false;
   });
 });
 
+
+//return -1 if username not exist, -2 if password not correnct
+function isValidInput(uNameInput, pwdInput){
+  usernamelist = localStorage.getItem("usernames").split(';');
+  var i;
+  for(i= 0; i < usernamelist.length; i++){
+    if(uNameInput == usernamelist[i]){
+      infolist = localStorage.getItem(usernamelist[i]).split(';');
+      if(infolist[1] == pwdInput){
+        localStorage.setItem('first_name', infolist[0]);
+        localStorage.setItem('email',infolist[2] );
+        localStorage.setItem('username',uNameInput);
+        return 1
+      }else{
+        return -2;
+      }
+    }
+  }
+  return -1;
+
+}
+
 $(function(){
   $('#create_button').click(function(){
     if($('#first_name').val() == ""){
       $('.noname').show();
-    } if ($('#create_username').val() == "") {
+    }else{
+      $('.noname').hide();
+    }
+    if ($('#create_username').val() == "") {
       $('.nouserc').show();
-    } if ($('#create_password').val() == "") {
+    }else{
+      $('.nouserc').hide();
+    }
+    if ($('#create_password').val() == "") {
       $('.nopwdc').show();
-    } if ($('#create_email').val() == "") {
+    }else{
+      $('.nopwdc').hide();
+    }
+    if ($('#create_email').val() == "") {
       $('.noemail').show();
-    } else {
+    }
+    else{
+      $('.noemail').hide();
+    }
+    if($('#first_name').val() != "" && $('#create_username').val() != "" && $('#create_password').val() != "" && $('#create_email').val() != "") {
       var name = $('#first_name').val();
       localStorage.setItem('login', 'false');
-      localStorage.setItem('first_name', name);
+      localStorage.setItem('first_name', $('#first_name').val());
+      localStorage.setItem('email',$('#create_email').val());
+      localStorage.setItem('username',$('#create_username').val() );
       window.location.href = 'kitchen.html';
       return false;
     }
+    return false;
   });
 });
 
@@ -72,7 +137,12 @@ var initFood = "Ground Beef (1 lb);Greek Yogurt;Chicken Breasts;Romaine Lettuce;
 var initPurDate = "2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;";
 var initExpDate = "2019-03-22;2019-02-28;2019-04-01;2019-03-19;2019-03-22;2019-07-07;2019-04-18;2019-03-19;2019-04-12;2019-03-22;2019-04-25;2019-03-28;2019-03-16;2019-02-28;2019-03-17;2019-03-22;";
 $(document).ready(function(){
-  init();
+  if(window.location.pathname.search("/kitchen.html") != -1){
+    init();
+  }else if(window.location.pathname.search("/login.html") != -1){
+    // console.log("login page here");
+    login_init();
+  }
 });
 
 function init(){
@@ -649,6 +719,9 @@ function RT_Search() {
 //********************************* */
 function openNav() {
   document.getElementById("Account_Page").style.width = "25%";
+  document.getElementById("account-name").innerHTML = "Name: " + localStorage.getItem("first_name");
+  document.getElementById("account-username").innerHTML = "Username: " + localStorage.getItem("username");
+  document.getElementById("account-email").innerHTML = "Email: " + localStorage.getItem("email");
 }
 
 function closeNav() {
