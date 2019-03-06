@@ -715,8 +715,17 @@ function RT_Search() {
 // For Account Page Open and Close
 //********************************* */
 function openNav() {
+  var uImage =  document.getElementById("UserImage");
+  var first_name = localStorage.getItem("first_name")
+  if(first_name == "Andrew"){
+    uImage.src = "images/TomJerry.jpeg";
+  }else if(first_name == "chunlin"){
+    uImage.src = "images/Jerry.jpeg";
+  }else{
+    uImage.src = "images/Default.png";
+  }
   document.getElementById("Account_Page").style.width = "25%";
-  document.getElementById("account-name").innerHTML = "Name: " + localStorage.getItem("first_name");
+  document.getElementById("account-name").innerHTML = "Name: " + first_name;
   document.getElementById("account-username").innerHTML = "Username: " + localStorage.getItem("username");
   document.getElementById("account-email").innerHTML = "Email: " + localStorage.getItem("email");
 }
