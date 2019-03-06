@@ -78,6 +78,80 @@ nav h1:hover {
   display: block;
 }
 
+/* For Account Page */
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color:  #252525;
+  opacity: 0.9;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 15%;
+  width: 100%;
+  text-align: left;
+  margin-top: 30px;
+}
+
+.overlay img {
+  margin-left: 30px;
+}
+
+.overlay p {
+  padding: 8px;
+  font-size: 18px;
+  color: rgb(200, 200, 200);
+  margin-left: 20px;
+  margin-bottom: -10px;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a {
+  color: rgb(200, 200, 200);
+  padding: 0px;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: rgb(255, 255, 255);
+  text-decoration: underline;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 30px;
+}
+
+.overlay .closebtn:hover {
+  text-decoration: none;
+}
+
+
+
+.UserProfileImage{
+  width: 100px;
+  height: 100px;
+  border-radius: 200px;
+  text-align: center;
+  margin-block-end: 5px;
+  margin-left: 10px;
+
+
+}
+
+  /* Account Page End */
+  /* **** END ****** */
+
+
 .dropdown li {
   font-family: "Roboto", sans-serif;
   display: none;
@@ -111,6 +185,23 @@ nav h1:hover {
   height: 50px;
 }
 
+
+#Target {
+  width:   30%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('https://www.w3schools.com/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+
 .search-kitchen input {
   font-family: "Roboto", sans-serif;
   background: #f2f2f2;
@@ -142,7 +233,7 @@ nav h1:hover {
 
 .search-clear {
   position: absolute;
-  left: 55%;
+  left: 37%;
   top: 138px;
   font-size: 20px;
   cursor: pointer;
@@ -171,7 +262,16 @@ nav h1:hover {
   width: 80%;
   margin: auto;
   margin-top: 30px;
-  overflow: scroll;
+  overflow-y: scroll;
+}
+
+.sorter {
+  cursor: pointer;
+}
+
+.sorter:hover {
+  background-color: #666 !important;
+  color: white !important;
 }
 
 #delete_trash {
@@ -181,6 +281,15 @@ nav h1:hover {
 }
 
 #delete_trash:hover {
+  background-color: #4CAF50;
+}
+
+.edit {
+  cursor: pointer;
+  padding: 5px 7px;
+  border-radius: 15px;
+}
+.edit:hover{
   background-color: #4CAF50;
 }
 
@@ -204,7 +313,15 @@ td {
   margin-left: 30px;
 }
 
+#finish-button-edit{
+  margin-left: 30px;
+}
+
 #back-button{
+  margin-left: 120px;
+}
+
+#back-button-edit{
   margin-left: 120px;
 }
 
@@ -247,6 +364,12 @@ td {
 
 .foodinput-form {
   margin-left:50px;
+  text-align: right;
+  font-weight: 300;
+}
+
+.foodedit-form {
+  margin-right:115px;
   text-align: right;
   font-weight: 300;
 }
@@ -399,5 +522,94 @@ td {
 
 .card tbody td {
   height: 80px;
+  width: 14%;
   vertical-align: top;
+}
+
+.cal-today {
+  background-color: #6babdb;
+  color: white;
+}
+
+.cal-yellow {
+  background-color: #ede857;
+  cursor: pointer;
+}
+
+.cal-yellow:hover {
+  background-color: #bbb;
+}
+
+.cal-orange {
+  background-color: #f9a939;
+  color: white;
+  cursor: pointer;
+}
+
+.cal-orange:hover {
+  background-color: #bbb;
+  color: black;
+}
+
+.cal-red {
+  background-color: #ed3b3b;
+  color: white;
+  cursor: pointer;
+}
+
+.cal-red:hover {
+  background-color: #bbb;
+  color: black;
+}
+
+.food_count {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: -10px;
+}
+
+.cal-modal {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: auto;
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 200px;
+  left: 50%;
+  margin-left: -270px;
+  width: 500px;
+  border: 20px solid #76b852;
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.date_title {
+  text-align: center;
+}
+
+.cal-modal p {
+  margin-left: 25px;
+}
+
+.popup_date {
+  position: relative;
+  margin-top: -35px;
+  float: right;
+  margin-right: 25px;
+}
+
+.close_button {
+  float: right;
+  right: 30px;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 15px;
+  position: absolute;
+}
+
+.close_button:hover {
+  font-weight: bold;
 }

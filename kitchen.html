@@ -12,30 +12,51 @@
       <li class="your-food">Your Food</li>
       <li class="calendar">Calendar</li>
       <li class="stats">Statistics</li>
-      <li class="account">Account</li>
+<!-- For Account Page-->
+
+      <span onclick="openNav()"><li class="account">
+          Account
+      </li></span>
+
+      <div id="Account_Page" class="overlay">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <div class="overlay-content">
+            <img id="UserImage" src="images/TomJerry.jpeg" alt="Tom" class="UserProfileImage">
+            <p id="account-name">Siyuan</p>
+            <p id="account-username">username: schai</p>
+            <p id="account-email">email: siyuan@u.northwestern.edu</p>
+            <p><a href="#">Change the Password</a></p>
+            <p><a href="login.html">Log Out</a></p>
+          </div>
+      </div>
+
+<!-- Account Page End-->
+
       <li class="icon">&#9776;
         <ul class="dropdown">
-          <li>Your Food</li>
-          <li>Calendar</li>
-          <li>Statistics</li>
-          <li>Account</li>
+          <li class="your-food">Your Food</li>
+          <li class="calendar">Calendar</li>
+          <li class="stats">Statistics</li>
+          <li class="account">Account</li>
         </ul>
       </li>
     </ul>
   </nav>
   <div class="page">
     <div class="search-kitchen">
-      <input type="text" placeholder="Search your kitchen..." id="Target"/>
+      <!--&#128269;-->
+      <input onkeyup="RT_Search()"   type="text" placeholder="Search your kitchen..." id="Target"/>
       <span class="search-clear" onclick="clearSearch()">&#10005;</span>
-      <button class="search-go" onclick="searchItem()"><img height="30" width="30" src="images/search.png" /></button>
+      <!-- <button class="search-go" onclick="searchItem()"><img height="30" width="30" src="images/search.png" /></button> -->
+      <!-- <button class="search-go" onclick="RT_Search()"><img height="30" width="30" src="images/search.png" /></button> -->
       <button class="add-food">&#43;</button>
       <!-- <button class ="add-food">clear</button> -->
     </div>
     <div class="food-table">
       <table id = "tableId">
         <tr>
-          <th>Food</th>
-          <th>Expiration Date</th>
+          <th class="sorter" id="food-sort" onclick="sortTable(0)">Food   &nabla;</th>  <!-- add nabla icon in the bar-->
+          <th class="sorter" id="date-sort" onclick="sortTable(1)">Expiration Date &nabla;</th>  <!-- add nabla icon in the bar-->
           <th>Actions</th>
         </tr>
       </table>
@@ -44,17 +65,17 @@
   <div class="modal" id="inputPage">
       <div class="form" class="modal-content">
           <p class="foodinput-title">Food Input</p>
-          <table>
+          <table >
               <tr>
                   <td>
                     <div class="foodinput-scan-wrapper">
                         <button id="scanButton" >
-                            <img class="foodinput-scan-pic" src="images/scan.jpg"> 
+                            <img class="foodinput-scan-pic" src="images/scan.jpg">
                         </button>
                         <p>scan</p>
                     </div>
-                      
-                      
+
+
                   </td>
                   <td>
                       <form class="foodinput-form">
@@ -72,22 +93,47 @@
           </div>
       </div>
   </div>
+
+  <!-- confirm page starts here -->
   <div class="modal" id="confirmPage">
-      <p id="confirm-text">Please Confirm</p>
-      <div class="confirm-table">
-        <table id="confirm-table-Id">
-          <tr>
-            <th>Food</th>
-            <th>Expiration Date</th>
-            <th>Actions</th>
-          </tr>
-        </table>
-          
-      </div>
-      <div>
-          <button class="confirm-button" id="confirm-back-button"> back</button>
-          <!--<button id="finish-button" onclick="readdate()"> finish</button>-->
-          <button class="confirm-button" id="confirm-finish-button" > finish</button>
-      </div>
+    <p id="confirm-text">Please Confirm</p>
+    <div class="confirm-table">
+      <table id="confirm-table-Id">
+        <tr>
+          <th>Food</th>
+          <th>Expiration Date</th>
+          <th>Actions</th>
+        </tr>
+      </table>
+
     </div>
+    <div>
+        <button class="confirm-button" id="confirm-back-button"> cancel</button>
+        <!--<button id="finish-button" onclick="readdate()"> finish</button>-->
+        <button class="confirm-button" id="confirm-finish-button" > finish</button>
+    </div>
+  </div>
+  <!--add edit page here-->
+  <div class="modal" id="editPage">
+    <div class="form" class="modal-content">
+        <p class="foodinput-title">Food Edit</p>
+        <table>
+            <tr>
+                <td>
+                    <form class="foodedit-form">
+                        name: <input id="foodeditname" type="text" placeholder="name"/><br><br>
+                        purchase date: <input id="foodeditpurchasedate" type="date" /><br><br>
+                        expiry date: <input id="foodeditexpirydate" type="date"/><br><br>
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <div>
+            <button id="back-button-edit" onclick="edit_back()"> back</button>
+            <!--<button id="finish-button" onclick="readdate()"> finish</button>-->
+            <button id="finish-button-edit" onclick="edit_confirmation()"> finish</button>
+        </div>
+    </div>
+</div>
+  
 </body>
