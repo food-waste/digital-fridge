@@ -131,6 +131,10 @@ nav h1:hover {
   font-size: 30px;
 }
 
+.overlay .closebtn:hover {
+  text-decoration: none;
+}
+
 
 
 .UserProfileImage{
