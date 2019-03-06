@@ -2,9 +2,11 @@ var page = localStorage.getItem('page');
 // localStorage.setItem("")
 
 function login_init(){
-  localStorage.setItem("usernames", "330fcl;330ac");
-  localStorage.setItem("330fcl", "chunlin;123456;chunlinFeng@u.northwestern.edu");
-  localStorage.setItem("330ac", "Andrew;123456;andrew@u.northwestern.edu");
+  if(!sessionStorage.started){
+    localStorage.setItem("usernames", "330fcl;330ac");
+    localStorage.setItem("330fcl", "chunlin;123456;chunlinFeng@u.northwestern.edu");
+    localStorage.setItem("330ac", "Andrew;123456;andrew@u.northwestern.edu");
+  }
   // console.log("hell world");
 }
 
@@ -95,33 +97,41 @@ function isValidInput(uNameInput, pwdInput){
 
 $(function(){
   $('#create_button').click(function(){
-    if($('#first_name').val() == ""){
+    first_name_str = $('#first_name').val();
+    username_str = $('#create_username').val();
+    password_str = $('#create_password').val();
+    email_str = $('#create_email').val();
+
+    if(first_name_str == ""){
       $('.noname').show();
     }else{
       $('.noname').hide();
     }
-    if ($('#create_username').val() == "") {
+    if (username_str == "") {
       $('.nouserc').show();
     }else{
       $('.nouserc').hide();
     }
-    if ($('#create_password').val() == "") {
+    if (password_str == "") {
       $('.nopwdc').show();
     }else{
       $('.nopwdc').hide();
     }
-    if ($('#create_email').val() == "") {
+    if (email_str == "") {
       $('.noemail').show();
     }
     else{
       $('.noemail').hide();
     }
-    if($('#first_name').val() != "" && $('#create_username').val() != "" && $('#create_password').val() != "" && $('#create_email').val() != "") {
-      var name = $('#first_name').val();
+    if(first_name_str != "" && username_str!= "" && password_str != "" && email_str != "") {
+      var name = first_name_str;
       localStorage.setItem('login', 'false');
-      localStorage.setItem('first_name', $('#first_name').val());
-      localStorage.setItem('email',$('#create_email').val());
-      localStorage.setItem('username',$('#create_username').val() );
+      localStorage.setItem('first_name', first_name_str);
+      localStorage.setItem('email',email_str);
+      localStorage.setItem('username',username_str);
+
+      localStorage.setItem('usernames', localStorage.getItem('usernames') + ';' + username_str);
+      localStorage.setItem(username_str, first_name_str + ';' + password_str +';' + email_str);
       window.location.href = 'kitchen.html';
       return false;
     }
