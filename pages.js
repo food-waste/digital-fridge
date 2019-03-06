@@ -307,8 +307,8 @@ function getThreeStr(src){
     
   }else{
     var name_str = "newName";
-    var expDate_str = "newPurchDate";
-    var purchasedate_str = "newExpDate";
+    var expDate_str = "newExpDate";
+    var purchasedate_str = "newPurchDate";
   }
   return [name_str, expDate_str, purchasedate_str];
 }
@@ -319,7 +319,7 @@ function getThreeStr(src){
 function editFunc(btn, src="main"){
   [name_str, expDate_str, purchasedate_str] = getThreeStr(src);
   localStorage.setItem("editFrom",src);
-  
+  $('#confirmPage').hide();
   style="display: none;"
   document.getElementById("editPage").style.display="block";//show
   var row = btn.parentNode.parentNode;
@@ -348,6 +348,9 @@ function editFunc(btn, src="main"){
 
 function edit_back(){
   document.getElementById("editPage").style.display="none";//hide
+  if(localStorage.getItem("editFrom",src) != "main"){
+    $('#confirmPage').show();
+  }
 }
 
 //tingying: edit food item function
@@ -409,7 +412,7 @@ function edit_confirmation(){
       if(localStorage.getItem("editFrom") == "main"){
         window.location.assign('kitchen.html');
       }else{
-
+        $('#confirmPage').show();
         clearTable(tableId = "confirm-table-Id");
         drawTable([newName.split(';'), newExpDate.split(';')], newAdded = "False", tableId = "confirm-table-Id");
       }
@@ -551,13 +554,14 @@ $(function(){
 $(function(){
   $('#confirm-finish-button').click(function(){
 
-    database = localStorage.getItem("name");
+    database = localStorage.getItem("name").split(';');
     scanNamelist = localStorage.getItem("newName").split(';');
     var repeatName = "";
     var lastRepeat = "";
-    var repeatCnt = 0;
+    var repeatCnt = 0; 
     for(var i = 0; i < scanNamelist.length - 1; i++){
-      if(database.search(scanNamelist[i]) != -1){
+      // if(database.search(scanNamelist[i]) != -1){
+      if(database.includes(scanNamelist[i])){
         if(repeatCnt != 0){
           repeatName += ", "
         }
@@ -572,7 +576,10 @@ $(function(){
         alert(repeatName + " is already in kitchen");
       }else{
         var lastRepeatIndex = repeatName.search(lastRepeat);
-        repeatName = repeatName.substring(0,lastRepeatIndex) + "and " + repeatName.substring(lastRepeatIndex);
+        if(repeatCnt == 2){
+          lastRepeatIndex = lastRepeatIndex - 1; // get rid of ", "
+        }
+        repeatName = repeatName.substring(0,lastRepeatIndex - 1) + " and " + repeatName.substring(lastRepeatIndex);
         alert(repeatName + " are already in kitchen");
       }
       return;
