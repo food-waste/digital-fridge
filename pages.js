@@ -53,17 +53,14 @@ $(function(){
     }
 
     if($('#login_password').val() != "" && $('#login_username').val() != ""){
-
-      
       var r = isValidInput($('#login_username').val(), $('#login_password').val());
       if(r == 1){
         localStorage.setItem('login', 'true');
         window.location.href = 'kitchen.html';
       }else if(r == -1){
-        // $('.nouser').innerHTML = "invalid username";
-        $('.nouser').show();
+        $('.invalidUser').show();
       }else if(r == -2){
-        $('.nopwd').show();
+        $('.invalidPwd').show();
       }
       // var r = isValidInput($('#login_username').val(), 
       // localStorage.setItem('login', 'true');
