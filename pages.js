@@ -493,6 +493,12 @@ function readdate() {
      window.location.assign('kitchen.html');
      //window.event.returnValue=false;
      //return false;
+
+// *******************************************
+// A text will appear after add a new item and disappera (Confirmation)
+// *******************************************
+
+
   }
 
   localStorage.setItem("newPurchDate", purchasedate + ";")
@@ -504,6 +510,11 @@ function readdate() {
   // localStorage.setItem("name", name + ";" + localStorage.getItem("name") );
 
 }
+
+
+
+
+
 
 $(function(){
   $('.add-food').click(function(){
@@ -601,12 +612,19 @@ function input_confirmation() {
     if (confirm("-----Confirm the Input?----- ")) {
         // alert("Successfully Added");
         readdate();
+        
 
     }
     else {
     }
 
   }
+
+
+
+
+
+  
 // This function will return two array, the first one is the searching result food's name
 // the other one is its expiry date
 function searchItem(){
