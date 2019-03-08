@@ -488,11 +488,11 @@ function readdate() {
 
   database = localStorage.getItem("name");
   var index = database.search(name);
-  if (index != -1) {
-    confirm("Same item already in kitchen!");
-    return;
+  if(name == "")
+  {
+     alert("please input food name");
   }
-  if(purchasedate == "")
+  else if(purchasedate == "")
   {
      alert("Please input purchase date");
   }
@@ -500,9 +500,8 @@ function readdate() {
   {
      alert("Please input expiry date");
   }
-  else if(name == "")
-  {
-     alert("please input food name");
+  else if(index != -1){
+     alert("Same item already in kitchen!");
   }
   else
   {
@@ -631,15 +630,7 @@ function input_confirmation() {
   /* ***********************
   Won't appear now
   ********************** */
-    if (1) {
-        // alert("Successfully Added");
-        readdate();
-        
-
-    }
-    else {
-    }
-
+    readdate();
   }
 
 
@@ -858,3 +849,14 @@ function openNav() {
 function closeNav() {
   document.getElementById("Account_Page").style.width = "0%";
 }
+
+
+/*ting ying add enter function */
+/*
+var input = document.getElementById("myInput");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+
+  }
+});
+*/
