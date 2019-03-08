@@ -172,6 +172,9 @@ function init(){
   drawTable(getPre());
 
   merge_table();
+
+
+  sortTable(1);
 }
 
 function showCF(){
@@ -625,7 +628,10 @@ $(function(){
 
 function input_confirmation() {
   // pop-up as Confirmation Page
-    if (confirm("-----Confirm the Input?----- ")) {
+  /* ***********************
+  Won't appear now
+  ********************** */
+    if (1) {
         // alert("Successfully Added");
         readdate();
         
