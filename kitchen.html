@@ -75,7 +75,7 @@
   <div class="modal" id="inputPage">
       <div class="form" class="modal-content">
           <p class="foodinput-title">Food Input</p>
-          <table >
+          <table>
               <tr>
                   <td>
                     <div class="foodinput-scan-wrapper">
@@ -88,7 +88,7 @@
 
                   </td>
                   <td>
-                      <form class="foodinput-form">
+                      <form class="foodinput-form" onkeypress="pressReturnInput(event)">
                           name: <input id="foodinputname" type="text" placeholder="name"/><br><br>
                           purchase date: <input id="foodinputpurchasedate" type="date" /><br><br>
                           expiry date: <input id="foodinputexpirydate" type="date"/><br><br>
@@ -100,6 +100,7 @@
               <button id="back-button"> back</button>
               <!--<button id="finish-button" onclick="readdate()"> finish</button>-->
               <button id="finish-button" onclick="input_confirmation()"> finish</button>
+              
           </div>
       </div>
   </div>
@@ -130,7 +131,7 @@
         <table>
             <tr>
                 <td>
-                    <form class="foodedit-form">
+                    <form class="foodedit-form" onkeypress="pressReturnEdit(event)">
                         name: <input id="foodeditname" type="text" placeholder="name"/><br><br>
                         purchase date: <input id="foodeditpurchasedate" type="date" /><br><br>
                         expiry date: <input id="foodeditexpirydate" type="date"/><br><br>

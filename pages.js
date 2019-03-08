@@ -490,7 +490,7 @@ function readdate() {
     //same name as other food
     if(namelist[i] == name){
       alert("food already exists!");
-      return;
+      return false;
     }
   }
   
@@ -516,13 +516,13 @@ function readdate() {
      //window.location.assign('kitchen.html');
      //window.event.returnValue=false;
      //return false;
-
-
+     localStorage.setItem("newPurchDate", purchasedate + ";")
+     localStorage.setItem("newExpDate",expirydate + ";")
+     localStorage.setItem("newName", name + ";")
+     return true;
   }
-
-  localStorage.setItem("newPurchDate", purchasedate + ";")
-  localStorage.setItem("newExpDate",expirydate + ";")
-  localStorage.setItem("newName", name + ";")
+  return false;
+  
 
   // localStorage.setItem("purchasedate",purchasedate + ";" + localStorage.getItem("purchasedate") );//svae to localStorage
   // localStorage.setItem("expirydate", expirydate + ";" + localStorage.getItem("expirydate")  );
@@ -852,4 +852,16 @@ function openNav() {
 
 function closeNav() {
   document.getElementById("Account_Page").style.width = "0%";
+}
+
+/*pressReturn: when click return*/ 
+function pressReturnInput(e){
+  if(e.keyCode == 13){
+    readdate();
+  }
+}
+function pressReturnEdit(e){
+  if(e.keyCode == 13){
+    edit_confirmation();
+  }
 }
