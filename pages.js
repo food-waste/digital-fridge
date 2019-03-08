@@ -390,18 +390,17 @@ function edit_confirmation(){
       return;
     }
   }
-
-  if(purchasedate == "")
+  if(name == "")
+  {
+     alert("please input food name");
+  }
+  else if(purchasedate == "")
   {
      alert("Please input purchase date");
   }
   else if(expirydate == "")
   {
      alert("Please input expiry date");
-  }
-  else if(name == "")
-  {
-     alert("please input food name");
   }
   else
   {
@@ -486,8 +485,14 @@ function readdate() {
   var expirydate = document.getElementById("foodinputexpirydate").value;
   var name = document.getElementById("foodinputname").value;
 
-  database = localStorage.getItem("name");
-  var index = database.search(name);
+  var namelist = localStorage.getItem("name").split(';');
+  for (let i = 0; i < namelist.length-1; i++){
+    //same name as other food
+    if(namelist[i] == name){
+      alert("food already exists!");
+      return;
+    }
+  }
   
   if(name == "")
   {
@@ -501,14 +506,8 @@ function readdate() {
   {
      alert("Please input expiry date");
   }
-  else if (index != -1) 
-  {
-     alert("Same item already in kitchen!");
-  }
   else
-  {
-
-        // 
+  {   
     localStorage.setItem("showCF", "1");
 
     showCF();
