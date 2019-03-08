@@ -168,12 +168,26 @@ function init(){
     localStorage.setItem("newExpDate", "");
   }
 
-
   drawTable(getNew(), newAdded="True");
   drawTable(getPre());
 
   merge_table();
 }
+
+function showCF(){
+  // *******************************************
+// A text will appear after add a new item and disappera (Confirmation)
+// *******************************************
+  if(localStorage.getItem('showCF')=="1"){
+    document.getElementById("ConfirmationFeedback").style.height = "7%";
+    localStorage.setItem("showCF","0");
+  }
+// $('#ConfirmationFeedback').show();
+// $('#ConfirmationFeedback').fadeIn(1000);
+//document.getElementById("ConfirmationFeedback").style.height = "0%";
+
+}
+
 
 function getNew(){
   return [localStorage.getItem("newName").split(';'), localStorage.getItem("newExpDate").split(';')];
@@ -489,14 +503,16 @@ function readdate() {
   }
   else
   {
+
+        // 
+    localStorage.setItem("showCF", "1");
+
+    showCF();
      $('#inputPage').hide();
-     window.location.assign('kitchen.html');
+     setTimeout("window.location.assign('kitchen.html')",1000);
+     //window.location.assign('kitchen.html');
      //window.event.returnValue=false;
      //return false;
-
-// *******************************************
-// A text will appear after add a new item and disappera (Confirmation)
-// *******************************************
 
 
   }

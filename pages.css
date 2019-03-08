@@ -151,6 +151,40 @@ nav h1:hover {
   /* Account Page End */
   /* **** END ****** */
 
+/* Confirmation FeedBack */
+.CF_overlay {
+  height: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color:  #252525;
+  opacity: 0.9;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.CF_overlay-content {
+  position: relative;
+  top: 15%;
+  width: 100%;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.CF_overlay p {
+  padding: 0px;
+  font-size: 10px;
+  color: rgb(200, 200, 200);
+  margin-left: 20px;
+  margin-bottom: -10px;
+  display: block;
+  transition: 0.3s;
+  text-align: center;
+}
+
+/* Confirmation FeedBack End */
 
 .dropdown li {
   font-family: "Roboto", sans-serif;
