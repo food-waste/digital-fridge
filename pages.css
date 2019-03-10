@@ -570,41 +570,61 @@ td {
 }
 
 .cal-today {
-  /*background-color: #6babdb;*/
-  
-  border-style:solid;
-  border-width:8px;
-  border-color:#6babdb;
-  /*color: white;*/
+  border-width: 5px;
+  border-color: #4286f4;
 }
 
-.cal-yellow {
-  background-color: #ede857;
-  cursor: pointer;
-}
-
-.cal-yellow:hover {
-  background-color: #bbb;
-}
-
-.cal-orange {
-  background-color: #f9a939;
+.cal-one {
+  background-color: #f48075;
   color: white;
   cursor: pointer;
 }
 
-.cal-orange:hover {
+.cal-one:hover {
   background-color: #bbb;
   color: black;
 }
 
-.cal-red {
-  background-color: #ed3b3b;
+.cal-two {
+  background-color: #e25e51;
   color: white;
   cursor: pointer;
 }
 
-.cal-red:hover {
+.cal-two:hover {
+  background-color: #bbb;
+  color: black;
+}
+
+.cal-three {
+  background-color: #ce4133;
+  color: white;
+  cursor: pointer;
+}
+
+.cal-three:hover {
+  background-color: #bbb;
+  color: black;
+}
+
+.cal-four {
+  background-color: #b22113;
+  color: white;
+  cursor: pointer;
+}
+
+.cal-four:hover {
+  background-color: #bbb;
+  color: black;
+}
+
+.cal-fiveplus {
+  background-color: #a30f01;
+  color: white;
+  cursor: pointer;
+}
+
+.cal-fiveplus:hover {
   background-color: #bbb;
   color: black;
 }

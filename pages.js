@@ -522,6 +522,7 @@ function readdate() {
   var expirydate = document.getElementById("foodinputexpirydate").value;
   var name = document.getElementById("foodinputname").value;
 
+
   
   // for (let i = 0; i < namelist.length-1; i++){
   //   //same name as other food
@@ -692,10 +693,8 @@ function input_confirmation() {
   /* ***********************
   Won't appear now
   ********************** */
-    // alert("Successfully Added");
+
     readdate();
-
-
   }
 
 
