@@ -570,8 +570,12 @@ td {
 }
 
 .cal-today {
-  background-color: #6babdb;
-  color: white;
+  /*background-color: #6babdb;*/
+  
+  border-style:solid;
+  border-width:8px;
+  border-color:#6babdb;
+  /*color: white;*/
 }
 
 .cal-yellow {
