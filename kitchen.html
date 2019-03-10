@@ -90,8 +90,12 @@
                   <td>
                       <form class="foodinput-form" onkeypress="pressReturnInput(event)" onsubmit="return false;">
                           name: <input id="foodinputname" type="text" placeholder="name"/><br><br>
+                          <p class="fz input_noName">* Please enter a food name</p>
+                          <p class="fz input_duplicate">is already in kitchen</p>
                           purchase date: <input id="foodinputpurchasedate" type="date" /><br><br>
+                          <p class="fz input_noPurchDate">* Please enter a purchase date</p>
                           expiry date: <input id="foodinputexpirydate" type="date"/><br><br>
+                          <p class="fz input_noExpDate">* Please enter a expiration date</p>
                       </form>
                   </td>
               </tr>
