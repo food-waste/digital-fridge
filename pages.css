@@ -308,6 +308,15 @@ nav h1:hover {
   overflow-y: scroll;
 }
 
+.FoodName{
+  width: 40%;
+}
+
+.ExpDate{
+  width: 40%;
+}
+
+
 .sorter {
   cursor: pointer;
 }
