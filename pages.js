@@ -685,7 +685,6 @@ $(function(){
         localStorage.setItem("showCF", "1");
         showCF();
         setTimeout('document.getElementById("ConfirmationFeedback").style.height = "0%";',1000);
-
         setTimeout("$('#confirmPage').hide();",1000);
         setTimeout('clearTable(tableId = "confirm-table-Id");',1000);
         setTimeout("clearTable();",1000);
