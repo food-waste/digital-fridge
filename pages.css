@@ -235,6 +235,11 @@ nav h1:hover {
   transition: width 0.4s ease-in-out;
 }
 
+.SortTriangle {
+  text-align: right;
+  float: right;
+  margin: 0;
+}
 
 .search-kitchen input {
   font-family: "Roboto", sans-serif;
