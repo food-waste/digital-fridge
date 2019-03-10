@@ -580,6 +580,10 @@ $(function(){
 */
 $(function(){
   $('#back-button').click(function(){
+    $('.input_noName').hide();
+    $('.input_duplicate').hide();
+    $('.input_noPurchDate').hide();
+    $('.input_noExpDate').hide();
     $('#inputPage').hide();
 })});
 /*
