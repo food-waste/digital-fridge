@@ -137,8 +137,12 @@
                 <td>
                     <form class="foodedit-form" onkeypress="pressReturnEdit(event)" onsubmit="return false;">
                         name: <input id="foodeditname" type="text" placeholder="name"/><br><br>
+                        <p class="fz edit_noName">* Please enter a food name</p>
+                        <p class="fz edit_duplicate">is already in kitchen</p>
                         purchase date: <input id="foodeditpurchasedate" type="date" /><br><br>
+                        <p class="fz edit_noPurchDate">* Please enter a purchase date</p>
                         expiry date: <input id="foodeditexpirydate" type="date"/><br><br>
+                        <p class="fz edit_noExpDate">* Please enter a expiration date</p>
                     </form>
                 </td>
             </tr>

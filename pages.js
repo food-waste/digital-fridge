@@ -368,6 +368,10 @@ function editFunc(btn, src="main"){
 
 function edit_back(){
   document.getElementById("editPage").style.display="none";//hide
+  $('.edit_noName').hide();
+  $('.edit_duplicate').hide();
+  $('.edit_noPurchDate').hide();
+  $('.edit_noExpDate').hide();
   if(localStorage.getItem("editFrom",src) != "main"){
     $('#confirmPage').show();
   }
@@ -385,28 +389,49 @@ function edit_confirmation(){
   var expirydatelist = localStorage.getItem(expDate_str).split(';');
   var purchasedatelist = localStorage.getItem(purchasedate_str).split(';');
 
-  var oldname = localStorage.getItem("whattoedit");
-  for (let i = 0; i < namelist.length-1; i++){
-    //same name as other food
-    if(namelist[i] == name && name != oldname){
-      alert("Name is same as something else!");
-      return;
-    }
-  }
+  
+  var duplicte = "False";
   if(name == "")
   {
-     alert("please input food name");
+    $('.edit_noName').show();
+    $('.edit_duplicate').hide();
+    //  alert("please input food name");
+  }else{
+    var oldname = localStorage.getItem("whattoedit");
+    for (let i = 0; i < namelist.length-1; i++){
+    //same name as other food
+      if(namelist[i] == name && name != oldname){
+        // alert("Name is same as something else!");
+        duplicte = "True";
+        break;
+      }
+    }
+    if(duplicte != "False"){
+      $('.edit_duplicate').html('* ' + name + ' is already in kitchen');
+      $('.edit_duplicate').show();
+    }else{
+      $('.edit_duplicate').hide();
+    }
+    
+    $('.edit_noName').hide();
   }
-  else if(purchasedate == "")
+  
+  if(purchasedate == "")
   {
-     alert("Please input purchase date");
+    $('.edit_noPurchDate').show();
+    //  alert("Please input purchase date");
+  }else{
+    $('.edit_noPurchDate').hide();
   }
-  else if(expirydate == "")
-  {
-     alert("Please input expiry date");
+   
+  if(expirydate == ""){
+    $('.edit_noExpDate').show();
+    //  alert("Please input expiry date");
+  }else{
+    $('.edit_noExpDate').hide();
   }
-  else
-  {
+
+  if(name != "" && duplicte == "False" && purchasedate != "" && expirydate != ""){
       var newPurchDate = "";
       var newExpDate = "";
       var newName = "";
