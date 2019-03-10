@@ -4,7 +4,7 @@ var page = localStorage.getItem('page');
 function login_init(){
   if(!sessionStorage.started){
     localStorage.setItem("usernames", "330fcl;330ac");
-    localStorage.setItem("330fcl", "chunlin;123456;chunlinFeng@u.northwestern.edu");
+    localStorage.setItem("330fcl", "Chunlin;123456;chunlinFeng@u.northwestern.edu");
     localStorage.setItem("330ac", "Andrew;123456;andrew@u.northwestern.edu");
   }
   // console.log("hell world");
@@ -125,7 +125,8 @@ $(function(){
       $('.noemail').hide();
     }
     if(first_name_str != "" && username_str!= "" && password_str != "" && email_str != "") {
-      var name = first_name_str;
+      // var name = first_name_str;
+      first_name_str = first_name_str[0].toUpperCase() + first_name_str.substring(1);
       localStorage.setItem('login', 'false');
       localStorage.setItem('first_name', first_name_str);
       localStorage.setItem('email',email_str);
