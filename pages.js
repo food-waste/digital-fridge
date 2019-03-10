@@ -4,7 +4,7 @@ var page = localStorage.getItem('page');
 function login_init(){
   if(!sessionStorage.started){
     localStorage.setItem("usernames", "330fcl;330ac");
-    localStorage.setItem("330fcl", "chunlin;123456;chunlinFeng@u.northwestern.edu");
+    localStorage.setItem("330fcl", "Chunlin;123456;chunlinFeng@u.northwestern.edu");
     localStorage.setItem("330ac", "Andrew;123456;andrew@u.northwestern.edu");
   }
   // console.log("hell world");
@@ -45,11 +45,13 @@ $(function(){
     // var uNameInput = document.getElementById()
     if($('#login_username').val() == ""){
       $('.nouser').show();
+      $('.invalidUser').hide();
     }else{
       $('.nouser').hide();
     }
     if ($('#login_password').val() == "") {
       $('.nopwd').show();
+      $('.invalidPwd').hide();
     }else{
       $('.nopwd').hide();
     }
@@ -125,7 +127,8 @@ $(function(){
       $('.noemail').hide();
     }
     if(first_name_str != "" && username_str!= "" && password_str != "" && email_str != "") {
-      var name = first_name_str;
+      // var name = first_name_str;
+      first_name_str = first_name_str[0].toUpperCase() + first_name_str.substring(1);
       localStorage.setItem('login', 'false');
       localStorage.setItem('first_name', first_name_str);
       localStorage.setItem('email',email_str);
@@ -365,6 +368,10 @@ function editFunc(btn, src="main"){
 
 function edit_back(){
   document.getElementById("editPage").style.display="none";//hide
+  $('.edit_noName').hide();
+  $('.edit_duplicate').hide();
+  $('.edit_noPurchDate').hide();
+  $('.edit_noExpDate').hide();
   if(localStorage.getItem("editFrom",src) != "main"){
     $('#confirmPage').show();
   }
@@ -382,29 +389,49 @@ function edit_confirmation(){
   var expirydatelist = localStorage.getItem(expDate_str).split(';');
   var purchasedatelist = localStorage.getItem(purchasedate_str).split(';');
 
-  var oldname = localStorage.getItem("whattoedit");
-  for (let i = 0; i < namelist.length-1; i++){
+  
+  var duplicte = "False";
+  if(name == "")
+  {
+    $('.edit_noName').show();
+    $('.edit_duplicate').hide();
+    //  alert("please input food name");
+  }else{
+    var oldname = localStorage.getItem("whattoedit");
+    for (let i = 0; i < namelist.length-1; i++){
     //same name as other food
-    if(namelist[i] == name && name != oldname){
-      alert("Name is same as something else!");
-      return;
+      if(namelist[i] == name && name != oldname){
+        // alert("Name is same as something else!");
+        duplicte = "True";
+        break;
+      }
     }
+    if(duplicte != "False"){
+      $('.edit_duplicate').html('* ' + name + ' is already in kitchen');
+      $('.edit_duplicate').show();
+    }else{
+      $('.edit_duplicate').hide();
+    }
+    
+    $('.edit_noName').hide();
   }
-
+  
   if(purchasedate == "")
   {
-     alert("Please input purchase date");
+    $('.edit_noPurchDate').show();
+    //  alert("Please input purchase date");
+  }else{
+    $('.edit_noPurchDate').hide();
   }
-  else if(expirydate == "")
-  {
-     alert("Please input expiry date");
+   
+  if(expirydate == ""){
+    $('.edit_noExpDate').show();
+    //  alert("Please input expiry date");
+  }else{
+    $('.edit_noExpDate').hide();
   }
-  else if(name == "")
-  {
-     alert("please input food name");
-  }
-  else
-  {
+
+  if(name != "" && duplicte == "False" && purchasedate != "" && expirydate != ""){
       var newPurchDate = "";
       var newExpDate = "";
       var newName = "";
@@ -481,32 +508,64 @@ function clearTable(tableId = "tableId"){
   }
 }
 
+function arrFind(list, str){
+  for (let i = 0; i < list.length; i++){
+    //same name as other food
+    if(list[i] == str){
+      return i;
+    }
+  }
+  return -1;
+}
 function readdate() {
   var purchasedate = document.getElementById("foodinputpurchasedate").value;
   var expirydate = document.getElementById("foodinputexpirydate").value;
   var name = document.getElementById("foodinputname").value;
 
-  database = localStorage.getItem("name");
-  var index = database.search(name);
+
+  
+  // for (let i = 0; i < namelist.length-1; i++){
+  //   //same name as other food
+  //   if(namelist[i] == name){
+  //     alert(name + " already exists!");
+  //     return;
+  //   }
+  // }
+  var result = -1;
   if(name == "")
   {
-     alert("please input food name");
+    $('.input_noName').show();
+    $('.input_duplicate').hide();
+    //  alert("please input food name");
+  }else{
+    var namelist = localStorage.getItem("name").split(';');
+    result = arrFind(namelist, name);
+    if(result != -1){
+      $('.input_duplicate').html('* ' + name + ' is already in kitchen');
+      $('.input_duplicate').show();
+    }else{
+      $('.input_duplicate').hide();
+    }
+    $('.input_noName').hide();
   }
-  else if(purchasedate == "")
+  
+  if(purchasedate == "")
   {
-     alert("Please input purchase date");
+    $('.input_noPurchDate').show();
+    //  alert("Please input purchase date");
+  }else{
+    $('.input_noPurchDate').hide();
   }
-  else if(expirydate == "")
-  {
-     alert("Please input expiry date");
+   
+  if(expirydate == ""){
+    $('.input_noExpDate').show();
+    //  alert("Please input expiry date");
+  }else{
+    $('.input_noExpDate').hide();
   }
-  else if(index != -1){
-     alert("Same item already in kitchen!");
-  }
-  else
-  {
-
-        // 
+  
+  if(name != "" && result == -1 && purchasedate != "" && expirydate != "")
+  {   
     localStorage.setItem("showCF", "1");
 
     showCF();
@@ -515,13 +574,13 @@ function readdate() {
      //window.location.assign('kitchen.html');
      //window.event.returnValue=false;
      //return false;
-
-
+     localStorage.setItem("newPurchDate", purchasedate + ";")
+     localStorage.setItem("newExpDate",expirydate + ";")
+     localStorage.setItem("newName", name + ";")
+     return true;
   }
-
-  localStorage.setItem("newPurchDate", purchasedate + ";")
-  localStorage.setItem("newExpDate",expirydate + ";")
-  localStorage.setItem("newName", name + ";")
+  return false;
+  
 
   // localStorage.setItem("purchasedate",purchasedate + ";" + localStorage.getItem("purchasedate") );//svae to localStorage
   // localStorage.setItem("expirydate", expirydate + ";" + localStorage.getItem("expirydate")  );
@@ -547,6 +606,10 @@ $(function(){
 */
 $(function(){
   $('#back-button').click(function(){
+    $('.input_noName').hide();
+    $('.input_duplicate').hide();
+    $('.input_noPurchDate').hide();
+    $('.input_noExpDate').hide();
     $('#inputPage').hide();
 })});
 /*
@@ -630,6 +693,7 @@ function input_confirmation() {
   /* ***********************
   Won't appear now
   ********************** */
+
     readdate();
   }
 
@@ -850,13 +914,14 @@ function closeNav() {
   document.getElementById("Account_Page").style.width = "0%";
 }
 
-
-/*ting ying add enter function */
-/*
-var input = document.getElementById("myInput");
-input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-
+/*pressReturn: when click return*/ 
+function pressReturnInput(e){
+  if(e.keyCode == 13){
+    readdate();
   }
-});
-*/
+}
+function pressReturnEdit(e){
+  if(e.keyCode == 13){
+    edit_confirmation();
+  }
+}
