@@ -45,11 +45,13 @@ $(function(){
     // var uNameInput = document.getElementById()
     if($('#login_username').val() == ""){
       $('.nouser').show();
+      $('.invalidUser').hide();
     }else{
       $('.nouser').hide();
     }
     if ($('#login_password').val() == "") {
       $('.nopwd').show();
+      $('.invalidPwd').hide();
     }else{
       $('.nopwd').hide();
     }
@@ -481,33 +483,62 @@ function clearTable(tableId = "tableId"){
   }
 }
 
+function arrFind(list, str){
+  for (let i = 0; i < list.length; i++){
+    //same name as other food
+    if(list[i] == str){
+      return i;
+    }
+  }
+  return -1;
+}
 function readdate() {
   var purchasedate = document.getElementById("foodinputpurchasedate").value;
   var expirydate = document.getElementById("foodinputexpirydate").value;
   var name = document.getElementById("foodinputname").value;
 
-  var namelist = localStorage.getItem("name").split(';');
-  for (let i = 0; i < namelist.length-1; i++){
-    //same name as other food
-    if(namelist[i] == name){
-      alert("food already exists!");
-      return;
-    }
-  }
   
+  // for (let i = 0; i < namelist.length-1; i++){
+  //   //same name as other food
+  //   if(namelist[i] == name){
+  //     alert(name + " already exists!");
+  //     return;
+  //   }
+  // }
+  var result = -1;
   if(name == "")
   {
-     alert("please input food name");
+    $('.input_noName').show();
+    $('.input_duplicate').hide();
+    //  alert("please input food name");
+  }else{
+    var namelist = localStorage.getItem("name").split(';');
+    result = arrFind(namelist, name);
+    if(result != -1){
+      $('.input_duplicate').html('* ' + name + ' is already in kitchen');
+      $('.input_duplicate').show();
+    }else{
+      $('.input_duplicate').hide();
+    }
+    $('.input_noName').hide();
   }
-  else if(purchasedate == "")
+  
+  if(purchasedate == "")
   {
-     alert("Please input purchase date");
+    $('.input_noPurchDate').show();
+    //  alert("Please input purchase date");
+  }else{
+    $('.input_noPurchDate').hide();
   }
-  else if(expirydate == "")
-  {
-     alert("Please input expiry date");
+   
+  if(expirydate == ""){
+    $('.input_noExpDate').show();
+    //  alert("Please input expiry date");
+  }else{
+    $('.input_noExpDate').hide();
   }
-  else
+  
+  if(name != "" && result == -1 && purchasedate != "" && expirydate != "")
   {   
     localStorage.setItem("showCF", "1");
 

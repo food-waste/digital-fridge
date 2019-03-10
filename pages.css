@@ -651,3 +651,12 @@ td {
 .close_button:hover {
   font-weight: bold;
 }
+
+
+.fz {
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  color: red;
+  display: none;
+}
