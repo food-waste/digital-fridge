@@ -301,11 +301,10 @@ nav h1:hover {
 
 .food-table {
   border: 4px solid #555;
-  height: 550px;
   width: 80%;
   margin: auto;
   margin-top: 30px;
-  overflow-y: scroll;
+  margin-bottom: 100px;
 }
 
 .FoodName{
@@ -590,11 +589,11 @@ td {
 
 .cal-today {
   border-width: 5px;
-  border-color: #4286f4;
+  border-color: #259b11;
 }
 
 .cal-one {
-  background-color: #f48075;
+  background-color: #86b3f9;
   color: white;
   cursor: pointer;
 }
@@ -605,7 +604,7 @@ td {
 }
 
 .cal-two {
-  background-color: #e25e51;
+  background-color: #639bf2;
   color: white;
   cursor: pointer;
 }
@@ -616,7 +615,7 @@ td {
 }
 
 .cal-three {
-  background-color: #ce4133;
+  background-color: #4183ea;
   color: white;
   cursor: pointer;
 }
@@ -627,7 +626,7 @@ td {
 }
 
 .cal-four {
-  background-color: #b22113;
+  background-color: #206ee8;
   color: white;
   cursor: pointer;
 }
@@ -638,7 +637,7 @@ td {
 }
 
 .cal-fiveplus {
-  background-color: #a30f01;
+  background-color: #0050ce;
   color: white;
   cursor: pointer;
 }
