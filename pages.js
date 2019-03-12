@@ -665,25 +665,32 @@ $(function(){
 
     if (repeatCnt != 0) {
       if(repeatCnt == 1){   //mulitple items repeated
-        alert(repeatName + " is already in kitchen");
+        $('.confirm_duplicate').html(repeatName + " is already in kitchen");
+  
+        // alert(repeatName + " is already in kitchen");
       }else{
         var lastRepeatIndex = repeatName.search(lastRepeat);
         if(repeatCnt == 2){
           lastRepeatIndex = lastRepeatIndex - 1; // get rid of ", "
         }
         repeatName = repeatName.substring(0,lastRepeatIndex - 1) + " and " + repeatName.substring(lastRepeatIndex);
-        alert(repeatName + " are already in kitchen");
+        $('.confirm_duplicate').html(repeatName + " are already in kitchen");
+        // alert(repeatName + " are already in kitchen");
       }
-      return;
+      $('.confirm_duplicate').show();
+      return "false";
+    }else{
+      $('.confirm_duplicate').hide();
     }
 
-    if(confirm("-----Confirm the Input?----- ")){
-      // alert("Successfully Added");
-    }
+    // if(confirm("-----Confirm the Input?----- ")){
+    //   // alert("Successfully Added");
+    // }
 
     $('#confirmPage').hide();
     clearTable(tableId = "confirm-table-Id");
     clearTable();
+    showCF();
     init();
 })});
 
