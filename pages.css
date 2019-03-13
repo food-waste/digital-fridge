@@ -707,3 +707,9 @@ td {
   color: red;
   display: none;
 }
+
+.confirm_duplicate{
+  margin-left: 10%;
+  margin-top: 5px;
+  width: 80%;
+}

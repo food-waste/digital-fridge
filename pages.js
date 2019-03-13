@@ -36,6 +36,15 @@ $(function(){
 
 $(function(){
    $('.message a').click(function(){
+      $('.nouser').hide();
+      $('.invalidUser').hide();
+      $('.nopwd').hide();
+      $('.invalidPwd').hide();
+
+      $('.noname').hide();
+      $('.nouserc').hide();
+      $('.nopwdc').hide();
+      $('.noemail').hide();
       $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
    });
 });
@@ -57,6 +66,8 @@ $(function(){
     }
 
     if($('#login_password').val() != "" && $('#login_username').val() != ""){
+      $('.nopwd').hide();
+      $('.nouser').hide();
       var r = isValidInput($('#login_username').val(), $('#login_password').val());
       if(r == 1){
         localStorage.setItem('page', '.your-food');
@@ -64,7 +75,9 @@ $(function(){
         window.location.href = 'kitchen.html';
       }else if(r == -1){
         $('.invalidUser').show();
+        $('.invalidPwd').hide();
       }else if(r == -2){
+        $('.invalidUser').hide();
         $('.invalidPwd').show();
       }
       // var r = isValidInput($('#login_username').val(),
@@ -147,7 +160,7 @@ $(function(){
 
 var initFood = "Ground Beef (1 lb);Greek Yogurt;Chicken Breasts;Romaine Lettuce;Eggplant;Cinnamon Toast Crunch;Multigrain Bread;2% Milk;Strawberries;Eggs;American Cheese;Tomatoes;Butter;Guacamole;Watermelon;Smoked Salmon;";
 var initPurDate = "2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;2019-02-19;";
-var initExpDate = "2019-03-22;2019-02-28;2019-04-01;2019-03-19;2019-03-22;2019-07-07;2019-04-18;2019-03-19;2019-04-12;2019-03-22;2019-04-25;2019-03-28;2019-03-16;2019-02-28;2019-03-17;2019-03-22;";
+var initExpDate = "2019-03-22;2019-02-28;2019-04-01;2019-03-19;2019-03-22;2019-07-07;2019-04-18;2019-03-19;2019-04-12;2019-03-22;2019-04-25;2019-03-28;2019-03-16;2019-03-08;2019-03-17;2019-03-22;";
 $(document).ready(function(){
   if(window.location.pathname.search("/kitchen.html") != -1){
     init();
@@ -655,6 +668,7 @@ $(function(){
 
 $(function(){
   $('#confirm-back-button').click(function(){
+    $('.confirm_duplicate').hide();
     $('#confirmPage').hide();
     $('#inputPage').show();
     localStorage.setItem("newName", "");
@@ -685,7 +699,7 @@ $(function(){
 
     if (repeatCnt != 0) {
       if(repeatCnt == 1){   //mulitple items repeated
-        $('.confirm_duplicate').html(repeatName + " is already in kitchen");
+        $('.confirm_duplicate').html("* " + repeatName + " is already in kitchen");
   
         // alert(repeatName + " is already in kitchen");
       }else{
@@ -694,7 +708,7 @@ $(function(){
           lastRepeatIndex = lastRepeatIndex - 1; // get rid of ", "
         }
         repeatName = repeatName.substring(0,lastRepeatIndex - 1) + " and " + repeatName.substring(lastRepeatIndex);
-        $('.confirm_duplicate').html(repeatName + " are already in kitchen");
+        $('.confirm_duplicate').html("* " + repeatName + " are already in kitchen");
         // alert(repeatName + " are already in kitchen");
       }
       $('.confirm_duplicate').show();
