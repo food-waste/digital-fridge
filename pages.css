@@ -480,12 +480,8 @@ td {
   font-weight: 300;
 }
 
-#foodinputpurchasedate {
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-}
-
-#foodinputexpirydate {
+#foodinputpurchasedate, #foodeditpurchasedate,
+#foodinputexpirydate, #foodeditexpirydate {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
 }
