@@ -65,8 +65,8 @@
     <div class="food-table">
       <table id = "tableId">
         <tr>
-          <th class="sorter" id="food-sort" onclick="sortTable(0)">Food <p class="SortTriangle">▼</p></th>  <!-- add nabla icon in the bar-->
-          <th class="sorter" id="date-sort" onclick="sortTable(1)">Expiration Date <p class="SortTriangle">▼</p></th>  <!-- add nabla icon in the bar-->
+          <th class="sorter FoodName" id="food-sort" onclick="sortTable(0)">Food <p class="SortTriangle">▼</p></th>  <!-- add nabla icon in the bar-->
+          <th class="sorter ExpDate" id="date-sort" onclick="sortTable(1)">Expiration Date <p class="SortTriangle">▼</p></th>  <!-- add nabla icon in the bar-->
           <th>Actions</th>
         </tr>
       </table>
@@ -154,6 +154,11 @@
             <button id="finish-button-edit" onclick="edit_confirmation()"> finish</button>
         </div>
     </div>
-</div>
-  
+  </div>
+  <!--add a delete confirmation page-->
+  <div class="modal form" id="delete-confirm">
+    <br><p class="deleteinfo">Are you sure you want to delete it?</p><br>
+    <button id="cancel-button-delete"> cancel</button>
+    <button id="finish-button-delete"> delete</button>
+  </div>
 </body>

@@ -258,22 +258,42 @@ function expHighlight(expDatestr, curRow){
   }
 
 }
+$(function(){
+    $('#delete-confirm').hide();
+});
+//delete function: we add a confirm window here.
 function deleteFunc(btn, src="main"){
+    //if users want to delete sth, record it.
     var row = btn.parentNode.parentNode;
     var nameToDelete = row.firstElementChild.innerText;
-    rowI = row.rowIndex - 1;
-    row.parentNode.removeChild(row);
-
-    deleteInDataBase(nameToDelete, src);
-    // var namelist = localStorage.getItem("name").split(';');
-    // var datelist = localStorage.getItem("expirydate").split(';');
-
-
-    // namestr = arr2str(namelist);
-    // datestr = arr2str(datelist);
-    // localStorage.setItem("name", namestr);
-    // localStorage.setItem("expirydate", datestr);
-
+    localStorage.setItem("nameToDelete", nameToDelete);
+    localStorage.setItem("src", src);
+    $('#delete-confirm').show();
+    //if users cancel
+    $('#cancel-button-delete').click(function(){
+      $('#delete-confirm').hide();
+      return;
+    });
+    //if users confirm the deletion
+    $('#finish-button-delete').click(function(row){
+      $('#delete-confirm').hide();
+      var nameToDelete = localStorage.getItem("nameToDelete");
+      var src = localStorage.getItem("src");
+      //row.parentNode.removeChild(row);
+      if(src == "main"){
+        var mytable = document.getElementById('tableId');
+      }
+      else{
+        var mytable = document.getElementById('confirm-table-Id');
+      }
+      for(let i=1; i<=mytable.rows.length; i++){
+        if(mytable.rows[i].firstElementChild.innerText == nameToDelete){
+          mytable.rows[i].parentNode.removeChild(mytable.rows[i]);
+          break;
+        }
+      }
+      deleteInDataBase(nameToDelete, src);
+  });
 }
 /*
 delete the entry by foodname in database
@@ -683,15 +703,23 @@ $(function(){
       $('.confirm_duplicate').hide();
     }
 
-    // if(confirm("-----Confirm the Input?----- ")){
-    //   // alert("Successfully Added");
-    // }
+    /* if(confirm("-----Confirm the Input?----- ")){
+      // alert("Successfully Added");
+    }*/
+    
+    // Show the Confirmation Feedback
+        localStorage.setItem("showCF", "1");
+        showCF();
+        setTimeout('document.getElementById("ConfirmationFeedback").style.height = "0%";',1000);
+        setTimeout("$('#confirmPage').hide();",1000);
+        setTimeout('clearTable(tableId = "confirm-table-Id");',1000);
+        setTimeout("clearTable();",1000);
 
-    $('#confirmPage').hide();
-    clearTable(tableId = "confirm-table-Id");
-    clearTable();
-    showCF();
-    init();
+
+    setTimeout("init();",1000)
+
+  
+    
 })});
 
 
