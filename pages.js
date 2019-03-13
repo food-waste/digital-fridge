@@ -234,6 +234,7 @@ function drawTable(display, newAdded = "False", tableId = "tableId"){
   var i;
   for(i = 0; i < namelist.length - 1; i++){
     newRow = mytable.insertRow(mytable.getElementsByTagName("tr").length);
+    newRow.classList.add('food_row');
     cellA = newRow.insertCell(0);
     cellB = newRow.insertCell(1);
     cellC = newRow.insertCell(2);
@@ -250,10 +251,10 @@ function drawTable(display, newAdded = "False", tableId = "tableId"){
     expHighlight(datelist[i],newRow);
     if(tableId == "tableId"){       //the delete function for confirmation page doesn't work yet.
       //cellC.innerHTML = "<button onclick = \"deleteFunc(this)\">Delete</button>";
-      cellC.innerHTML = "<span id=\"delete_trash\" onclick = \"deleteFunc(this)\"><img height=\"15\" width=\"15\" src=\"images/trash.png\" /></span>" + "<span class=\"edit\" onclick = \"editFunc(this)\"><img height=\"15\" width=\"15\" src=\"images/edit.png\" /></span>";
+      cellC.innerHTML = "<div id=\"delete_trash\" onclick = \"deleteFunc(this)\"><img height=\"20\" width=\"20\" src=\"images/trash.png\" /></div>" + "<div class=\"edit\" onclick = \"editFunc(this)\"><img height=\"20\" width=\"20\" src=\"images/edit.png\" /></div>";
       //tingying: add new button----eidt.
     }else{
-      cellC.innerHTML = "<span id=\"delete_trash\" onclick = \"deleteFunc(this,'scan')\"><img height=\"15\" width=\"15\" src=\"images/trash.png\" /></span>" + "<span class=\"edit\" onclick = \"editFunc(this,src='scan')\"><img height=\"15\" width=\"15\" src=\"images/edit.png\" /></span>";
+      cellC.innerHTML = "<div id=\"delete_trash\" onclick = \"deleteFunc(this,'scan')\"><img height=\"20\" width=\"20\" src=\"images/trash.png\" /></div>" + "<div class=\"edit\" onclick = \"editFunc(this,src='scan')\"><img height=\"20\" width=\"20\" src=\"images/edit.png\" /></div>";
     }
 
   }
@@ -357,7 +358,7 @@ function getThreeStr(src){
     var name_str = "name";
     var expDate_str = "expirydate";
     var purchasedate_str = "purchasedate";
-    
+
   }else{
     var name_str = "newName";
     var expDate_str = "newExpDate";
@@ -422,7 +423,7 @@ function edit_confirmation(){
   var expirydatelist = localStorage.getItem(expDate_str).split(';');
   var purchasedatelist = localStorage.getItem(purchasedate_str).split(';');
 
-  
+
   var duplicte = "False";
   if(name == "")
   {
@@ -445,10 +446,10 @@ function edit_confirmation(){
     }else{
       $('.edit_duplicate').hide();
     }
-    
+
     $('.edit_noName').hide();
   }
-  
+
   if(purchasedate == "")
   {
     $('.edit_noPurchDate').show();
@@ -456,7 +457,7 @@ function edit_confirmation(){
   }else{
     $('.edit_noPurchDate').hide();
   }
-   
+
   if(expirydate == ""){
     $('.edit_noExpDate').show();
     //  alert("Please input expiry date");
@@ -556,7 +557,7 @@ function readdate() {
   var name = document.getElementById("foodinputname").value;
 
 
-  
+
   // for (let i = 0; i < namelist.length-1; i++){
   //   //same name as other food
   //   if(namelist[i] == name){
@@ -581,7 +582,7 @@ function readdate() {
     }
     $('.input_noName').hide();
   }
-  
+
   if(purchasedate == "")
   {
     $('.input_noPurchDate').show();
@@ -589,16 +590,16 @@ function readdate() {
   }else{
     $('.input_noPurchDate').hide();
   }
-   
+
   if(expirydate == ""){
     $('.input_noExpDate').show();
     //  alert("Please input expiry date");
   }else{
     $('.input_noExpDate').hide();
   }
-  
+
   if(name != "" && result == -1 && purchasedate != "" && expirydate != "")
-  {   
+  {
     localStorage.setItem("showCF", "1");
 
     showCF();
@@ -613,7 +614,7 @@ function readdate() {
      return true;
   }
   return false;
-  
+
 
   // localStorage.setItem("purchasedate",purchasedate + ";" + localStorage.getItem("purchasedate") );//svae to localStorage
   // localStorage.setItem("expirydate", expirydate + ";" + localStorage.getItem("expirydate")  );
@@ -684,7 +685,7 @@ $(function(){
     scanNamelist = localStorage.getItem("newName").split(';');
     var repeatName = "";
     var lastRepeat = "";
-    var repeatCnt = 0; 
+    var repeatCnt = 0;
     for(var i = 0; i < scanNamelist.length - 1; i++){
       // if(database.search(scanNamelist[i]) != -1){
       if(database.includes(scanNamelist[i])){
@@ -700,7 +701,7 @@ $(function(){
     if (repeatCnt != 0) {
       if(repeatCnt == 1){   //mulitple items repeated
         $('.confirm_duplicate').html("* " + repeatName + " is already in kitchen");
-  
+
         // alert(repeatName + " is already in kitchen");
       }else{
         var lastRepeatIndex = repeatName.search(lastRepeat);
@@ -720,7 +721,7 @@ $(function(){
     /* if(confirm("-----Confirm the Input?----- ")){
       // alert("Successfully Added");
     }*/
-    
+
     // Show the Confirmation Feedback
         localStorage.setItem("showCF", "1");
         showCF();
@@ -732,8 +733,8 @@ $(function(){
 
     setTimeout("init();",1000)
 
-  
-    
+
+
 })});
 
 
@@ -750,7 +751,7 @@ function input_confirmation() {
 
 
 
-  
+
 // This function will return two array, the first one is the searching result food's name
 // the other one is its expiry date
 function searchItem(){
@@ -963,7 +964,7 @@ function closeNav() {
   document.getElementById("Account_Page").style.width = "0%";
 }
 
-/*pressReturn: when click return*/ 
+/*pressReturn: when click return*/
 function pressReturnInput(e){
   if(e.keyCode == 13){
     readdate();
