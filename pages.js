@@ -934,7 +934,7 @@ function openNav() {
   var first_name = localStorage.getItem("first_name")
   if(first_name == "Andrew"){
     uImage.src = "images/TomJerry.jpeg";
-  }else if(first_name == "chunlin"){
+  }else if(first_name == "Chunlin"){
     uImage.src = "images/Jerry.jpeg";
   }else{
     uImage.src = "images/Default.png";
