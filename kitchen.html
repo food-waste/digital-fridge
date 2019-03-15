@@ -11,7 +11,6 @@
     <ul class="navbar">
       <li class="your-food">Your Food</li>
       <li class="calendar">Calendar</li>
-      <li class="stats">Statistics</li>
 <!-- For Account Page-->
 
       <span onclick="openNav()"><li class="account">
@@ -36,7 +35,6 @@
         <ul class="dropdown">
           <li class="your-food">Your Food</li>
           <li class="calendar">Calendar</li>
-          <li class="stats">Statistics</li>
           <li class="account">Account</li>
         </ul>
       </li>
@@ -50,13 +48,13 @@
       <!-- <button class="search-go" onclick="searchItem()"><img height="30" width="30" src="images/search.png" /></button> -->
       <!-- <button class="search-go" onclick="RT_Search()"><img height="30" width="30" src="images/search.png" /></button> -->
       <!--Add Confirmation Feedback-->
-      
+
       <div class="CF_overlay" id="ConfirmationFeedback">
         <div class="CF_overlay-content">
           <p id="CF_text"> Successfully Added!</p>
         </div>
       </div>
-    
+
       <!--Confirmation Feedback End-->
 
       <button class="add-food">&#43;</button>
@@ -65,8 +63,8 @@
     <div class="food-table">
       <table id = "tableId">
         <tr>
-          <th class="sorter" id="food-sort" onclick="sortTable(0)">Food   &nabla;</th>  <!-- add nabla icon in the bar-->
-          <th class="sorter" id="date-sort" onclick="sortTable(1)">Expiration Date &nabla;</th>  <!-- add nabla icon in the bar-->
+          <th class="sorter FoodName" id="food-sort" onclick="sortTable(0)">Food <p class="SortTriangle">▼</p></th>  <!-- add nabla icon in the bar-->
+          <th class="sorter ExpDate" id="date-sort" onclick="sortTable(1)">Expiration Date <p class="SortTriangle">▼</p></th>  <!-- add nabla icon in the bar-->
           <th>Actions</th>
         </tr>
       </table>
@@ -75,7 +73,7 @@
   <div class="modal" id="inputPage">
       <div class="form" class="modal-content">
           <p class="foodinput-title">Food Input</p>
-          <table >
+          <table>
               <tr>
                   <td>
                     <div class="foodinput-scan-wrapper">
@@ -88,10 +86,14 @@
 
                   </td>
                   <td>
-                      <form class="foodinput-form">
+                      <form class="foodinput-form" onkeypress="pressReturnInput(event)" onsubmit="return false;">
                           name: <input id="foodinputname" type="text" placeholder="name"/><br><br>
+                          <p class="fz input_noName">* Please enter a food name</p>
+                          <p class="fz input_duplicate">is already in kitchen</p>
                           purchase date: <input id="foodinputpurchasedate" type="date" /><br><br>
+                          <p class="fz input_noPurchDate">* Please enter a purchase date</p>
                           expiry date: <input id="foodinputexpirydate" type="date"/><br><br>
+                          <p class="fz input_noExpDate">* Please enter a expiration date</p>
                       </form>
                   </td>
               </tr>
@@ -100,6 +102,7 @@
               <button id="back-button"> back</button>
               <!--<button id="finish-button" onclick="readdate()"> finish</button>-->
               <button id="finish-button" onclick="input_confirmation()"> finish</button>
+
           </div>
       </div>
   </div>
@@ -117,6 +120,7 @@
       </table>
 
     </div>
+    <p class="fz confirm_duplicate">is already in kitchen</p>
     <div>
         <button class="confirm-button" id="confirm-back-button"> cancel</button>
         <!--<button id="finish-button" onclick="readdate()"> finish</button>-->
@@ -130,10 +134,14 @@
         <table>
             <tr>
                 <td>
-                    <form class="foodedit-form">
+                    <form class="foodedit-form" onkeypress="pressReturnEdit(event)" onsubmit="return false;">
                         name: <input id="foodeditname" type="text" placeholder="name"/><br><br>
+                        <p class="fz edit_noName">* Please enter a food name</p>
+                        <p class="fz edit_duplicate">is already in kitchen</p>
                         purchase date: <input id="foodeditpurchasedate" type="date" /><br><br>
+                        <p class="fz edit_noPurchDate">* Please enter a purchase date</p>
                         expiry date: <input id="foodeditexpirydate" type="date"/><br><br>
+                        <p class="fz edit_noExpDate">* Please enter a expiration date</p>
                     </form>
                 </td>
             </tr>
@@ -144,6 +152,11 @@
             <button id="finish-button-edit" onclick="edit_confirmation()"> finish</button>
         </div>
     </div>
-</div>
-  
+  </div>
+  <!--add a delete confirmation page-->
+  <div class="modal form" id="delete-confirm">
+    <br><p class="deleteinfo">Are you sure you want to delete it?</p><br>
+    <button id="cancel-button-delete"> cancel</button>
+    <button id="finish-button-delete"> delete</button>
+  </div>
 </body>

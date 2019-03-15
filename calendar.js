@@ -115,13 +115,27 @@ function showCalendar(month, year) {
 	                }
 								}
 								if (food_count > 0) {
-									if (food_count == 1) {
-										cell.classList.add('cal-yellow');
-									} else if (food_count <= 3) {
-										cell.classList.add('cal-orange');
-									} else {
-										cell.classList.add('cal-red');
+									switch(food_count) {
+										case 1:
+											cell.classList.add('cal-one');
+											break;
+										case 2:
+											cell.classList.add('cal-two');
+											break;
+										case 3:
+											cell.classList.add('cal-three');
+											break;
+										case 4:
+											cell.classList.add('cal-four');
+											break;
+										default:
+											cell.classList.add('cal-fiveplus');
+											break;
 									}
+									if (date < today.getDate() && year == today.getFullYear() && month == today.getMonth()
+											|| year < today.getFullYear() || month < today.getMonth() && year == today.getFullYear()) {
+	                    cell.classList.add("cal-exp");
+	                }
 									let foodCount = document.createElement("p");
 									let ct = document.createTextNode(food_count);
 									foodCount.appendChild(ct);
