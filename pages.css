@@ -205,7 +205,7 @@ nav h1:hover {
   background-color: #585;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 800px) {
   .navbar li {
     display: none;
   }
@@ -680,6 +680,11 @@ td {
   color: black;
 }
 
+.cal-exp {
+  background-color: red !important;
+  color: white !important;
+}
+
 .food_count {
   font-size: 24px;
   font-weight: bold;
@@ -731,7 +736,6 @@ td {
 .close_button:hover {
   font-weight: bold;
 }
-
 
 .fz {
   font-size: 12px;

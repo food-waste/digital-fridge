@@ -115,10 +115,8 @@ function showCalendar(month, year) {
 	                }
 								}
 								if (food_count > 0) {
-									console.log('enterswitch');
 									switch(food_count) {
 										case 1:
-											console.log('case1');
 											cell.classList.add('cal-one');
 											break;
 										case 2:
@@ -134,6 +132,10 @@ function showCalendar(month, year) {
 											cell.classList.add('cal-fiveplus');
 											break;
 									}
+									if (date < today.getDate() && year == today.getFullYear() && month == today.getMonth()
+											|| year < today.getFullYear() || month < today.getMonth() && year == today.getFullYear()) {
+	                    cell.classList.add("cal-exp");
+	                }
 									let foodCount = document.createElement("p");
 									let ct = document.createTextNode(food_count);
 									foodCount.appendChild(ct);
