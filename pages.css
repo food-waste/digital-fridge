@@ -622,11 +622,11 @@ td {
 
 .cal-today {
   border-width: 5px;
-  border-color: #259b11;
+  border-color: #459de0;
 }
 
 .cal-one {
-  background-color: #86b3f9;
+  background-color: #b1ef69;
   color: white;
   cursor: pointer;
 }
@@ -637,7 +637,7 @@ td {
 }
 
 .cal-two {
-  background-color: #639bf2;
+  background-color: #93d14b;
   color: white;
   cursor: pointer;
 }
@@ -648,7 +648,7 @@ td {
 }
 
 .cal-three {
-  background-color: #4183ea;
+  background-color: #82c435;
   color: white;
   cursor: pointer;
 }
@@ -659,7 +659,7 @@ td {
 }
 
 .cal-four {
-  background-color: #206ee8;
+  background-color: #72b722;
   color: white;
   cursor: pointer;
 }
@@ -670,7 +670,7 @@ td {
 }
 
 .cal-fiveplus {
-  background-color: #0050ce;
+  background-color: #60ad06;
   color: white;
   cursor: pointer;
 }
@@ -683,6 +683,11 @@ td {
 .cal-exp {
   background-color: red !important;
   color: white !important;
+}
+
+.cal-exp:hover {
+  background-color: #bbb !important;
+  color: black !important;
 }
 
 .food_count {
